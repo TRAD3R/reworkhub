@@ -66,6 +66,9 @@ class DefaultController extends Controller
                 $model->maxSalary = Yii::$app->request->post('zp-to');
                 $model->currency = Yii::$app->request->post('currency');
                 $model->skills = Yii::$app->request->post('skills');
+                $model->duties = Yii::$app->request->post('duties');
+                $model->requirements = Yii::$app->request->post('requirements');
+                $model->conditions = Yii::$app->request->post('conditions');
 
                 if ($model->validate()) {
                     $model->companyLogo = UploadedFile::getInstance($model, 'companyLogo');
@@ -88,6 +91,9 @@ class DefaultController extends Controller
             $model->title = $jModel->title;
             $model->employmentType = $jModel->employmentType;
             $model->description = $jModel->description;
+            $model->duties = $jModel->duties;
+            $model->requirements = $jModel->requirements;
+            $model->conditions = $jModel->conditions;
             $model->skills = $jModel->skills;
             $model->minSalary = $jModel->minSalary;
             $model->maxSalary = $jModel->maxSalary;
@@ -106,7 +112,7 @@ class DefaultController extends Controller
     } // actionAdd
 
     public function actionPreview(){
-        if(!Yii::$app->session->getIsActive() || empty(Yii::$app->session['model']))
+        if(empty(Yii::$app->session['model']))
             return $this->redirect('/add');
 
         $model = (object)Json::decode(Yii::$app->session->get('model'));
@@ -155,6 +161,9 @@ class DefaultController extends Controller
         $job->title = $jModel->title;
         $job->employment_types_id = $jModel->employmentType;
         $job->description = $jModel->description;
+        $job->duties = $jModel->duties;
+        $job->requirements = $jModel->requirements;
+        $job->conditions = $jModel->conditions;
         $job->skills = $jModel->skills;
         $job->min_salary = $jModel->minSalary;
         $job->max_salary = $jModel->maxSalary;
