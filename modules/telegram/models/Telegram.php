@@ -17,6 +17,7 @@ use app\helpers\telegramAnswer\CallbackQuery;
 use app\helpers\telegramAnswer\Message;
 use app\helpers\telegramAnswer\Result;
 use app\modules\main\models\Job;
+use app\modules\main\models\JobForm;
 use Yii;
 use yii\helpers\Json;
 use yii\helpers\Url;
@@ -254,7 +255,7 @@ class Telegram
      * Create view for publish in channel
      * @param $job
      */
-    public static function getChannelView($job)
+    public static function getChannelView(JobForm $job)
     {
         $view = file_get_contents(__DIR__ . "/../views/channel.txt");
         $view = str_replace("[URL]", $job->id, $view);
@@ -264,6 +265,12 @@ class Telegram
         $view = str_replace("[COMPANY_ABOUT]", $about, $view);
         $description = self::replaceHTML($job->description);
         $view = str_replace("[JOB_DESCRIPTION]", $description, $view);
+        $duties =  !empty($job->duties) ? Yii::t('app', "DUTIES") . self::replaceHTML($job->duties) : "";
+        $view = str_replace("[JOB_DUTIES]", $duties, $view);
+        $requirements = !empty($job->requirements) ? Yii::t('app', "REQUIREMENTS") . self::replaceHTML($job->requirements) : "";
+        $view = str_replace("[JOB_REQUIREMENTS]", $requirements, $view);
+        $conditions = !empty($job->conditions) ? Yii::t('app', "CONDITIONS") . self::replaceHTML($job->conditions) : "";
+        $view = str_replace("[JOB_CONDITIONS]", $conditions, $view);
         $salary = $job->max_salary ?? $job->min_salary;
         $view = str_replace("[SALARY]", $salary . " " . strtoupper($job->currency), $view);
         $view = str_replace("[CONTACT_NAME]", $job->contact_person_name, $view);

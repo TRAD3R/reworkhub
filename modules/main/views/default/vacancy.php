@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
                     <div class="head-job">
                         <?php if(!empty($job->company_logo)): ?>
                             <div class="hold-img">
-                                <img src="img/companies/<?=$job->company_logo?>" alt="<?=$job->company_title?>">
+                                <img src="/img/companies/<?=$job->company_logo?>" alt="<?=$job->company_title?>">
                             </div>
                         <?php endif; ?>
                         <h1 class="job-title"><?= $job->title?></h1>
