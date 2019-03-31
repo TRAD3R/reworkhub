@@ -14,8 +14,6 @@ use trad3r\dump\Dump;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-
-//Dump::show($model);die;
 ?>
 
 <div class="block-jobs">

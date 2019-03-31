@@ -79,25 +79,25 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                         <div class="box-input">
                             <?= $form->field($model, 'description')
                                 ->widget(CKEditor::class, [
-                                    'clientOptions' => ['height' => '100px', 'class' => 'editor textarea-big', 'id' => 'description'],
+                                    'clientOptions' => ['height' => '100px', 'class' => 'editor textarea-big'],
                                     'preset' => 'standard'
                                 ])
                                 ->label(Yii::t('app', 'JOB_DESCRIPTION'), ['class' => 'title-input']) ?>
                             <?= $form->field($model, 'duties')
                                 ->widget(CKEditor::class, [
-                                    'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big', 'id' => 'duties'],
+                                    'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big'],
                                     'preset' => 'standard'
                                 ])
                                 ->label(Yii::t('app', 'JOB_REQUIREMENTS'), ['class' => 'title-input']) ?>
                             <?= $form->field($model, 'requirements')
                                 ->widget(CKEditor::class, [
-                                    'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big', 'id' => 'requirements'],
+                                    'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big'],
                                     'preset' => 'standard'
                                 ])
                                 ->label(Yii::t('app', 'JOB_CONDITIONS'), ['class' => 'title-input']) ?>
                             <?= $form->field($model, 'conditions')
                                 ->widget(CKEditor::class, [
-                                    'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big', 'id' => 'conditions'],
+                                    'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big'],
                                     'preset' => 'standard'
                                 ])
                                 ->label(Yii::t('app', 'JOB_DUTIES'), ['class' => 'title-input']) ?>

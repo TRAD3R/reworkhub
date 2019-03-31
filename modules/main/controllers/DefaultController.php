@@ -66,9 +66,6 @@ class DefaultController extends Controller
                 $model->maxSalary = Yii::$app->request->post('zp-to');
                 $model->currency = Yii::$app->request->post('currency');
                 $model->skills = Yii::$app->request->post('skills');
-                $model->duties = Yii::$app->request->post('duties');
-                $model->requirements = Yii::$app->request->post('requirements');
-                $model->conditions = Yii::$app->request->post('conditions');
 
                 if ($model->validate()) {
                     $model->companyLogo = UploadedFile::getInstance($model, 'companyLogo');
