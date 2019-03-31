@@ -3103,52 +3103,6 @@
         "description": "A small library for converting tokenized PHP source code into XML and potentially other formats"
     },
     {
-        "name": "trad3r/dump",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/TRAD3R/dump.git",
-            "reference": "013aa2b70ed1d7502bdec053239d4d91cf908681"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/TRAD3R/dump/zipball/013aa2b70ed1d7502bdec053239d4d91cf908681",
-            "reference": "013aa2b70ed1d7502bdec053239d4d91cf908681",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "time": "2019-03-30T10:14:44+00:00",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "files": [
-                "Dump.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Valerij Dorokholsky",
-                "email": "tatusr@gmail.com"
-            },
-            {
-                "name": "Daniil Ryaguzov",
-                "email": "daniil@gmail.com"
-            }
-        ],
-        "description": "Beautiful mechanism for exploring and dumping PHP variables",
-        "keywords": [
-            "debug",
-            "dump"
-        ]
-    },
-    {
         "name": "webmozart/assert",
         "version": "1.4.0",
         "version_normalized": "1.4.0.0",
