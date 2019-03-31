@@ -70,7 +70,6 @@ class DefaultController extends Controller
                 if ($model->validate()) {
                     $model->companyLogo = UploadedFile::getInstance($model, 'companyLogo');
                     if (!empty($model->companyLogo)) {
-                        Dump::show("Not empty");
                         $model->upload();
                     }
                     if (!Yii::$app->session->getIsActive()) {
@@ -147,7 +146,9 @@ class DefaultController extends Controller
     public function actionSave(){
 
         $job = new Job();
+        /** @var JobForm $jModel */
         $jModel = (object)Json::decode(Yii::$app->session['model']);
+        var_dump($jModel);
         $job->company_title = $jModel->companyTitle;
         $job->company_about = $jModel->companyAbout;
         $job->job_categories_id = $jModel->jobCategories;

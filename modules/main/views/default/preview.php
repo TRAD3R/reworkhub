@@ -104,6 +104,10 @@ use yii\widgets\ActiveForm;
                     <?php endif; ?>
                 </div>
                 <?php endif; ?>
+                <div class="vacancy-button">
+                    <a href="<?= Url::to('/add')?>" class="btn"><?=Yii::t('app', 'BTN_BACK')?></a>
+                    <a href="<?= Url::to('/save')?>" class="btn"><?=Yii::t('app', 'BTN_SEND')?></a>
+                </div>
             </div>
         </div>
     </div>

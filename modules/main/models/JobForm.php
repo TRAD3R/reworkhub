@@ -44,7 +44,7 @@ class JobForm extends Model
     {
         return [
             [['companyTitle', 'title', 'description', 'contactPersonEmail', 'contactPersonPhone', 'contactPersonName', 'companyAbout', 'minSalary','maxSalary'], 'filter', 'filter' => 'trim'],
-            [['companyTitle', 'jobCategories', 'title', 'employmentType', 'description', 'contactPersonEmail', 'currency'], 'required'],
+            [['companyTitle', 'jobCategories', 'title', 'employmentType', 'contactPersonEmail', 'currency'], 'required'],
             [['contactPersonEmail'], 'email'],
             [['duties', 'requirements', 'conditions'], 'safe'],
 //            [['minSalary', 'maxSalary'], 'integer'],
@@ -80,17 +80,10 @@ class JobForm extends Model
 
     public function upload()
     {
-        Dump::show("upload");
-        if ($this->validate()) {
-            $logoTitle = date("d-m-y-h-i-s", time());
-            Dump::show($logoTitle);
-            $this->companyLogo->saveAs('img/companies/' . $logoTitle . '.' . $this->companyLogo->extension, true);
-            $this->companyLogo = $logoTitle . '.' . $this->companyLogo->extension;
-            Dump::show($this);die;
-            return  true;
-        } else {
-            return false;
-        }
+        $logoTitle = date("d-m-y-h-i-s", time());
+        $this->companyLogo->saveAs('img/companies/' . $logoTitle . '.' . $this->companyLogo->extension, true);
+        $this->companyLogo = $logoTitle . '.' . $this->companyLogo->extension;
+        return  true;
     }
 
     public function recaptcha(){
