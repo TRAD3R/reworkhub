@@ -1,0 +1,16 @@
+<strong>[JOB_TITLE]</strong>
+https://reworkhub.com/vacancy/[URL]
+
+[COMPANY_TITLE]
+
+[COMPANY_ABOUT]
+
+[JOB_DESCRIPTION]
+
+<strong>Оклад</strong>
+[SALARY]
+
+<strong>Контакты</strong>
+[CONTACT_NAME]
+[CONTACT_PHONE]
+[CONTACT_EMAIL]

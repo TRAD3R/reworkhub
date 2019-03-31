@@ -1,0 +1,171 @@
+[15-Mar-2019 17:27:33 Europe/Helsinki] PHP Warning:  require(/home/ucvhcqdk/public_html/web/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ucvhcqdk/public_html/web/index.php on line 7
+[15-Mar-2019 17:27:33 Europe/Helsinki] PHP Fatal error:  require(): Failed opening required '/home/ucvhcqdk/public_html/web/../vendor/autoload.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/ucvhcqdk/public_html/web/index.php on line 7
+[16-Mar-2019 10:13:31 Europe/Helsinki] PHP Warning:  require(/home/ucvhcqdk/public_html/web/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ucvhcqdk/public_html/web/index.php on line 7
+[16-Mar-2019 10:13:31 Europe/Helsinki] PHP Fatal error:  require(): Failed opening required '/home/ucvhcqdk/public_html/web/../vendor/autoload.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/ucvhcqdk/public_html/web/index.php on line 7
+[16-Mar-2019 10:14:44 Europe/Helsinki] PHP Warning:  require(/home/ucvhcqdk/public_html/web/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ucvhcqdk/public_html/web/index.php on line 7
+[16-Mar-2019 10:14:44 Europe/Helsinki] PHP Fatal error:  require(): Failed opening required '/home/ucvhcqdk/public_html/web/../vendor/autoload.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/ucvhcqdk/public_html/web/index.php on line 7
+[16-Mar-2019 10:15:01 Europe/Helsinki] PHP Warning:  require(/home/ucvhcqdk/public_html/web/../vendor/yiisoft/yii2/Yii.php): failed to open stream: No such file or directory in /home/ucvhcqdk/public_html/web/index.php on line 8
+[16-Mar-2019 10:15:01 Europe/Helsinki] PHP Fatal error:  require(): Failed opening required '/home/ucvhcqdk/public_html/web/../vendor/yiisoft/yii2/Yii.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/ucvhcqdk/public_html/web/index.php on line 8
+[16-Mar-2019 10:22:04 Europe/Helsinki] PHP Warning:  require(/home/ucvhcqdk/public_html/web/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ucvhcqdk/public_html/web/index.php on line 7
+[16-Mar-2019 10:22:04 Europe/Helsinki] PHP Fatal error:  require(): Failed opening required '/home/ucvhcqdk/public_html/web/../vendor/autoload.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/ucvhcqdk/public_html/web/index.php on line 7
+[16-Mar-2019 10:22:05 Europe/Helsinki] PHP Warning:  require(/home/ucvhcqdk/public_html/web/../vendor/autoload.php): failed to open stream: No such file or directory in /home/ucvhcqdk/public_html/web/index.php on line 7
+[16-Mar-2019 10:22:05 Europe/Helsinki] PHP Fatal error:  require(): Failed opening required '/home/ucvhcqdk/public_html/web/../vendor/autoload.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/ucvhcqdk/public_html/web/index.php on line 7
+[17-Mar-2019 12:41:50 Europe/Helsinki] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/log/Logger.php on line 148
+[17-Mar-2019 12:45:52 Europe/Helsinki] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/log/Logger.php on line 148
+[17-Mar-2019 12:46:26 Europe/Helsinki] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/UrlManager.php on line 318
+[17-Mar-2019 12:47:50 Europe/Helsinki] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/log/Logger.php on line 148
+[17-Mar-2019 12:48:24 Europe/Helsinki] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/log/Logger.php on line 148
+[17-Mar-2019 12:49:54 Europe/Helsinki] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/log/Logger.php on line 148
+[17-Mar-2019 12:50:29 Europe/Helsinki] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2-debug/src/LogTarget.php on line 126
+[29-Mar-2019 15:14:28 Europe/Helsinki] PHP Warning:  require(/home/ucvhcqdk/public_html/web/../vendor/yiisoft/yii2/Yii.php): failed to open stream: No such file or directory in /home/ucvhcqdk/public_html/web/index.php on line 8
+[29-Mar-2019 15:14:28 Europe/Helsinki] PHP Fatal error:  require(): Failed opening required '/home/ucvhcqdk/public_html/web/../vendor/yiisoft/yii2/Yii.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/ucvhcqdk/public_html/web/index.php on line 8
+[29-Mar-2019 15:15:55 Europe/Helsinki] PHP Warning:  require(/home/ucvhcqdk/public_html/web/../vendor/yiisoft/yii2/Yii.php): failed to open stream: No such file or directory in /home/ucvhcqdk/public_html/web/index.php on line 8
+[29-Mar-2019 15:15:55 Europe/Helsinki] PHP Fatal error:  require(): Failed opening required '/home/ucvhcqdk/public_html/web/../vendor/yiisoft/yii2/Yii.php' (include_path='.:/opt/alt/php71/usr/share/pear') in /home/ucvhcqdk/public_html/web/index.php on line 8
+[30-Mar-2019 12:07:07 Europe/Helsinki] An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/ucvhcqdk/public_html/vendor/trad3r/dump/Dump.php on line 22. in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/ucvhcqdk/public_html/vendor/trad3r/dump/Dump.php on line 22. in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/ucvhcqdk/public_html/web/index.php(17): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ru;q=0.8,uk;q=0.7',
+    'HTTP_CONNECTION' => 'close',
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryZzZPJIUBESk3Dk0A',
+    'CONTENT_LENGTH' => '2987',
+    'HTTP_COOKIE' => 'PHPSESSID=6ba1da7fd361bcad0d5a200d4e9392c8; _csrf=506cb5b91f8185df53c3610c7e15be59f5c9792e86b514daedb829d6576be28ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22_xsjALhsAVNawQVoNF5FxUEnJRc7Ty4R%22%3B%7D',
+    'HTTP_HOST' => 'reworkhub.com',
+    'HTTP_REFERER' => 'https://reworkhub.com/add',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_X_FORWARDED_FOR' => '91.229.128.221',
+    'HTTP_X_FORWARDED_PROTO' => 'https',
+    'HTTP_ORIGIN' => 'https://reworkhub.com',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'HTTP_X_HTTPS' => '1',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'XJ8-ymSOIg88JVax91PrigAAAAQ',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/add',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'https://reworkhub.com/add',
+    'REDIRECT_REDIRECT_HTTPS' => 'on',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'XJ8-ymSOIg88JVax91PrigAAAAQ',
+    'REDIRECT_SCRIPT_URL' => '/add',
+    'REDIRECT_SCRIPT_URI' => 'https://reworkhub.com/add',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'XJ8-ymSOIg88JVax91PrigAAAAQ',
+    'SCRIPT_URL' => '/add',
+    'SCRIPT_URI' => 'https://reworkhub.com/add',
+    'HTTPS' => 'on',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'reworkhub.com',
+    'SERVER_ADDR' => '91.223.223.12',
+    'SERVER_PORT' => '443',
+    'REMOTE_ADDR' => '91.229.128.221',
+    'DOCUMENT_ROOT' => '/home/ucvhcqdk/public_html',
+    'REQUEST_SCHEME' => 'https',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/ucvhcqdk/public_html',
+    'SERVER_ADMIN' => 'webmaster@reworkhub.com',
+    'SCRIPT_FILENAME' => '/home/ucvhcqdk/public_html/web/index.php',
+    'REMOTE_PORT' => '32328',
+    'REDIRECT_URL' => '/web/add',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'POST',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/add',
+    'SCRIPT_NAME' => '/web/index.php',
+    'PHP_SELF' => '/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1553940426.479991912841796875,
+    'REQUEST_TIME' => 1553940426,
+]
+[30-Mar-2019 12:09:38 Europe/Helsinki] An Error occurred while handling another error:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/ucvhcqdk/public_html/vendor/trad3r/dump/Dump.php on line 22. in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(135): yii\web\Response->send()
+#2 /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\web\HeadersAlreadySentException))
+#3 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\HeadersAlreadySentException))
+#4 {main}
+Previous exception:
+yii\web\HeadersAlreadySentException: Headers already sent in /home/ucvhcqdk/public_html/vendor/trad3r/dump/Dump.php on line 22. in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/Response.php:366
+Stack trace:
+#0 /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/web/Response.php(339): yii\web\Response->sendHeaders()
+#1 /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/base/Application.php(392): yii\web\Response->send()
+#2 /home/ucvhcqdk/public_html/web/index.php(17): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ru;q=0.8,uk;q=0.7',
+    'HTTP_CONNECTION' => 'close',
+    'CONTENT_TYPE' => 'multipart/form-data; boundary=----WebKitFormBoundaryQyoIiuFqHfByTEeI',
+    'CONTENT_LENGTH' => '2934',
+    'HTTP_COOKIE' => 'PHPSESSID=6ba1da7fd361bcad0d5a200d4e9392c8; _csrf=506cb5b91f8185df53c3610c7e15be59f5c9792e86b514daedb829d6576be28ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22_xsjALhsAVNawQVoNF5FxUEnJRc7Ty4R%22%3B%7D',
+    'HTTP_HOST' => 'reworkhub.com',
+    'HTTP_REFERER' => 'https://reworkhub.com/add',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'max-age=0',
+    'HTTP_X_FORWARDED_FOR' => '91.229.128.221',
+    'HTTP_X_FORWARDED_PROTO' => 'https',
+    'HTTP_ORIGIN' => 'https://reworkhub.com',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'HTTP_X_HTTPS' => '1',
+    'REDIRECT_REDIRECT_UNIQUE_ID' => 'XJ9AYhmQPVBJQY@vEQI7GAAAAAk',
+    'REDIRECT_REDIRECT_SCRIPT_URL' => '/add',
+    'REDIRECT_REDIRECT_SCRIPT_URI' => 'https://reworkhub.com/add',
+    'REDIRECT_REDIRECT_HTTPS' => 'on',
+    'REDIRECT_REDIRECT_STATUS' => '200',
+    'REDIRECT_UNIQUE_ID' => 'XJ9AYhmQPVBJQY@vEQI7GAAAAAk',
+    'REDIRECT_SCRIPT_URL' => '/add',
+    'REDIRECT_SCRIPT_URI' => 'https://reworkhub.com/add',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'XJ9AYhmQPVBJQY@vEQI7GAAAAAk',
+    'SCRIPT_URL' => '/add',
+    'SCRIPT_URI' => 'https://reworkhub.com/add',
+    'HTTPS' => 'on',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'reworkhub.com',
+    'SERVER_ADDR' => '91.223.223.12',
+    'SERVER_PORT' => '443',
+    'REMOTE_ADDR' => '91.229.128.221',
+    'DOCUMENT_ROOT' => '/home/ucvhcqdk/public_html',
+    'REQUEST_SCHEME' => 'https',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/ucvhcqdk/public_html',
+    'SERVER_ADMIN' => 'webmaster@reworkhub.com',
+    'SCRIPT_FILENAME' => '/home/ucvhcqdk/public_html/web/index.php',
+    'REMOTE_PORT' => '38136',
+    'REDIRECT_URL' => '/web/add',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'POST',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/add',
+    'SCRIPT_NAME' => '/web/index.php',
+    'PHP_SELF' => '/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1553940578.258821964263916015625,
+    'REQUEST_TIME' => 1553940578,
+]

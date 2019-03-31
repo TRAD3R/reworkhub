@@ -1,0 +1,7 @@
+@import "_mixins/font-face";
+
+@include font-face("Scada", "../fonts/ScadaRegular/ScadaRegular");
+@include font-face("RobotoMedium", "../fonts/RobotoMedium/RobotoMedium");
+@include font-face("Montserrat", "../fonts/MontserratBold/MontserratBold", bold);
+@include font-face("Montserrat", "../fonts/MontserratRegular/MontserratRegular");
+@include font-face("MontserratLight", "../fonts/MontserratLight/MontserratLight", 100);
