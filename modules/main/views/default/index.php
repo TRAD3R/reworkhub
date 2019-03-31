@@ -23,7 +23,11 @@ use yii\widgets\LinkPager; ?>
                             </div>
                         <?php endif; ?>
                         <span class="job-title"><?=$job->title?></span>
-                        <span class="job-company"><?=$job->company_title?></span>
+                        <span class="job-company">
+                            <?php $companyTitle = strlen($job->company_title) > 30 ? substr($job->company_title, 0, 28) . "..." : $job->company_title;
+                                echo $companyTitle;
+                            ?>
+                        </span>
                         <span class="job-salary">
                             <?php if(!empty($job->min_salary) && !empty($job->max_salary)):?>
                                 <?php echo $job->min_salary . " - " . $job->max_salary;?>
