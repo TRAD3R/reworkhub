@@ -7,6 +7,12 @@ https://reworkhub.com/vacancy/[URL]
 
 [JOB_DESCRIPTION]
 
+[JOB_DUTIES]
+
+[JOB_REQUIREMENTS]
+
+[JOB_CONDITIONS]
+
 <strong>Оклад</strong>
 [SALARY]
 

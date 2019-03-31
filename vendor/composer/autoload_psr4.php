@@ -15,8 +15,7 @@ return array(
     'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap/src'),
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
-    'himiklab\\yii2\\recaptcha\\tests\\' => array($vendorDir . '/himiklab/yii2-recaptcha-widget/tests'),
-    'himiklab\\yii2\\recaptcha\\' => array($vendorDir . '/himiklab/yii2-recaptcha-widget/src'),
+    'dosamigos\\tinymce\\' => array($vendorDir . '/2amigos/yii2-tinymce-widget/src'),
     'dosamigos\\ckeditor\\' => array($vendorDir . '/2amigos/yii2-ckeditor-widget/src'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
@@ -37,5 +36,4 @@ return array(
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Codeception\\Extension\\' => array($vendorDir . '/codeception/base/ext'),
     'Codeception\\' => array($vendorDir . '/codeception/base/src/Codeception', $vendorDir . '/codeception/stub/src'),
-    'Baha2Odeh\\RecaptchaV3\\' => array($vendorDir . '/baha2odeh/yii2-recaptcha-v3'),
 );

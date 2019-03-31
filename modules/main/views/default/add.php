@@ -9,6 +9,7 @@
 use app\modules\main\models\EmploymentTypes;
 use app\modules\main\models\JobCategories;
 use dosamigos\ckeditor\CKEditor;
+use dosamigos\tinymce\TinyMce;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -67,7 +68,7 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                                     <div class="file-placeholder"><?=Yii::t('app', 'ADD_LOGO_TO_VACANCY')?></div>
                                 </div>
                                 <?= $form->field($model, 'companyLogo')
-                                    ->fileInput(['id' => 'input-file', 'accept' => 'image/png/jpg/jpeg'])
+                                    ->fileInput(['id' => 'input-file', 'accept' => 'image/png/jpg/jpeg/svg'])
                                     ->label(Yii::t('app', 'JOB_COMPANY_LOGO'), ['class' => 'file-label']) ?>
                             </div>
                         </div>
@@ -88,19 +89,19 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                                     'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big'],
                                     'preset' => 'standard'
                                 ])
-                                ->label(Yii::t('app', 'JOB_REQUIREMENTS'), ['class' => 'title-input']) ?>
+                                ->label(Yii::t('app', 'JOB_DUTIES'), ['class' => 'title-input']) ?>
                             <?= $form->field($model, 'requirements')
                                 ->widget(CKEditor::class, [
                                     'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big'],
                                     'preset' => 'standard'
                                 ])
-                                ->label(Yii::t('app', 'JOB_CONDITIONS'), ['class' => 'title-input']) ?>
+                                ->label(Yii::t('app', 'JOB_REQUIREMENTS'), ['class' => 'title-input']) ?>
                             <?= $form->field($model, 'conditions')
                                 ->widget(CKEditor::class, [
                                     'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big'],
                                     'preset' => 'standard'
                                 ])
-                                ->label(Yii::t('app', 'JOB_DUTIES'), ['class' => 'title-input']) ?>
+                                ->label(Yii::t('app', 'JOB_CONDITIONS'), ['class' => 'title-input']) ?>
                         </div>
                         <div class="box-input">
                             <?= $form->field($model, 'employmentType')

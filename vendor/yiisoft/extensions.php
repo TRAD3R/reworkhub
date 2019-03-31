@@ -12,25 +12,6 @@ return array (
       '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer',
     ),
   ),
-  'yiisoft/yii2-httpclient' => 
-  array (
-    'name' => 'yiisoft/yii2-httpclient',
-    'version' => '2.0.7.0',
-    'alias' => 
-    array (
-      '@yii/httpclient' => $vendorDir . '/yiisoft/yii2-httpclient/src',
-    ),
-  ),
-  'himiklab/yii2-recaptcha-widget' => 
-  array (
-    'name' => 'himiklab/yii2-recaptcha-widget',
-    'version' => '1.2.2.0',
-    'alias' => 
-    array (
-      '@himiklab/yii2/recaptcha' => $vendorDir . '/himiklab/yii2-recaptcha-widget/src',
-      '@himiklab/yii2/recaptcha/tests' => $vendorDir . '/himiklab/yii2-recaptcha-widget/tests',
-    ),
-  ),
   '2amigos/yii2-ckeditor-widget' => 
   array (
     'name' => '2amigos/yii2-ckeditor-widget',
@@ -40,13 +21,13 @@ return array (
       '@dosamigos/ckeditor' => $vendorDir . '/2amigos/yii2-ckeditor-widget/src',
     ),
   ),
-  'baha2odeh/yii2-recaptcha-v3' => 
+  '2amigos/yii2-tinymce-widget' => 
   array (
-    'name' => 'baha2odeh/yii2-recaptcha-v3',
-    'version' => '1.0.0.0',
+    'name' => '2amigos/yii2-tinymce-widget',
+    'version' => '1.1.3.0',
     'alias' => 
     array (
-      '@Baha2Odeh/RecaptchaV3' => $vendorDir . '/baha2odeh/yii2-recaptcha-v3',
+      '@dosamigos/tinymce' => $vendorDir . '/2amigos/yii2-tinymce-widget/src',
     ),
   ),
   'yiisoft/yii2-bootstrap' => 
@@ -83,6 +64,15 @@ return array (
     'alias' => 
     array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
+    ),
+  ),
+  'yiisoft/yii2-httpclient' => 
+  array (
+    'name' => 'yiisoft/yii2-httpclient',
+    'version' => '2.0.7.0',
+    'alias' => 
+    array (
+      '@yii/httpclient' => $vendorDir . '/yiisoft/yii2-httpclient/src',
     ),
   ),
 );

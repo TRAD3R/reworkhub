@@ -2,21 +2,21 @@ $(document).ready(function() {
 
 	var filePlaceholderText = $(".file-placeholder").html();
 
-	$("#input-file").on("change", function(){
-
-		var filename = $(this).val().replace(/.*\\/, "");
-		$(".file-placeholder").html(filename);
-		var img = $('<img class="file-img">');
-		img.attr('src', 'images/' +filename);
-		img.appendTo('.hold-file-img');
-		$('.hold-file-img').css("display", "flex");
-		$(".file-img").replaceWith(img);
-		$(".file-label").text("Выбрать другой");
-		if(!filename.length){
-			$('.hold-file-img').css("display", "none");
-			$(".file-placeholder").html(filePlaceholderText);
-		}
-	});
+	// $("#input-file").on("change", function(){
+	//
+	// 	var filename = $(this).val().replace(/.*\\/, "");
+	// 	$(".file-placeholder").html(filename);
+	// 	var img = $('<img class="file-img">');
+	// 	img.attr('src', 'images/' +filename);
+	// 	img.appendTo('.hold-file-img');
+	// 	$('.hold-file-img').css("display", "flex");
+	// 	$(".file-img").replaceWith(img);
+	// 	$(".file-label").text("Выбрать другой");
+	// 	if(!filename.length){
+	// 		$('.hold-file-img').css("display", "none");
+	// 		$(".file-placeholder").html(filePlaceholderText);
+	// 	}
+	// });
 
 	$('.goto').on("click", function(){
 		$('html, body').animate({scrollTop: $($(this).attr('href')).offset().top - $('.nav').outerHeight()}, {queue:false, duration: 700});

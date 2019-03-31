@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6960a4f5ea63f5e3f9399dc3726994da
+class ComposerStaticInit6674423345109b2c25bd0bd49613aeb6
 {
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
@@ -33,13 +33,9 @@ class ComposerStaticInit6960a4f5ea63f5e3f9399dc3726994da
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'h' => 
-        array (
-            'himiklab\\yii2\\recaptcha\\tests\\' => 30,
-            'himiklab\\yii2\\recaptcha\\' => 24,
-        ),
         'd' => 
         array (
+            'dosamigos\\tinymce\\' => 18,
             'dosamigos\\ckeditor\\' => 19,
         ),
         'c' => 
@@ -85,10 +81,6 @@ class ComposerStaticInit6960a4f5ea63f5e3f9399dc3726994da
             'Codeception\\Extension\\' => 22,
             'Codeception\\' => 12,
         ),
-        'B' => 
-        array (
-            'Baha2Odeh\\RecaptchaV3\\' => 22,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -130,13 +122,9 @@ class ComposerStaticInit6960a4f5ea63f5e3f9399dc3726994da
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'himiklab\\yii2\\recaptcha\\tests\\' => 
+        'dosamigos\\tinymce\\' => 
         array (
-            0 => __DIR__ . '/..' . '/himiklab/yii2-recaptcha-widget/tests',
-        ),
-        'himiklab\\yii2\\recaptcha\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/himiklab/yii2-recaptcha-widget/src',
+            0 => __DIR__ . '/..' . '/2amigos/yii2-tinymce-widget/src',
         ),
         'dosamigos\\ckeditor\\' => 
         array (
@@ -218,10 +206,6 @@ class ComposerStaticInit6960a4f5ea63f5e3f9399dc3726994da
         array (
             0 => __DIR__ . '/..' . '/codeception/base/src/Codeception',
             1 => __DIR__ . '/..' . '/codeception/stub/src',
-        ),
-        'Baha2Odeh\\RecaptchaV3\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/baha2odeh/yii2-recaptcha-v3',
         ),
     );
 
@@ -811,10 +795,10 @@ class ComposerStaticInit6960a4f5ea63f5e3f9399dc3726994da
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6960a4f5ea63f5e3f9399dc3726994da::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6960a4f5ea63f5e3f9399dc3726994da::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit6960a4f5ea63f5e3f9399dc3726994da::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit6960a4f5ea63f5e3f9399dc3726994da::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6674423345109b2c25bd0bd49613aeb6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6674423345109b2c25bd0bd49613aeb6::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit6674423345109b2c25bd0bd49613aeb6::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit6674423345109b2c25bd0bd49613aeb6::$classMap;
 
         }, null, ClassLoader::class);
     }
