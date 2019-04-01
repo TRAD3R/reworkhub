@@ -29,7 +29,6 @@ class DefaultController extends Controller
     public function actionGet()
     {
         $request = file_get_contents("php://input");
-        Yii::info($request, 'telegram');
 
         $this->telegram->getMessage(new Result(Json::decode($request)));
     }

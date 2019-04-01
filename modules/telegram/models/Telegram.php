@@ -80,7 +80,6 @@ class Telegram
         if(preg_match("#\d{4}-\d{2}-\d{2} \d{2}:\d{2}#", $query, $date)){
             $query = $this->setPublishedDate($date, $message);
         }
-        Yii::info($query, 'telegram');
         switch($query){
             case "/start":
                 $result->msg = "Hello";
@@ -135,7 +134,6 @@ class Telegram
                 case 'accept':
                     $view = self::getChannelView($job);
 
-                    Yii::info($view, 'telegram');
                     $this->bot->sendMessage($this->bot->channelId, $view, ["parse_mode" => "HTML"]);
                     
                     $job->status = 1;
@@ -255,7 +253,7 @@ class Telegram
      * Create view for publish in channel
      * @param $job
      */
-    public static function getChannelView(JobForm $job)
+    public static function getChannelView(Job $job)
     {
         $view = file_get_contents(__DIR__ . "/../views/channel.txt");
         $view = str_replace("[URL]", $job->id, $view);
@@ -265,11 +263,11 @@ class Telegram
         $view = str_replace("[COMPANY_ABOUT]", $about, $view);
         $description = self::replaceHTML($job->description);
         $view = str_replace("[JOB_DESCRIPTION]", $description, $view);
-        $duties =  !empty($job->duties) ? Yii::t('app', "DUTIES") . self::replaceHTML($job->duties) : "";
+        $duties =  !empty($job->duties) ? Yii::t('app', "DUTIES") . PHP_EOL . self::replaceHTML($job->duties) : "";
         $view = str_replace("[JOB_DUTIES]", $duties, $view);
-        $requirements = !empty($job->requirements) ? Yii::t('app', "REQUIREMENTS") . self::replaceHTML($job->requirements) : "";
+        $requirements = !empty($job->requirements) ? Yii::t('app', "REQUIREMENTS") . PHP_EOL . self::replaceHTML($job->requirements) : "";
         $view = str_replace("[JOB_REQUIREMENTS]", $requirements, $view);
-        $conditions = !empty($job->conditions) ? Yii::t('app', "CONDITIONS") . self::replaceHTML($job->conditions) : "";
+        $conditions = !empty($job->conditions) ? Yii::t('app', "CONDITIONS") . PHP_EOL . self::replaceHTML($job->conditions) : "";
         $view = str_replace("[JOB_CONDITIONS]", $conditions, $view);
         $salary = $job->max_salary ?? $job->min_salary;
         $view = str_replace("[SALARY]", $salary . " " . strtoupper($job->currency), $view);
