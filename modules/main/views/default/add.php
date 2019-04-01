@@ -214,10 +214,10 @@ $js1 = <<<JS
         CKEDITOR.instances['jobform-duties'].setData('<ul><li></li></ul>');
     }
     if($("#ck-requirements").text().length === 0){
-        CKEDITOR.instances['jobform-requirements'].setData('<ul><li><br></li></ul>');
+        CKEDITOR.instances['jobform-requirements'].setData('<ul><li></li></ul>');
     }
     if($("#ck-conditions").text().length === 0){
-        CKEDITOR.instances['jobform-conditions'].setData('<ul><li><br></li></ul>');
+        CKEDITOR.instances['jobform-conditions'].setData('<ul><li></li></ul>');
     }
 JS;
 

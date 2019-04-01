@@ -22,7 +22,8 @@
         "2amigos/yii2-ckeditor-widget": "^2.1",
         "2amigos/yii2-tinymce-widget": "~1.1",
         "yiisoft/yii2-httpclient": "*",
-        "ezyang/htmlpurifier": "^4.10"
+        "ezyang/htmlpurifier": "^4.10",
+      "ext-json": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
