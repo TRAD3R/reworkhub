@@ -5,8 +5,6 @@ https://reworkhub.com/vacancy/[URL]
 
 [COMPANY_ABOUT]
 
-[JOB_DESCRIPTION]
-
 [JOB_DUTIES]
 
 [JOB_REQUIREMENTS]

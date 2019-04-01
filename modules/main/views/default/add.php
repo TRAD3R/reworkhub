@@ -84,18 +84,6 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                     </div>
                     <div class="hold-center">
                         <div class="box-input">
-                            <?= $form->field($model, 'description')
-                                ->widget(CKEditor::class, [
-                                    'preset' => 'custom', 'clientOptions' => [
-                                        'height' => '200px',
-                                        'class' => 'editor textarea-big',
-                                        'toolbarGroups' => [
-                                            ['name' => 'undo'],
-                                            ['name' => 'list'],
-                                        ]
-                                    ]
-                                ])
-                                ->label(Yii::t('app', 'JOB_DESCRIPTION'), ['class' => 'title-input']) ?>
                             <?= $form->field($model, 'duties')
                                 ->widget(CKEditor::class, [
                                     'preset' => 'custom', 'clientOptions' => [

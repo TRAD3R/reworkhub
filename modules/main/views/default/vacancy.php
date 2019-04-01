@@ -44,10 +44,6 @@ use yii\widgets\ActiveForm;
                     </div>
                 </div>
                 <div class="content-job">
-                    <?php if($job->description):?>
-                        <span class="sub-title"><?=Yii::t('app', 'JOB_DESCRIPTION')?></span>
-                        <?=$job->description;?>
-                    <?php endif;?>
                     <?php if($job->duties):?>
                         <span class="sub-title"><?=Yii::t('app', 'JOB_DUTIES')?></span>
                         <?=$job->duties;?>
