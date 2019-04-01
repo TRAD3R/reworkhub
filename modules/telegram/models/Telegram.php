@@ -287,7 +287,7 @@ class Telegram
 
         $arr = explode("\n", $result);
         foreach ($arr as $key => $item){
-            if(strlen($item) < 5)
+            if(strlen(strip_tags($item)) < 3)
                 unset($arr[$key]);
         }
 
