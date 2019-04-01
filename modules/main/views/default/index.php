@@ -3,9 +3,11 @@
 /* @var $this yii\web\View */
 /* @var $jobs array */
 /* @var $job \app\modules\main\models\Job */
+/* @var $pages \yii\data\Pagination */
 
 $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
 
+use app\helpers\ViewHelper;
 use app\modules\main\models\EmploymentTypes;
 use app\modules\main\models\JobCategories;
 use yii\helpers\Url;
@@ -24,7 +26,7 @@ use yii\widgets\LinkPager; ?>
                         <?php endif; ?>
                         <span class="job-title"><?=$job->title?></span>
                         <span class="job-company">
-                            <?php $companyTitle = strlen($job->company_title) > 30 ? substr($job->company_title, 0, 28) . "..." : $job->company_title;
+                            <?php $companyTitle = strlen($job->company_title) > 30 ? mb_substr($job->company_title, 0, 28) . "..." : $job->company_title;
                                 echo $companyTitle;
                             ?>
                         </span>
@@ -43,15 +45,15 @@ use yii\widgets\LinkPager; ?>
                 <div class="content-job">
                     <?php if($job->duties):?>
                     <span class="sub-title"><?=Yii::t('app', 'JOB_DUTIES')?></span>
-                        <?=substr($job->duties, 0, 150)?>
+                        <?=ViewHelper::cutLists($job->duties)?>
                     <?php endif;?>
                     <?php if($job->requirements):?>
                     <span class="sub-title"><?=Yii::t('app', 'JOB_REQUIREMENTS')?></span>
-                        <?=substr($job->requirements, 0, 150)?>
+                        <?=ViewHelper::cutLists($job->requirements)?>
                     <?php endif;?>
                     <?php if($job->conditions):?>
                     <span class="sub-title"><?=Yii::t('app', 'JOB_CONDITIONS')?></span>
-                        <?=substr($job->conditions, 0, 150)?>
+                        <?=ViewHelper::cutLists($job->conditions)?>
                     <?php endif;?>
                 </div>
                 <div class="employment-job">
