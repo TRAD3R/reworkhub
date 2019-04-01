@@ -55,8 +55,14 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                         <div class="box-input">
                             <?= $form->field($model, 'companyAbout')
                                 ->widget(CKEditor::class, [
-                                    'options' => ['rows' => 8, 'class' => 'about-company', 'id' => 'about-company'],
-                                    'preset' => 'basic'
+                                    'preset' => 'custom', 'clientOptions' => [
+                                        'height' => '200px',
+                                        'class' => 'editor textarea-big',
+                                        'toolbarGroups' => [
+                                            ['name' => 'undo'],
+                                            ['name' => 'list'],
+                                        ]
+                                    ]
                                 ])
                                 ->label(Yii::t('app', 'JOB_COMPANY_ABOUT'), ['class' => 'title-input']) ?>
                         </div>
@@ -80,26 +86,53 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                         <div class="box-input">
                             <?= $form->field($model, 'description')
                                 ->widget(CKEditor::class, [
-                                    'clientOptions' => ['height' => '100px', 'class' => 'editor textarea-big'],
-                                    'preset' => 'standard'
+                                    'preset' => 'custom', 'clientOptions' => [
+                                        'height' => '200px',
+                                        'class' => 'editor textarea-big',
+                                        'toolbarGroups' => [
+                                            ['name' => 'undo'],
+                                            ['name' => 'list'],
+                                        ]
+                                    ]
                                 ])
                                 ->label(Yii::t('app', 'JOB_DESCRIPTION'), ['class' => 'title-input']) ?>
                             <?= $form->field($model, 'duties')
                                 ->widget(CKEditor::class, [
-                                    'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big'],
-                                    'preset' => 'standard'
+                                    'preset' => 'custom', 'clientOptions' => [
+                                        'bodyId' => 'ck-duties',
+                                        'height' => '200px',
+                                        'class' => 'editor textarea-big',
+                                        'toolbarGroups' => [
+                                            ['name' => 'undo'],
+                                            ['name' => 'list'],
+                                        ]
+                                    ]
                                 ])
                                 ->label(Yii::t('app', 'JOB_DUTIES'), ['class' => 'title-input']) ?>
                             <?= $form->field($model, 'requirements')
                                 ->widget(CKEditor::class, [
-                                    'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big'],
-                                    'preset' => 'standard'
+                                    'preset' => 'custom', 'clientOptions' => [
+                                        'bodyId' => 'ck-requirements',
+                                        'height' => '200px',
+                                        'class' => 'editor textarea-big',
+                                        'toolbarGroups' => [
+                                            ['name' => 'undo'],
+                                            ['name' => 'list'],
+                                        ]
+                                    ]
                                 ])
                                 ->label(Yii::t('app', 'JOB_REQUIREMENTS'), ['class' => 'title-input']) ?>
                             <?= $form->field($model, 'conditions')
                                 ->widget(CKEditor::class, [
-                                    'clientOptions' => ['height' => '200px', 'class' => 'editor textarea-big'],
-                                    'preset' => 'standard'
+                                    'preset' => 'custom', 'clientOptions' => [
+                                        'bodyId' => 'ck-conditions',
+                                        'height' => '200px',
+                                        'class' => 'editor textarea-big',
+                                        'toolbarGroups' => [
+                                            ['name' => 'undo'],
+                                            ['name' => 'list'],
+                                        ]
+                                    ]
                                 ])
                                 ->label(Yii::t('app', 'JOB_CONDITIONS'), ['class' => 'title-input']) ?>
                         </div>
@@ -173,21 +206,19 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
 $js1 = <<<JS
     grecaptcha.ready(function() {
         grecaptcha.execute('6Lew0ZoUAAAAADwqYCBxKYSnnEWmUgxh0nZwTE3w', {action: 'homepage'}).then(function(token) {
-            $("#token").val(token);
-            // $.ajax({
-            //     method: "POST",
-            //     url: "/main/default/ajax-recaptcha",
-            //     data: {
-            //         token: token
-            //     },
-            //     success: function (data) {
-            //         if(data.indexOf()){
-            //            
-            //         }else{}
-            //     }
-            // })
+            $("#token").val(token);            
         });
     });
+
+    if($("#ck-duties").text().length === 0){
+        CKEDITOR.instances['jobform-duties'].setData('<ul><li></li></ul>');
+    }
+    if($("#ck-requirements").text().length === 0){
+        CKEDITOR.instances['jobform-requirements'].setData('<ul><li><br></li></ul>');
+    }
+    if($("#ck-conditions").text().length === 0){
+        CKEDITOR.instances['jobform-conditions'].setData('<ul><li><br></li></ul>');
+    }
 JS;
 
 $this->registerJs($js1);

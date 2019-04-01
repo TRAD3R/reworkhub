@@ -27,8 +27,13 @@ use yii\widgets\ActiveForm;
                             <img src="img/companies/<?=$model->companyLogo?>" alt="<?=$model->companyTitle?>">
                         </div>
                         <?php endif; ?>
+
                         <h1 class="job-title"><?= $model->title?></h1>
-                        <span class="job-company"><?=$model->companyTitle?></span>
+
+                        <?php if(!empty($model->companyTitle)): ?>
+                            <span class="job-company"><strong><?=Yii::t('app', 'PH_COMPANY')?>:</strong> <?=$model->companyTitle?></span>
+                        <?php endif; ?>
+
                         <span class="job-salary">
                             <?php
                             if(!empty($model->minSalary) && !empty($model->maxSalary)):?>

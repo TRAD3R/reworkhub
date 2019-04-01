@@ -44,7 +44,7 @@ class JobForm extends Model
     {
         return [
             [['companyTitle', 'title', 'description', 'contactPersonEmail', 'contactPersonPhone', 'contactPersonName', 'companyAbout', 'minSalary','maxSalary'], 'filter', 'filter' => 'trim'],
-            [['companyTitle', 'jobCategories', 'title', 'employmentType', 'contactPersonEmail', 'currency'], 'required'],
+            [['jobCategories', 'title', 'employmentType', 'contactPersonEmail', 'currency'], 'required'],
             [['contactPersonEmail'], 'email'],
             [['duties', 'requirements', 'conditions'], 'safe'],
 //            [['minSalary', 'maxSalary'], 'integer'],

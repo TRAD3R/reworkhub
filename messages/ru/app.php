@@ -84,6 +84,7 @@ return [
     "PH_SALARY_TO" => 'до',
     "PH_CONTACT_INFORMATION" => 'Контактная информация',
     "PH_INSERT_SKIILS" => 'Разделяйте навыки пробелом',
+    "PH_COMPANY" => 'Компания',
     /** Placeholders */
 
     /** Messages */
