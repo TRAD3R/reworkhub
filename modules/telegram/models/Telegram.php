@@ -270,8 +270,8 @@ class Telegram
         $view = str_replace("[JOB_REQUIREMENTS]", $requirements, $view);
         $conditions = !empty($job->conditions) ? "<bold>" . Yii::t('app', "CONDITIONS") . "</bold>" . PHP_EOL . self::replaceHTML($job->conditions) : "";
         $view = str_replace("[JOB_CONDITIONS]", $conditions, $view);
-        $salary = $job->max_salary ?? $job->min_salary;
-        $view = str_replace("[SALARY]", $salary . " " . strtoupper($job->currency), $view);
+        $salary = self::getSalary($job->min_salary, $job->max_salary, $job->currency);
+        $view = str_replace("[SALARY]", $salary, $view);
         $view = str_replace("[CONTACT_NAME]", $job->contact_person_name, $view);
         $view = str_replace("[CONTACT_PHONE]", $job->contact_person_phone, $view);
         $view = str_replace("[CONTACT_EMAIL]", $job->contact_person_email, $view);
@@ -293,5 +293,22 @@ class Telegram
 
         $result = implode("\n", $arr);
         return $result;
+    }
+
+    private static function getSalary($min, $max, $cur)
+    {
+        if(empty($min) && empty($max)){
+            $salary = "";
+        }else{
+            if(!empty($min) && !empty($max))
+                $salary = $min . " - " . $max;
+            elseif (!empty($min))
+                $salary = Yii::t('app', 'PH_SALARY_FROM') . " " . $min;
+            else
+                $salary = Yii::t('app', 'PH_SALARY_TO') . " " . $max;
+            $salary .= " " . strtoupper($cur);
+        }
+
+        return $salary;
     }
 }
