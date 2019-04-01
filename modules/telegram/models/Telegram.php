@@ -258,7 +258,7 @@ class Telegram
         $view = file_get_contents(__DIR__ . "/../views/channel.txt");
         $view = str_replace("[URL]", $job->id, $view);
         $view = str_replace("[JOB_TITLE]", $job->title, $view);
-        $companyTitle =  !empty($job->company_title) ? "<b>" . Yii::t('app', "PH_COMPANY") . ":</b>" . PHP_EOL . self::replaceHTML($job->duties) : "";
+        $companyTitle =  !empty($job->company_title) ? "<b>" . Yii::t('app', "PH_COMPANY") . ":</b>" . PHP_EOL . self::replaceHTML($job->company_title) : "";
         $view = str_replace("[COMPANY_TITLE]", $companyTitle, $view);
         $about = self::replaceHTML($job->company_about);
         $view = str_replace("[COMPANY_ABOUT]", $about, $view);
