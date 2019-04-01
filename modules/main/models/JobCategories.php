@@ -4,6 +4,8 @@ namespace app\modules\main\models;
 
 use app\helpers\Helpers;
 use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -11,10 +13,11 @@ use yii\helpers\ArrayHelper;
  *
  * @property int $id
  * @property string $category
+ * @property int $weight
  *
- * @property JobsOld[] $jobs
+ * @property Job[] $jobs
  */
-class JobCategories extends \yii\db\ActiveRecord
+class JobCategories extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -46,26 +49,19 @@ class JobCategories extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getJobs()
     {
-        return $this->hasMany(JobsOld::className(), ['job_categories_id' => 'id']);
+        return $this->hasMany(Job::class, ['job_categories_id' => 'id']);
     }
 
     public static function findAllForSelect()
     {
-//        $categories = self::find()
-//            ->select('id')
-//            ->addSelect('category as value')
-//            ->asArray()
-//        ->all();
-
         $categories = self::find()
-            ->orderBy('category')
+            ->orderBy('weight')
             ->all();
 
-//        return Helpers::createArrayForSelect($categories);
         return ArrayHelper::map($categories, 'id', 'category');
     }
 }

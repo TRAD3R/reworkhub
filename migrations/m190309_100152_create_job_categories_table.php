@@ -19,7 +19,8 @@ class m190309_100152_create_job_categories_table extends Migration
 
         $this->createTable('{{%job_categories}}', [
             'id' => $this->primaryKey(),
-            'category' => $this->string(100)
+            'category' => $this->string(100),
+            'weight' => $this->smallInteger(2)
         ], $tableOptions);
 
         $this->createIndex('idx-job-categories-category', '{{%job_categories}}', 'category');
