@@ -83,7 +83,7 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                         <span class="sub-title-form"><?=Yii::t('app', 'JOB_DESCRIPTION')?></span>
                     </div>
                     <div class="hold-center">
-                        <div class="box-input">
+                        <div class="box-input editor">
                             <?= $form->field($model, 'duties')
                                 ->widget(CKEditor::class, [
                                     'preset' => 'custom',
