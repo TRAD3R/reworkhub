@@ -56,6 +56,8 @@ class DefaultController extends Controller
                         if ($match[0])
                             $email[] = $match[0][0];
                     }
+                }else{
+                    $page = -1;
                 }
             }
         }

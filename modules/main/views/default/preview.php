@@ -61,6 +61,18 @@ use yii\widgets\ActiveForm;
                         <?=$model->conditions;?>
                     <?php endif;?>
                 </div>
+
+                <?php if($model->skills):?>
+                    <div class="employment-job">
+                        <span class="date-job"><?php echo Yii::$app->formatter->asDate($model->created_at); ?></span>
+                        <ul class="list-employment">
+                            <?php foreach (explode(",", $model->skills) as $skill):?>
+                                <li><?=trim($skill)?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif;?>
+
                 <?php if(!empty($model->contactPersonName) || !empty($model->contactPersonEmail) || !empty($model->contactPersonOther)):?>
                     <h2 class="title-contacts"><?=Yii::t('app', 'CONTACT_INFORMATION')?></h2>
                     <div class="hold-contacts">

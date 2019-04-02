@@ -14,7 +14,7 @@ $params = ArrayHelper::merge(
 );
 
 return [
-    'name' => "Rework",
+    'name' => "Re.Work hub",
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
