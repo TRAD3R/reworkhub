@@ -7,9 +7,6 @@
 
 $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
 
-use app\helpers\ViewHelper;
-use app\modules\main\models\EmploymentTypes;
-use app\modules\main\models\JobCategories;
 use yii\helpers\Url;
 use yii\widgets\LinkPager; ?>
 <div class="block-jobs">
