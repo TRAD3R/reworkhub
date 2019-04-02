@@ -31,7 +31,7 @@ class JobForm extends Model
     public $currency;
     public $contactPersonName;
     public $contactPersonEmail;
-    public $contactPersonPhone;
+    public $contactPersonOther;
     public $reCaptcha;
     public $token;
 
@@ -43,7 +43,7 @@ class JobForm extends Model
     public function rules()
     {
         return [
-            [['companyTitle', 'title', 'description', 'contactPersonEmail', 'contactPersonPhone', 'contactPersonName', 'companyAbout', 'minSalary','maxSalary'], 'filter', 'filter' => 'trim'],
+            [['companyTitle', 'title', 'description', 'contactPersonEmail', 'contactPersonOther', 'contactPersonName', 'companyAbout', 'minSalary','maxSalary'], 'filter', 'filter' => 'trim'],
             [['jobCategories', 'title', 'employmentType', 'contactPersonEmail', 'currency'], 'required'],
             [['contactPersonEmail'], 'email'],
             [['duties', 'requirements', 'conditions'], 'safe'],
@@ -53,7 +53,7 @@ class JobForm extends Model
             [['companyTitle', 'title', 'companyAbout', 'skills'], 'string', 'max' => 255],
             [['contactPersonName'], 'string', 'max' => 150],
             [['minSalary', 'maxSalary'], 'string', 'max' => 10],
-            [['contactPersonEmail', 'contactPersonPhone'], 'string', 'max' => 50],
+            [['contactPersonEmail', 'contactPersonOther'], 'string', 'max' => 50],
 
             ['token', 'recaptcha']
         ];
@@ -76,7 +76,7 @@ class JobForm extends Model
             'minSalary' => Yii::t('app', 'JOB_SALARY_FROM'),
             'maxSalary' => Yii::t('app', 'JOB_SALARY_TO'),
             'contactPersonName' => Yii::t('app', 'JOB_CONTACT_PERSON_NAME'),
-            'contactPersonPhone' => Yii::t('app', 'JOB_CONTACT_PERSON_PHONE'),
+            'contactPersonOther' => Yii::t('app', 'JOB_CONTACT_PERSON_OTHER'),
             'contactPersonEmail' => Yii::t('app', 'JOB_CONTACT_PERSON_EMAIL'),
         ];
     }

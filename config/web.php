@@ -36,16 +36,6 @@ $config = [
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
         ],
-        'assetManager' => [
-            'bundles' => [
-                'yii\web\JqueryAsset' => [
-                    'sourcePath' => null,   // отключение дефолтного jQuery
-                    'js' => [
-                        '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', // добавление вашей версии
-                    ]
-                ],
-            ],
-        ],
     ],
 ];
 

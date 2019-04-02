@@ -28,7 +28,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $currency
  * @property string $contact_person_name
  * @property string $contact_person_email
- * @property string $contact_person_phone
+ * @property string $contact_person_other
  * @property string $temp_url
  * @property int $status
  *
@@ -64,7 +64,7 @@ class Job extends \yii\db\ActiveRecord
             [['company_logo', 'contact_person_name'], 'string', 'max' => 150],
             [['min_salary', 'max_salary'], 'string', 'max' => 20],
             [['currency'], 'string', 'max' => 3],
-            [['contact_person_email', 'contact_person_phone'], 'string', 'max' => 50],
+            [['contact_person_email', 'contact_person_other'], 'string', 'max' => 50],
             [['employment_types_id'], 'exist', 'skipOnError' => true, 'targetClass' => EmploymentTypes::className(), 'targetAttribute' => ['employment_types_id' => 'id']],
             [['job_categories_id'], 'exist', 'skipOnError' => true, 'targetClass' => JobCategories::className(), 'targetAttribute' => ['job_categories_id' => 'id']],
         ];
@@ -113,7 +113,7 @@ class Job extends \yii\db\ActiveRecord
             'currency' => 'Currency',
             'contact_person_name' => 'Contact Person Name',
             'contact_person_email' => 'Contact Person Email',
-            'contact_person_phone' => 'Contact Person Phone',
+            'contact_person_other' => 'Contact Person Phone',
             'status' => 'Status',
         ];
     }

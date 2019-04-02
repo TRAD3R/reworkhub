@@ -86,14 +86,16 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                         <div class="box-input">
                             <?= $form->field($model, 'duties')
                                 ->widget(CKEditor::class, [
-                                    'preset' => 'custom', 'clientOptions' => [
+                                    'preset' => 'custom',
+                                    'clientOptions' => [
                                         'bodyId' => 'ck-duties',
                                         'height' => '200px',
                                         'class' => 'editor textarea-big',
                                         'toolbarGroups' => [
                                             ['name' => 'undo'],
                                             ['name' => 'list'],
-                                        ]
+                                        ],
+                                        'data' => "Hello",
                                     ]
                                 ])
                                 ->label(Yii::t('app', 'JOB_DUTIES'), ['class' => 'title-input']) ?>
@@ -177,9 +179,9 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                                     ->label(Yii::t('app', 'JOB_CONTACT_PERSON_EMAIL'), ['class' => 'title-input']) ?>
                             </div>
                             <div class="box-input">
-                                <?= $form->field($model, 'contactPersonPhone')
-                                    ->input('number', ['placeholder' => 'Например +380441234567'])
-                                    ->label(Yii::t('app', 'JOB_CONTACT_PERSON_PHONE'), ['class' => 'title-input']) ?>
+                                <?= $form->field($model, 'contactPersonOther')
+                                    ->input('text', ['placeholder' => 'Например +380441234567'])
+                                    ->label(Yii::t('app', 'JOB_CONTACT_PERSON_OTHER'), ['class' => 'title-input']) ?>
                             </div>
                         </div>
                     </div>
@@ -191,23 +193,29 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
     </div>
 
 <?php
-$js1 = <<<JS
+$js1 = "
     grecaptcha.ready(function() {
         grecaptcha.execute('6Lew0ZoUAAAAADwqYCBxKYSnnEWmUgxh0nZwTE3w', {action: 'homepage'}).then(function(token) {
-            $("#token").val(token);            
+            $('#token').val(token);            
         });
-    });
+    });";
 
-    if($("#ck-duties").text().length === 0){
-        CKEDITOR.instances['jobform-duties'].setData('<ul><li></li></ul>');
+    if($model->duties){
+//        $js1 .= "CKEDITOR.instances['jobform-duties'].setData('{$model->duties}');";
+    }else{
+        $js1 .= "CKEDITOR.instances['jobform-duties'].setData('<ul><li></li></ul>');";
     }
-    if($("#ck-requirements").text().length === 0){
-        CKEDITOR.instances['jobform-requirements'].setData('<ul><li></li></ul>');
+    if($model->requirements){
+//        $js1 .= "CKEDITOR.instances['jobform-requirements'].setData(" . $model->requirements .");";
+    }else{
+        $js1 .= "CKEDITOR.instances['jobform-requirements'].setData('<ul><li></li></ul>');";
     }
-    if($("#ck-conditions").text().length === 0){
-        CKEDITOR.instances['jobform-conditions'].setData('<ul><li></li></ul>');
+    if($model->conditions){
+//        $js1 .= "CKEDITOR.instances['jobform-conditions'].setData(" . $model->conditions .");";
+    }else{
+        $js1 .= "CKEDITOR.instances['jobform-conditions'].setData('<ul><li></li></ul>');";
     }
-JS;
 
 $this->registerJs($js1);
 ?>
+
