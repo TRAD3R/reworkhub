@@ -8,26 +8,27 @@
 $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
 
 use yii\helpers\Url;
+use yii\web\View;
 use yii\widgets\LinkPager; ?>
 <div class="block-jobs">
     <div class="container">
         <div class="holder-jobs">
             <?php foreach ($jobs as $job):?>
                 <a href="<?=Url::to(['vacancy', 'id' => $job->id])?>" class="box-job">
-                <div class="hold-head-job">
-                    <div class="head-job">
-                        <?php if(!empty($job->company_logo)): ?>
-                            <div class="hold-img">
-                                <img src="/img/companies/<?=$job->company_logo?>" alt="<?=$job->company_title?>" class="img-responsive company-img">
-                            </div>
-                        <?php endif; ?>
-                        <span class="job-title"><?=$job->title?></span>
-                        <span class="job-company">
+                    <div class="hold-head-job">
+                        <div class="head-job">
+                            <?php if(!empty($job->company_logo)): ?>
+                                <div class="hold-img">
+                                    <img src="/img/companies/<?=$job->company_logo?>" alt="<?=$job->company_title?>" class="img-responsive company-img">
+                                </div>
+                            <?php endif; ?>
+                            <span class="job-title"><?=$job->title?></span>
+                            <span class="job-company">
                             <?php $companyTitle = strlen($job->company_title) > 30 ? mb_substr($job->company_title, 0, 28) . "..." : $job->company_title;
-                                echo $companyTitle;
+                            echo $companyTitle;
                             ?>
                         </span>
-                        <span class="job-salary">
+                            <span class="job-salary">
                             <?php if(!empty($job->min_salary) && !empty($job->max_salary)):?>
                                 <?php echo $job->min_salary . " - " . $job->max_salary;?>
                             <?php elseif (!empty($job->min_salary)):?>
@@ -37,31 +38,33 @@ use yii\widgets\LinkPager; ?>
                             <?php endif;?>
                             <?=strtoupper($job->currency)?>
                         </span>
+                        </div>
                     </div>
-                </div>
-                <div class="content-job">
-                    <?php if($job->duties):?>
-                    <span class="sub-title"><?=Yii::t('app', 'JOB_DUTIES')?></span>
-                        <?=$job->duties?>
-                    <?php endif;?>
-                    <?php if($job->requirements):?>
-                    <span class="sub-title"><?=Yii::t('app', 'JOB_REQUIREMENTS')?></span>
-                        <?=$job->requirements?>
-                    <?php endif;?>
-                    <?php if($job->conditions):?>
-                    <span class="sub-title"><?=Yii::t('app', 'JOB_CONDITIONS')?></span>
-                        <?=$job->conditions?>
-                    <?php endif;?>
-                </div>
-                <div class="employment-job">
-                    <span class="date-job"><?php echo Yii::$app->formatter->asDate($job->created_at); ?></span>
-                    <ul class="list-employment">
-                        <?php foreach (explode(",", $job->skills) as $skill):?>
-                            <li><?=trim($skill)?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            </a>
+                    <div class="hold-content">
+                        <div class="content-job">
+                            <?php if($job->duties):?>
+                                <span class="sub-title"><?=Yii::t('app', 'JOB_DUTIES')?></span>
+                                <?=$job->duties?>
+                            <?php endif;?>
+                            <?php if($job->requirements):?>
+                                <span class="sub-title"><?=Yii::t('app', 'JOB_REQUIREMENTS')?></span>
+                                <?=$job->requirements?>
+                            <?php endif;?>
+                            <?php if($job->conditions):?>
+                                <span class="sub-title"><?=Yii::t('app', 'JOB_CONDITIONS')?></span>
+                                <?=$job->conditions?>
+                            <?php endif;?>
+                        </div>
+                        <div class="employment-job">
+                            <span class="date-job"><?php echo Yii::$app->formatter->asDate($job->created_at); ?></span>
+                            <ul class="list-employment">
+                                <?php foreach (explode(",", $job->skills) as $skill):?>
+                                    <li><?=trim($skill)?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </div>
+                </a>
             <?php endforeach; ?>
         </div>
     </div>
