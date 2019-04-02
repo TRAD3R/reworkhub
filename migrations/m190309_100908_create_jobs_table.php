@@ -38,7 +38,7 @@ class m190309_100908_create_jobs_table extends Migration
             'currency' => $this->string(3)->notNull(),
             'contact_person_name' => $this->string(150)->null(),
             'contact_person_email' => $this->string(50)->notNull(),
-            'contact_person_phone' => $this->string(50)->null(),
+            'contact_person_other' => $this->string(50)->null(),
             'status' => $this->smallInteger()->notNull()->defaultValue(2),
             'temp_url' => $this->string(30),
         ], $tableOptions);

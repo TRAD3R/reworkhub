@@ -10,6 +10,7 @@ use app\modules\telegram\models\Telegram;
 use Yii;
 use yii\data\Pagination;
 use yii\helpers\Json;
+use yii\swiftmailer\Message;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 
@@ -56,7 +57,6 @@ class DefaultController extends Controller
 
     public function actionAdd(){
         $model = new JobForm();
-//        $model->description = "<p><strong>Что делать:</strong></p><ul><li></li><li></li><li></li></ul><p><strong>Требования:</strong></p><ul><li></li><li></li><li></li></ul><p><strong>Условия:</strong></p><ul><li></li><li></li></ul>";
 
         if(Yii::$app->request->isPost) {
             if ($model->load(Yii::$app->request->post())) {
@@ -65,8 +65,14 @@ class DefaultController extends Controller
                 $model->maxSalary = Yii::$app->request->post('zp-to');
                 $model->currency = Yii::$app->request->post('currency');
                 $model->skills = Yii::$app->request->post('skills');
+                $model->duties = strlen(trim(strip_tags(str_replace('&nbsp;', "", $model->duties)))) > 3 ? $model->duties : "";
+                $model->requirements = strlen(trim(strip_tags(str_replace('&nbsp;', "", $model->requirements)))) > 3 ? $model->requirements : "";
+                $model->conditions = strlen(trim(strip_tags(str_replace('&nbsp;', "", $model->conditions)))) > 3 ? $model->conditions : "";
 
                 if ($model->validate()) {
+                    $model->duties = !empty($model->duties) ? str_replace("<ul", "<ul class='list'", $model->duties) : "";
+                    $model->requirements = !empty($model->requirements) ? str_replace("<ul", "<ul class='list'", $model->requirements) : "";
+                    $model->conditions = !empty($model->conditions) ? str_replace("<ul", "<ul class='list'", $model->conditions) : "";
                     $model->companyLogo = UploadedFile::getInstance($model, 'companyLogo');
                     if (!empty($model->companyLogo)) {
                         $model->upload();
@@ -96,7 +102,7 @@ class DefaultController extends Controller
             $model->currency = $jModel->currency;
             $model->contactPersonName = $jModel->contactPersonName;
             $model->contactPersonEmail = $jModel->contactPersonEmail;
-            $model->contactPersonPhone = $jModel->contactPersonPhone;
+            $model->contactPersonOther = $jModel->contactPersonOther;
             $model->companyLogo = $jModel->companyLogo;
 
             Yii::$app->session->remove('model');
@@ -150,7 +156,6 @@ class DefaultController extends Controller
         $job = new Job();
         /** @var JobForm $jModel */
         $jModel = (object)Json::decode(Yii::$app->session['model']);
-        var_dump($jModel);
         $job->company_title = $jModel->companyTitle;
         $job->company_about = $jModel->companyAbout;
         $job->job_categories_id = $jModel->jobCategories;
@@ -166,7 +171,7 @@ class DefaultController extends Controller
         $job->currency = $jModel->currency;
         $job->contact_person_name = $jModel->contactPersonName;
         $job->contact_person_email = $jModel->contactPersonEmail;
-        $job->contact_person_phone = $jModel->contactPersonPhone;
+        $job->contact_person_other = $jModel->contactPersonOther;
         $job->company_logo = $jModel->companyLogo;
 
         if($job->save()) {
@@ -175,7 +180,7 @@ class DefaultController extends Controller
 
 
             if($job->contact_person_email){
-                $message = new \yii\swiftmailer\Message();
+                $message = new Message();
                 $message->setFrom(Yii::$app->params['supportEmail'])
                     ->setTo($job->contact_person_email)
                     ->setSubject('Новая вакансия')

@@ -273,7 +273,7 @@ class Telegram
         $salary = self::getSalary($job->min_salary, $job->max_salary, $job->currency);
         $view = str_replace("[SALARY]", $salary, $view);
         $view = str_replace("[CONTACT_NAME]", $job->contact_person_name, $view);
-        $view = str_replace("[CONTACT_PHONE]", $job->contact_person_phone, $view);
+        $view = str_replace("[CONTACT_PHONE]", $job->contact_person_other, $view);
         $view = str_replace("[CONTACT_EMAIL]", $job->contact_person_email, $view);
 
         $view = str_replace("&nbsp;", "", $view);

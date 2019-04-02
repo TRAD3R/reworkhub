@@ -74,6 +74,7 @@ return [
     'JOB_CONTACT_PERSON_NAME' => 'Ваше имя',
     'JOB_CONTACT_PERSON_EMAIL' => 'E-mail',
     'JOB_CONTACT_PERSON_PHONE' => 'Номер телефона',
+    'JOB_CONTACT_PERSON_OTHER' => 'Дополнительный контакт',
     /** Job labels */
 
     /** Placeholders */

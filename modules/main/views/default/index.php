@@ -45,15 +45,15 @@ use yii\widgets\LinkPager; ?>
                 <div class="content-job">
                     <?php if($job->duties):?>
                     <span class="sub-title"><?=Yii::t('app', 'JOB_DUTIES')?></span>
-                        <?=ViewHelper::cutLists($job->duties)?>
+                        <?=$job->duties?>
                     <?php endif;?>
                     <?php if($job->requirements):?>
                     <span class="sub-title"><?=Yii::t('app', 'JOB_REQUIREMENTS')?></span>
-                        <?=ViewHelper::cutLists($job->requirements)?>
+                        <?=$job->requirements?>
                     <?php endif;?>
                     <?php if($job->conditions):?>
                     <span class="sub-title"><?=Yii::t('app', 'JOB_CONDITIONS')?></span>
-                        <?=ViewHelper::cutLists($job->conditions)?>
+                        <?=$job->conditions?>
                     <?php endif;?>
                 </div>
                 <div class="employment-job">
