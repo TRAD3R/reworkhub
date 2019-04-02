@@ -486,6 +486,7 @@ p {
 }
 
 .box-job {
+  min-height: 505px;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
@@ -518,6 +519,14 @@ p {
           box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.5);
     text-decoration: none;
     color: #454545;
+}
+
+div.box-job{
+  min-height: 100%;
+}
+
+div.box-job .content-job{
+  max-height: 100%;
 }
 div.box-job:hover{
 	-webkit-box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.2);
@@ -601,23 +610,35 @@ div.box-job:hover{
 }
 
 .box-job .content-job {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 330px;
   padding: 20px 0 12px;
 }
 
 .box-job .content-job .sub-title {
   display: block;
+  font-family: 'OxygenBold', sans-serif;
   margin: 0 0 8px;
 }
 
 .box-job .employment-job {
-  overflow: hidden;
-  padding: 0 120px 0 0;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
 }
 
 .box-job .employment-job .date-job {
-  float: right;
   font: 14px/16px 'OxygenRegular', sans-serif;
-  margin: 7px -100px 0 0;
+  margin: 0 5px 17px 0;
 }
 
 .holder-form {
@@ -1067,6 +1088,8 @@ body > .jcf-select-drop.jcf-drop-flipped {
 }
 
 .list-employment {
+  max-width: 300px;
+  width: 100%;
   font-size: 0;
   line-height: 0;
   list-style: none;
@@ -1323,11 +1346,19 @@ body > .jcf-select-drop.jcf-drop-flipped {
 
 @media only screen and (max-width: 1024px) {
   .block-jobs .holder-jobs {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
     margin: 0;
   }
   .box-job {
+    min-height: 100%;
     width: 100%;
     margin: 0 0 20px;
+  }
+  .box-job .content-job {
+    margin: 0 0 10px;
   }
   .block-jobs .hold-job .box-job {
     padding: 0 20px 15px;
@@ -1436,11 +1467,6 @@ body > .jcf-select-drop.jcf-drop-flipped {
     padding: 0;
   }
   .box-job .employment-job .date-job {
-    -webkit-box-ordinal-group: 2;
-    -webkit-order: 1;
-        -ms-flex-order: 1;
-            order: 1;
-    float: none;
     margin: 0 0 15px;
   }
   .list-employment li {

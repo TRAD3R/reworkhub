@@ -56,12 +56,12 @@ use yii\widgets\LinkPager; ?>
                             <?php endif;?>
                         </div>
                         <div class="employment-job">
-                            <span class="date-job"><?php echo Yii::$app->formatter->asDate($job->created_at); ?></span>
                             <ul class="list-employment">
                                 <?php foreach (explode(",", $job->skills) as $skill):?>
                                     <li><?=trim($skill)?></li>
                                 <?php endforeach; ?>
                             </ul>
+                            <span class="date-job"><?php echo Yii::$app->formatter->asDate($job->created_at); ?></span>
                         </div>
                     </div>
                 </a>
