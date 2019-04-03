@@ -59,12 +59,15 @@ use yii\widgets\ActiveForm;
                 </div><div class="title-employment"><?=Yii::t('app', 'JOB_SKILLS')?>:</div>
                 <?php if($job->skills):?>
                     <div class="employment-job">
-                        <span class="date-job"><?php echo Yii::$app->formatter->asDate($job->created_at); ?></span>
                         <ul class="list-employment">
                             <?php foreach (explode(",", $job->skills) as $skill):?>
-                                <li><?=trim($skill)?></li>
+                                <?php $skill = trim($skill);
+                                    if(empty($skill)) continue;
+                                ?>
+                                <li><?=$skill?></li>
                             <?php endforeach; ?>
                         </ul>
+                        <span class="date-job"><?php echo Yii::$app->formatter->asDate($job->created_at); ?></span>
                     </div>
                 <?php endif;?>
                 <?php if(!empty($job->contact_person_name) || !empty($job->contact_person_other) || !empty($job->contact_person_email)):?>

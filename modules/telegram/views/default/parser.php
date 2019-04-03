@@ -23,6 +23,9 @@
         <input type="hidden" name="page" value="<?=$nextPage?>">
         <button type="submit" name="next">Следующая страница</button>
     <?php endif;?>
+    <?php if($nextPage == 0):?>
+        <h4>Это была последняя страница в канале.</h4>
+    <?php endif;?>
 </form>
 
 <?php

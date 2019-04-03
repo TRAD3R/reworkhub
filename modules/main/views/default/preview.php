@@ -64,7 +64,7 @@ use yii\widgets\ActiveForm;
 
                 <?php if($model->skills):?>
                     <div class="employment-job">
-                        <span class="date-job"><?php echo Yii::$app->formatter->asDate($model->created_at); ?></span>
+<!--                        <span class="date-job">--><?php //echo Yii::$app->formatter->asDate($model->created_at); ?><!--</span>-->
                         <ul class="list-employment">
                             <?php foreach (explode(",", $model->skills) as $skill):?>
                                 <li><?=trim($skill)?></li>
@@ -96,9 +96,7 @@ use yii\widgets\ActiveForm;
                             </a>
                         </div>
                     <?php endif; ?>
-                </div>
-                <?php endif; ?>
-                <?php if(!empty($model->contactPersonOther)):?>
+                    <?php if(!empty($model->contactPersonOther)):?>
                     <div class="box-link">
                         <a href="#">
                             <svg width="100%" height="100%" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -114,6 +112,8 @@ use yii\widgets\ActiveForm;
                             <?=$model->contactPersonOther?>
                         </a>
                     </div>
+                <?php endif; ?>
+                </div>
                 <?php endif; ?>
                 <div class="vacancy-button">
                     <a href="<?= Url::to('/add')?>" class="btn"><?=Yii::t('app', 'BTN_BACK')?></a>

@@ -44,23 +44,29 @@ class DefaultController extends Controller
             $channelName = Yii::$app->request->post('teleChannelName');
             $page = Yii::$app->request->post('page') ?? 1 ;
 
-            $result =(object)Json::decode(file_get_contents("https://tg.i-c-a.su/json/{$channelName}/{$page}?limit=100"));
+            $result =(object)Json::decode(file_get_contents("https://tg.i-c-a.su/json/" . strtolower($channelName) . "/{$page}?limit=100"));
             if(isset($result->errors)){
                 $error = $result->errors;
             }else {
-                $messages = $result->messages;
+                if(isset($result->messages)) {
+                    $messages = $result->messages;
 
-                if ($messages) {
-                    foreach ($messages as $item) {
-                        preg_match_all("~([a-z0-9\.\-_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})~", $item['message'], $match);
-                        if ($match[0])
-                            $email[] = $match[0][0];
-                    }
-                }else{
-                    $page = -1;
-                }
-            }
-        }
+                    if ($messages) {
+                        foreach ($messages as $item) {
+                            if(isset($item['message'])) {
+                                preg_match_all("~([a-z0-9\.\-_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,6})~", $item['message'], $match);
+                                if ($match[0])
+                                    $email[] = $match[0][0];
+                            }else{
+                                $page = -1;
+                            }
+                        }
+                    } else {
+                        $page = -1;
+                    } // if-else
+                } // if
+            } // if-else
+        } // if
 
 
         return $this->render('parser', [

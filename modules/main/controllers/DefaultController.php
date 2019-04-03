@@ -201,7 +201,7 @@ class DefaultController extends Controller
 
             return $this->goHome();
         }else {
-            var_dump($job->getErrors());
+            Yii::error($job->getErrors(), 'trd_error');
         }
     } // actionSave
 }

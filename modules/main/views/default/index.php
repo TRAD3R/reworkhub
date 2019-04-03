@@ -7,6 +7,7 @@
 
 $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
 
+use app\helpers\ViewHelper;
 use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\LinkPager; ?>
@@ -44,21 +45,25 @@ use yii\widgets\LinkPager; ?>
                         <div class="content-job">
                             <?php if($job->duties):?>
                                 <span class="sub-title"><?=Yii::t('app', 'JOB_DUTIES')?></span>
-                                <?=$job->duties?>
+                                <?=ViewHelper::cutLists($job->duties)?>
                             <?php endif;?>
                             <?php if($job->requirements):?>
                                 <span class="sub-title"><?=Yii::t('app', 'JOB_REQUIREMENTS')?></span>
-                                <?=$job->requirements?>
+                                <?=ViewHelper::cutLists($job->requirements)?>
                             <?php endif;?>
                             <?php if($job->conditions):?>
                                 <span class="sub-title"><?=Yii::t('app', 'JOB_CONDITIONS')?></span>
-                                <?=$job->conditions?>
+                                <?=ViewHelper::cutLists($job->conditions)?>
                             <?php endif;?>
                         </div>
                         <div class="employment-job">
                             <ul class="list-employment">
-                                <?php foreach (explode(",", $job->skills) as $skill):?>
-                                    <li><?=trim($skill)?></li>
+                                <?php foreach (explode(",", $job->skills) as $key => $skill):?>
+                                    <?php
+                                        if($key > 3) break;
+                                        $skill = trim($skill);
+                                        if(empty($skill)) continue;?>
+                                    <li><?=$skill?></li>
                                 <?php endforeach; ?>
                             </ul>
                             <span class="date-job"><?php echo Yii::$app->formatter->asDate($job->created_at); ?></span>

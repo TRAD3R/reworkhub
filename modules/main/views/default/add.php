@@ -185,7 +185,7 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                             </div>
                         </div>
                     </div>
-                    <div><?= $form->field($model, 'token')->hiddenInput(['id' => 'token'])->label(false)?></div>
+                    <div class="form-error"><?= $form->field($model, 'token')->hiddenInput(['id' => 'token'])->label(false)?></div>
                 <div id="trd-submit"><?= Html::submitButton(Yii::t('app', 'BTN_PREVIEW'), ['class' => 'btn']) ?></div>
                 <?php ActiveForm::end()?>
             </div>

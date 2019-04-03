@@ -80,6 +80,10 @@ input[type="number"] {
   height: 40px;
 }
 
+.form-error{
+	text-align: center;
+}
+
 .form-group{
 	margin: 0;
 }
@@ -300,7 +304,7 @@ p {
   background: #454545;
   height: 1px;
   width: 10px;
-  top: 50%;
+  top: 10px;
   left: 0;
 }
 
@@ -415,8 +419,8 @@ p {
 }
 
 .block-jobs .hold-job .box-job .employment-job {
-  padding: 0 100px 0 0;
   border-bottom: 1px solid rgba(0, 180, 115, 0.2);
+  padding: 0 0 10px;
   margin: 0 0 20px;
 }
 
@@ -434,10 +438,6 @@ p {
   margin: 0 0 15px;
 }
 
-.block-jobs .hold-job .list-employment {
-  margin: 0 0 10px;
-}
-
 .block-jobs .hold-job .list-employment li {
   margin: 0 12px 10px 0;
 }
@@ -450,7 +450,7 @@ p {
 
 .block-jobs .hold-contacts {
   max-width: 200px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
 }
 
 .block-jobs .hold-contacts .box-link {
@@ -486,7 +486,7 @@ p {
 }
 
 .box-job {
-  min-height: 505px;
+  height: 535px;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
@@ -522,12 +522,17 @@ p {
 }
 
 div.box-job{
-  min-height: 100%;
+	height: 100%;
 }
 
 div.box-job .content-job{
-  max-height: 100%;
+	height: 100%;
 }
+
+div.box-job .employment-job{
+	height: 100%;
+}
+
 div.box-job:hover{
 	-webkit-box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.2);
           box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.2);
@@ -548,7 +553,6 @@ div.box-job:hover{
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
         justify-content: space-between;
-    height: 100%;
 }
 
 .box-job .hold-head-job {
@@ -611,9 +615,10 @@ div.box-job:hover{
 
 .box-job .content-job {
   overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 330px;
-  padding: 20px 0 12px;
+  height: 305px;
+  box-sizing: content-box;
+  padding: 20px 0 0;
+  margin: 0 0 20px;
 }
 
 .box-job .content-job .sub-title {
@@ -623,11 +628,15 @@ div.box-job:hover{
 }
 
 .box-job .employment-job {
+  overflow: hidden;
+  height: 80px;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
   display: -o-flex;
   display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
@@ -637,8 +646,20 @@ div.box-job:hover{
 }
 
 .box-job .employment-job .date-job {
+  flex-basis: 100px;
   font: 14px/16px 'OxygenRegular', sans-serif;
-  margin: 0 5px 17px 0;
+  margin: 0 5px 17px;
+}
+
+.box-job .employment-job .list-employment{
+	width: calc(100% - 110px);
+}
+
+.vacancy-button{
+	text-align: center;
+}
+.vacancy-button .btn{
+	margin: 0 5px 10px;
 }
 
 .holder-form {
@@ -1088,8 +1109,6 @@ body > .jcf-select-drop.jcf-drop-flipped {
 }
 
 .list-employment {
-  max-width: 300px;
-  width: 100%;
   font-size: 0;
   line-height: 0;
   list-style: none;
@@ -1353,12 +1372,16 @@ body > .jcf-select-drop.jcf-drop-flipped {
     margin: 0;
   }
   .box-job {
-    min-height: 100%;
+    height: 100%;
     width: 100%;
     margin: 0 0 20px;
   }
   .box-job .content-job {
-    margin: 0 0 10px;
+  	height: 100%;
+    margin: 0;
+  }
+  .box-job .employment-job{
+  	height: 100%;
   }
   .block-jobs .hold-job .box-job {
     padding: 0 20px 15px;
@@ -1381,6 +1404,17 @@ body > .jcf-select-drop.jcf-drop-flipped {
 }
 
 @media only screen and (max-width: 768px) {
+  .box-job .employment-job{
+  	text-align: center;
+  }
+  .box-job .employment-job .list-employment,
+  .box-job .employment-job .date-job{
+  	width: 100%;
+  }
+  .box-job .employment-job .date-job {
+  	flex-basis: 100%;
+    margin: 0 0 15px;
+  }
   .holder-form {
     padding: 20px 25px;
   }
@@ -1465,9 +1499,6 @@ body > .jcf-select-drop.jcf-drop-flipped {
         -ms-flex-align: center;
             align-items: center;
     padding: 0;
-  }
-  .box-job .employment-job .date-job {
-    margin: 0 0 15px;
   }
   .list-employment li {
     padding: 7px 10px;
