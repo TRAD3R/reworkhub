@@ -21,7 +21,10 @@ use yii\widgets\ActiveForm;
 
 $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
 ?>
-
+<?php
+foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
+    echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
+} ?>
     <div class="block-jobs">
         <div class="container">
             <div class="holder-form">
@@ -145,16 +148,15 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                             <div class="hold-inputs">
                                 <div class="box-input three-elem">
                                     <?= Html::activeInput('number', $model, 'minSalary',
-                                        ['id' => 'zp-from', 'name' => 'zp-from', 'maxlength' => 10, 'placeholder' => Yii::t('app', 'JOB_SALARY_FROM')]); ?>
+                                        ['id' => 'zp-from', 'maxlength' => 10, 'placeholder' => Yii::t('app', 'JOB_SALARY_FROM')]); ?>
                                 </div>
                                 <div class="box-input three-elem">
                                     <?= Html::activeInput('number', $model, 'maxSalary',
-                                        ['id' => 'zp-to', 'name' => 'zp-to', 'maxlength' => 10, 'placeholder' => Yii::t('app', 'JOB_SALARY_TO')]); ?>
+                                        ['id' => 'zp-to', 'maxlength' => 10, 'placeholder' => Yii::t('app', 'JOB_SALARY_TO')]); ?>
                                 </div>
                                 <div class="box-input three-elem">
                                     <?= Html::activeDropDownList($model, 'currency', ['rub' => 'RUB', 'usd' => 'USD', 'eur' => "EUR"]
                                         , ['id' => 'currency'
-                                            , 'name' => 'currency'
                                             , 'class' => 'custom color'
                                             , 'data-jcf' => '{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'
                                             , 'value' => !empty($model->currency) ? $model->currency : "rub"
@@ -166,7 +168,7 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                         <div class="box-input">
                             <span class="title-input"><?=Yii::t('app', 'INPUT_SKILLS_DEVIDE_COMMA')?></span>
                             <?= $form->field($model, 'skills')
-                                ->input('text', ['id' => 'contact-name', 'name' => 'skills'])
+                                ->input('text', ['id' => 'contact-name'])
                                 ->label(false) ?>
                         </div>
                     </div>

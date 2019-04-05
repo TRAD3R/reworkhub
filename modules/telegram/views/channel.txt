@@ -3,11 +3,9 @@ https://reworkhub.com/vacancy/[URL]
 
 [COMPANY_TITLE]
 
-[COMPANY_ABOUT]
+[JOB_REQUIREMENTS]
 
 [JOB_DUTIES]
-
-[JOB_REQUIREMENTS]
 
 [JOB_CONDITIONS]
 

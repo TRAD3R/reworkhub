@@ -36,6 +36,7 @@ use yii\widgets\ActiveForm;
                         <?php endif; ?>
                         <h1 class="job-title"><?= $job->title?></h1>
                         <span class="job-company"><?=$job->company_title?></span>
+                        <span class="job-company"><?=$job->company_about?></span>
                         <span class="job-salary">
                             <?php
                             if(!empty($job->min_salary) && !empty($job->max_salary)):?>

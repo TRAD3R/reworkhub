@@ -61,10 +61,6 @@ class DefaultController extends Controller
         if(Yii::$app->request->isPost) {
             if ($model->load(Yii::$app->request->post())) {
 
-                $model->minSalary = Yii::$app->request->post('zp-from');
-                $model->maxSalary = Yii::$app->request->post('zp-to');
-                $model->currency = Yii::$app->request->post('currency');
-                $model->skills = Yii::$app->request->post('skills');
                 $model->duties = strlen(trim(strip_tags(str_replace('&nbsp;', "", $model->duties)))) > 3 ? $model->duties : "";
                 $model->requirements = strlen(trim(strip_tags(str_replace('&nbsp;', "", $model->requirements)))) > 3 ? $model->requirements : "";
                 $model->conditions = strlen(trim(strip_tags(str_replace('&nbsp;', "", $model->conditions)))) > 3 ? $model->conditions : "";
@@ -82,6 +78,11 @@ class DefaultController extends Controller
                     }
                     Yii::$app->session['model'] = Json::encode($model);
                     $this->redirect('preview');
+                }else{
+                    foreach ($model->getErrors() as $errors){
+                        foreach ($errors as $key => $value)
+                            Yii::$app->session->setFlash($key, $value);
+                    }
                 }
             }
         }elseif(!empty(Yii::$app->session['model'])){

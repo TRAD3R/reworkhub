@@ -9,7 +9,6 @@
 namespace app\modules\main\models;
 
 
-use trad3r\dump\Dump;
 use Yii;
 use yii\base\Model;
 use yii\web\UploadedFile;
@@ -47,14 +46,13 @@ class JobForm extends Model
             [['jobCategories', 'title', 'employmentType', 'requirements', 'contactPersonEmail', 'currency'], 'required'],
             [['contactPersonEmail'], 'email'],
             [['duties', 'conditions'], 'safe'],
-//            [['minSalary', 'maxSalary'], 'integer'],
-            ['minSalary', 'errorSalaryNotSet'],
             [['companyLogo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, ico, bmp, svg'],
-            [['companyTitle', 'title', 'companyAbout', 'skills'], 'string', 'max' => 255],
+            [['companyTitle', 'title', 'skills'], 'string', 'max' => 255],
+            ['companyAbout', 'string', 'max' => 1000],
             [['contactPersonName'], 'string', 'max' => 150],
-            [['minSalary', 'maxSalary'], 'string', 'max' => 10],
             [['contactPersonEmail', 'contactPersonOther'], 'string', 'max' => 50],
 
+            ['minSalary', 'checkSetSalary', 'skipOnEmpty' => false],
             ['token', 'recaptcha']
         ];
     }
@@ -69,9 +67,9 @@ class JobForm extends Model
             'title' => Yii::t('app', 'JOB_TITLE'),
             'employmentType' => Yii::t('app', 'JOB_EMPLOYMENT_TYPE'),
             'description' => Yii::t('app', 'JOB_DESCRIPTION'),
-            'duties' => Yii::t('app', 'JOB_DESCRIPTION'),
-            'requirements' => Yii::t('app', 'JOB_DESCRIPTION'),
-            'conditions' => Yii::t('app', 'JOB_DESCRIPTION'),
+            'duties' => Yii::t('app', 'JOB_DUTIES'),
+            'requirements' => Yii::t('app', 'JOB_REQUIREMENTS'),
+            'conditions' => Yii::t('app', 'JOB_CONDITIONS'),
             'skills' => Yii::t('app', 'JOB_SKILLS'),
             'minSalary' => Yii::t('app', 'JOB_SALARY_FROM'),
             'maxSalary' => Yii::t('app', 'JOB_SALARY_TO'),
@@ -99,7 +97,7 @@ class JobForm extends Model
             $verify = file_get_contents($url);
             $captcha_success=json_decode($verify);
 
-            if ($captcha_success->success==false || $captcha_success->score < 0.3) {
+            if ($captcha_success->success==false /* || $captcha_success->score < 0.3 */) {
                 $this->addError('token', Yii::t('app', 'ERROR_RECAPTCHA'));
             }
         }else{
@@ -107,7 +105,7 @@ class JobForm extends Model
         }
     }
 
-    public function errorSalaryNotSet(){
+    public function checkSetSalary(){
         if($this->hasErrors())
             return;
 
