@@ -28,8 +28,7 @@ AppAsset::register($this);
     <!-- Template Basic Images End -->
 
     <?php $this->registerCsrfMetaTags() ?>
-<!--    <title>--><?//= Html::encode($this->title) ?><!--</title>-->
-    <title><?= Yii::$app->name ?></title>
+    <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 
     <!-- Custom Browsers Color Start -->
