@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
 
                         <?php if(!empty($model->companyTitle)): ?>
                             <span class="job-company"><strong><?=Yii::t('app', 'PH_COMPANY')?>:</strong> <?=$model->companyTitle?></span>
-                            <span class="job-company"><?=$model->company_about?></span>
+                            <span class="job-company"><?=$model->companyAbout?></span>
                         <?php endif; ?>
 
                         <span class="job-salary">
