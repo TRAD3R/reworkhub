@@ -32,6 +32,7 @@ use yii\widgets\ActiveForm;
 
                         <?php if(!empty($model->companyTitle)): ?>
                             <span class="job-company"><strong><?=Yii::t('app', 'PH_COMPANY')?>:</strong> <?=$model->companyTitle?></span>
+                            <span class="job-company"><?=$model->company_about?></span>
                         <?php endif; ?>
 
                         <span class="job-salary">
@@ -48,13 +49,13 @@ use yii\widgets\ActiveForm;
                     </div>
                 </div>
                 <div class="content-job">
-                    <?php if($model->duties):?>
-                        <span class="sub-title"><?=Yii::t('app', 'JOB_DUTIES')?></span>
-                        <?=$model->duties;?>
-                    <?php endif;?>
                     <?php if($model->requirements):?>
                         <span class="sub-title"><?=Yii::t('app', 'JOB_REQUIREMENTS')?></span>
                         <?=$model->requirements;?>
+                    <?php endif;?>
+                    <?php if($model->duties):?>
+                        <span class="sub-title"><?=Yii::t('app', 'JOB_DUTIES')?></span>
+                        <?=$model->duties;?>
                     <?php endif;?>
                     <?php if($model->conditions):?>
                         <span class="sub-title"><?=Yii::t('app', 'JOB_CONDITIONS')?></span>

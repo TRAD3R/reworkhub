@@ -44,9 +44,9 @@ class JobForm extends Model
     {
         return [
             [['companyTitle', 'title', 'description', 'contactPersonEmail', 'contactPersonOther', 'contactPersonName', 'companyAbout', 'minSalary','maxSalary'], 'filter', 'filter' => 'trim'],
-            [['jobCategories', 'title', 'employmentType', 'contactPersonEmail', 'currency'], 'required'],
+            [['jobCategories', 'title', 'employmentType', 'requirements', 'contactPersonEmail', 'currency'], 'required'],
             [['contactPersonEmail'], 'email'],
-            [['duties', 'requirements', 'conditions'], 'safe'],
+            [['duties', 'conditions'], 'safe'],
 //            [['minSalary', 'maxSalary'], 'integer'],
             ['minSalary', 'errorSalaryNotSet'],
             [['companyLogo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, ico, bmp, svg'],

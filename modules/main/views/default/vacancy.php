@@ -20,6 +20,12 @@ use yii\widgets\ActiveForm;
 <div class="block-jobs">
     <div class="container">
         <div class="hold-job">
+        	<a href="http://reworkhub.com/" class="btn-backwards">
+        		<svg viewBox="0 0 8 12" xmlns="http://www.w3.org/2000/svg">
+					<path d="M0.871797 6.42828L6.26814 11.8228C6.50493 12.059 6.88857 12.059 7.12595 11.8228C7.36274 11.5866 7.36274 11.203 7.12595 10.9668L2.15764 6.0003L7.12535 1.03378C7.36214 0.797595 7.36214 0.413961 7.12535 0.177173C6.88856 -0.0590169 6.50433 -0.0590169 6.26754 0.177173L0.871199 5.57167C0.638049 5.80542 0.638049 6.19508 0.871797 6.42828Z"/>
+				</svg>
+        		Назад
+        	</a>
             <div class="box-job">
                 <div class="hold-head-job">
                     <div class="head-job">

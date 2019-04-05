@@ -43,13 +43,13 @@ use yii\widgets\LinkPager; ?>
                     </div>
                     <div class="hold-content">
                         <div class="content-job">
+                            <?php if($job->requirements):?>
+                                <span class="sub-title"><?=Yii::t('app', 'JOB_REQUIREMENTS')?></span>
+                                <?=$job->requirements?>
+                            <?php endif;?>
                             <?php if($job->duties):?>
                                 <span class="sub-title"><?=Yii::t('app', 'JOB_DUTIES')?></span>
                                 <?=ViewHelper::cutLists($job->duties)?>
-                            <?php endif;?>
-                            <?php if($job->requirements):?>
-                                <span class="sub-title"><?=Yii::t('app', 'JOB_REQUIREMENTS')?></span>
-                                <?=ViewHelper::cutLists($job->requirements)?>
                             <?php endif;?>
                             <?php if($job->conditions):?>
                                 <span class="sub-title"><?=Yii::t('app', 'JOB_CONDITIONS')?></span>

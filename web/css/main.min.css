@@ -351,7 +351,7 @@ p {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  max-width: 980px;
+  max-width: 1020px;
   padding: 0 20px;
   margin: 0 auto;
 }
@@ -391,9 +391,46 @@ p {
 }
 
 .block-jobs .hold-job {
+  position: relative;
   background: #fff;
   max-width: 750px;
   margin: 0 auto 50px;
+}
+
+.block-jobs .hold-job .btn-backwards{
+  position: absolute;
+  top: 10px;
+  left: -100px;
+}
+
+.btn-backwards{
+  font: 13px/14px 'OxygenRegular', sans-serif;
+  color: #828282;
+  padding: 0 0 0 18px;
+  -webkit-transition: color .2s ease-in-out;
+  -o-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
+}
+
+.btn-backwards:hover{
+  color: #00B473;
+}
+
+.btn-backwards svg{
+  position: absolute;
+  fill: #828282;
+  height: 12px;
+  width: 8px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  -webkit-transition: fill .2s ease-in-out;
+  -o-transition: fill .2s ease-in-out;
+  transition: fill .2s ease-in-out;
+}
+
+.btn-backwards:hover svg{
+  fill: #00B473;
 }
 
 .block-jobs .hold-job .box-job {
@@ -623,7 +660,7 @@ div.box-job:hover{
 
 .box-job .content-job .sub-title {
   display: block;
-  font-family: 'OxygenBold', sans-serif;
+  font-weight: bold;
   margin: 0 0 8px;
 }
 
@@ -663,7 +700,8 @@ div.box-job:hover{
 }
 
 .holder-form {
-  max-width: 865px;
+  position: relative;
+  max-width: 750px;
   background: #fff;
   -webkit-box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.2);
           box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.2);
@@ -671,6 +709,12 @@ div.box-job:hover{
           border-radius: 8px 30px 8px 8px;
   padding: 30px 55px;
   margin: 0 auto;
+}
+
+.holder-form .btn-backwards{
+  position: absolute;
+  top: 10px;
+  left: -100px;
 }
 
 .holder-form .hold-inputs {
@@ -1364,6 +1408,24 @@ body > .jcf-select-drop.jcf-drop-flipped {
 }
 
 @media only screen and (max-width: 1024px) {
+  .block-jobs .hold-job .btn-backwards{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 20px;
+    top: auto;
+    left: auto;
+  }
+  .holder-form {
+    margin: 20px auto 0;
+  }
+  .holder-form .btn-backwards{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    top: -60px;
+    left: -55px;
+  }
   .block-jobs .holder-jobs {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1404,6 +1466,10 @@ body > .jcf-select-drop.jcf-drop-flipped {
 }
 
 @media only screen and (max-width: 768px) {
+  .holder-form .btn-backwards {
+    top: -50px;
+    left: -25px;
+  }
   .box-job .employment-job{
   	text-align: center;
   }
