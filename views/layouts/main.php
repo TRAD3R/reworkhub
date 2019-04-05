@@ -22,8 +22,8 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta name="description" itemprop="description" content="">
-    <meta itemprop="image" content="img/favicon/favicon.ico">
-    <meta property="og:image" content="img/favicon/favicon.ico">
+    <meta itemprop="image" content="images/logo.svg">
+    <meta property="og:image" content="images/logo.svg">
     <meta property="og:site_name" content="<?=Yii::$app->name;?>">
     <meta property="og:title" content="<?= Html::encode($this->title) ?>">
     <meta property="og:description" content="">

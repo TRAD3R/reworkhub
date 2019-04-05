@@ -5,7 +5,7 @@
 /* @var $job \app\modules\main\models\Job */
 /* @var $pages \yii\data\Pagination */
 
-$this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
+$this->title = Yii::$app->name;
 
 use app\helpers\ViewHelper;
 use yii\helpers\Url;
