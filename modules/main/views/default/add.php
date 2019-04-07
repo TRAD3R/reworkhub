@@ -10,6 +10,7 @@ use app\modules\main\models\EmploymentTypes;
 use app\modules\main\models\JobCategories;
 use dosamigos\ckeditor\CKEditor;
 use dosamigos\tinymce\TinyMce;
+use himiklab\yii2\recaptcha\ReCaptcha;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -195,7 +196,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             </div>
                         </div>
                     </div>
-                    <div class="form-error"><?= $form->field($model, 'token')->hiddenInput(['id' => 'token'])->label(false)?></div>
+                <?php /*echo */ $form->field($model, 'reCaptcha')->widget(ReCaptcha::class) ?>
                 <div id="trd-submit"><?= Html::submitButton(Yii::t('app', 'BTN_PREVIEW'), ['class' => 'btn']) ?></div>
                 <?php ActiveForm::end()?>
             </div>
@@ -203,12 +204,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     </div>
 
 <?php
-$js1 = "
-    grecaptcha.ready(function() {
-        grecaptcha.execute('6Lew0ZoUAAAAADwqYCBxKYSnnEWmUgxh0nZwTE3w', {action: 'homepage'}).then(function(token) {
-            $('#token').val(token);            
-        });
-    });";
+$js1 = "";
 
     if($model->duties){
 //        $js1 .= "CKEDITOR.instances['jobform-duties'].setData('{$model->duties}');";

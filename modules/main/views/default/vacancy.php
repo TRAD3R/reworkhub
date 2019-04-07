@@ -74,7 +74,7 @@ use yii\widgets\ActiveForm;
                                 <li><?=$skill?></li>
                             <?php endforeach; ?>
                         </ul>
-                        <span class="date-job"><?php echo Yii::$app->formatter->asDate($job->created_at); ?></span>
+                        <span class="date-job"><?php /* echo */ Yii::$app->formatter->asDate($job->created_at); ?></span>
                     </div>
                 <?php endif;?>
                 <?php if(!empty($job->contact_person_name) || !empty($job->contact_person_other) || !empty($job->contact_person_email)):?>

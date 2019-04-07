@@ -24,7 +24,7 @@ return [
     'DUTIES' => 'Что делать:',
     'REQUIREMENTS' => 'Требования:',
     'CONDITIONS' => 'Условия:',
-    'ADD_LOGO_TO_VACANCY' => 'Добавьте к вакансии логотип<br> вашей компании<br> (форматы png, jpg, jpeg)',
+    'ADD_LOGO_TO_VACANCY' => 'Добавьте к вакансии логотип<br> вашей компании<br> (форматы png, jpg, jpeg, ico, bmp, svg)',
     'INPUT_SKILLS_DEVIDE_COMMA' => 'Введите ключевые навыки<br> (разделяйте навыки запятой):',
     'CONTACT_INFORMATION' => 'Контактная информация',
     /** Append phrases */
@@ -103,7 +103,10 @@ return [
     'ERROR_BLOCKED_ACCOUNT' => 'Ваш аккаунт заблокирован',
     'ERROR_NOT_CONFIRMED_ACCOUNT' => 'Ваш аккаунт не подтвежден',
     'ERROR_NOT_SET_SALARY' => 'Не указан уровень дохода',
-    'ERROR_RECAPTCHA' => 'Проверка на человечность не пройдена'
+    'ERROR_RECAPTCHA' => 'Проверка на человечность не пройдена',
+    'ERROR_CHECK_RECAPTCHA' => 'Подтвердите, что Вы не робот',
+    'ERROR_CHECK_IMAGE_FORMAT' => 'Проверьте формат изображения',
+
     /** Errors */
 
 ];
