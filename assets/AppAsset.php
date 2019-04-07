@@ -27,7 +27,7 @@ class AppAsset extends AssetBundle
 //        'js/common.js',
         'js/scripts.min.js',
         'https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js',
-        "https://www.google.com/recaptcha/api.js?render=6Lew0ZoUAAAAADwqYCBxKYSnnEWmUgxh0nZwTE3w"
+//        "https://www.google.com/recaptcha/api.js?render=6Lew0ZoUAAAAADwqYCBxKYSnnEWmUgxh0nZwTE3w"
     ];
     public $depends = [
         'yii\web\YiiAsset',
