@@ -103,7 +103,8 @@ return [
     'ERROR_BLOCKED_ACCOUNT' => 'Ваш аккаунт заблокирован',
     'ERROR_NOT_CONFIRMED_ACCOUNT' => 'Ваш аккаунт не подтвежден',
     'ERROR_NOT_SET_SALARY' => 'Не указан уровень дохода',
-    'ERROR_RECAPTCHA' => 'Проверка на человечность не пройдена'
+    'ERROR_RECAPTCHA' => 'Проверка на человечность не пройдена',
+    'ERROR_CHECK_RECAPTCHA' => 'Подтвердите, что Вы не робот',
     /** Errors */
 
 ];

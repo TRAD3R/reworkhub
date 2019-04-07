@@ -66,7 +66,7 @@ use yii\widgets\LinkPager; ?>
                                     <li><?=$skill?></li>
                                 <?php endforeach; ?>
                             </ul>
-                            <span class="date-job"><?php echo Yii::$app->formatter->asDate($job->created_at); ?></span>
+                            <span class="date-job"><?php /* echo */  Yii::$app->formatter->asDate($job->created_at); ?></span>
                         </div>
                     </div>
                 </a>

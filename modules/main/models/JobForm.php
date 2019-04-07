@@ -53,6 +53,7 @@ class JobForm extends Model
             [['contactPersonEmail', 'contactPersonOther'], 'string', 'max' => 50],
 
             ['minSalary', 'checkSetSalary', 'skipOnEmpty' => false],
+            [['reCaptcha'], ReCaptchaValidator::className(), 'secret' => 'your secret key', 'uncheckedMessage' => Yii::t('app', 'ERROR_CHECK_RECAPTCHA')],
             ['token', 'recaptcha']
         ];
     }
