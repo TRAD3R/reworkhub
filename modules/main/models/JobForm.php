@@ -51,7 +51,6 @@ class JobForm extends Model
             [['contactPersonName'], 'string', 'max' => 150],
             [['contactPersonEmail', 'contactPersonOther'], 'string', 'max' => 50],
 
-            ['minSalary', 'checkSetSalary', 'skipOnEmpty' => false],
 //            [['reCaptcha'], ReCaptchaValidator::class, 'secret' => '6LcBgZYUAAAAAD_BgjqcJRIfrRLZ3c8emZFTc0Dq', 'uncheckedMessage' => Yii::t('app', 'ERROR_CHECK_RECAPTCHA')],
         ];
     }
@@ -84,14 +83,5 @@ class JobForm extends Model
         $this->companyLogo->saveAs('img/companies/' . $logoTitle . '.' . $this->companyLogo->extension, true);
         $this->companyLogo = $logoTitle . '.' . $this->companyLogo->extension;
         return  true;
-    }
-
-    public function checkSetSalary(){
-        if($this->hasErrors())
-            return;
-
-        if(empty($this->minSalary) && empty($this->maxSalary)){
-            $this->addError('minSalary', Yii::t('app', 'ERROR_NOT_SET_SALARY'));
-        }
     }
 }
