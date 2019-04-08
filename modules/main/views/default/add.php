@@ -10,6 +10,7 @@ use app\modules\main\models\EmploymentTypes;
 use app\modules\main\models\JobCategories;
 use dosamigos\ckeditor\CKEditor;
 use dosamigos\tinymce\TinyMce;
+use himiklab\yii2\recaptcha\ReCaptcha;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -21,7 +22,10 @@ use yii\widgets\ActiveForm;
 
 $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
 ?>
-
+<?php
+foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
+    echo '<div class="alert alert-' . $key . '">' . $message . '</div>';
+} ?>
     <div class="block-jobs">
         <div class="container">
             <div class="holder-form">
@@ -145,16 +149,15 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                             <div class="hold-inputs">
                                 <div class="box-input three-elem">
                                     <?= Html::activeInput('number', $model, 'minSalary',
-                                        ['id' => 'zp-from', 'name' => 'zp-from', 'maxlength' => 10, 'placeholder' => Yii::t('app', 'JOB_SALARY_FROM')]); ?>
+                                        ['id' => 'zp-from', 'maxlength' => 10, 'placeholder' => Yii::t('app', 'JOB_SALARY_FROM')]); ?>
                                 </div>
                                 <div class="box-input three-elem">
                                     <?= Html::activeInput('number', $model, 'maxSalary',
-                                        ['id' => 'zp-to', 'name' => 'zp-to', 'maxlength' => 10, 'placeholder' => Yii::t('app', 'JOB_SALARY_TO')]); ?>
+                                        ['id' => 'zp-to', 'maxlength' => 10, 'placeholder' => Yii::t('app', 'JOB_SALARY_TO')]); ?>
                                 </div>
                                 <div class="box-input three-elem">
                                     <?= Html::activeDropDownList($model, 'currency', ['rub' => 'RUB', 'usd' => 'USD', 'eur' => "EUR"]
                                         , ['id' => 'currency'
-                                            , 'name' => 'currency'
                                             , 'class' => 'custom color'
                                             , 'data-jcf' => '{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'
                                             , 'value' => !empty($model->currency) ? $model->currency : "rub"
@@ -166,7 +169,7 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                         <div class="box-input">
                             <span class="title-input"><?=Yii::t('app', 'INPUT_SKILLS_DEVIDE_COMMA')?></span>
                             <?= $form->field($model, 'skills')
-                                ->input('text', ['id' => 'contact-name', 'name' => 'skills'])
+                                ->input('text', ['id' => 'contact-name'])
                                 ->label(false) ?>
                         </div>
                     </div>
@@ -186,14 +189,14 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
                                     ->input('email', ['placeholder' => 'example@mail.ru'])
                                     ->label(Yii::t('app', 'JOB_CONTACT_PERSON_EMAIL'), ['class' => 'title-input']) ?>
                             </div>
-                            <div class="box-input">
+                            <div class="box-input-full">
                                 <?= $form->field($model, 'contactPersonOther')
-                                    ->input('text', ['placeholder' => 'Например +380441234567'])
+                                    ->textarea()
                                     ->label(Yii::t('app', 'JOB_CONTACT_PERSON_OTHER'), ['class' => 'title-input']) ?>
                             </div>
                         </div>
                     </div>
-                    <div class="form-error"><?= $form->field($model, 'token')->hiddenInput(['id' => 'token'])->label(false)?></div>
+                <?php /*echo */ $form->field($model, 'reCaptcha')->widget(ReCaptcha::class) ?>
                 <div id="trd-submit"><?= Html::submitButton(Yii::t('app', 'BTN_PREVIEW'), ['class' => 'btn']) ?></div>
                 <?php ActiveForm::end()?>
             </div>
@@ -201,12 +204,7 @@ $this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
     </div>
 
 <?php
-$js1 = "
-    grecaptcha.ready(function() {
-        grecaptcha.execute('6Lew0ZoUAAAAADwqYCBxKYSnnEWmUgxh0nZwTE3w', {action: 'homepage'}).then(function(token) {
-            $('#token').val(token);            
-        });
-    });";
+$js1 = "";
 
     if($model->duties){
 //        $js1 .= "CKEDITOR.instances['jobform-duties'].setData('{$model->duties}');";

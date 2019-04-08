@@ -256,25 +256,26 @@ class Telegram
     public static function getChannelView(Job $job)
     {
         $view = file_get_contents(__DIR__ . "/../views/channel.txt");
-        $view = str_replace("[URL]", $job->id, $view);
-        $view = str_replace("[JOB_TITLE]", $job->title, $view);
+        $url = "https://reworkhub.com/vacancy/{$job->id}";
+        $jobTitle = '<a href="' . $url . '">' . $job->title . '</a>';
+        $view = str_replace("[JOB_TITLE]", $jobTitle, $view);
         $companyTitle =  !empty($job->company_title) ? "<b>" . Yii::t('app', "PH_COMPANY") . ":</b>" . PHP_EOL . self::replaceHTML($job->company_title) : "";
         $view = str_replace("[COMPANY_TITLE]", $companyTitle, $view);
         $about = self::replaceHTML($job->company_about);
         $view = str_replace("[COMPANY_ABOUT]", $about, $view);
         $description = self::replaceHTML($job->description);
         $view = str_replace("[JOB_DESCRIPTION]", $description, $view);
-        $duties =  !empty($job->duties) ? "<b>" . Yii::t('app', "DUTIES") . "</b>" . PHP_EOL . self::replaceHTML($job->duties) : "";
+        $duties =  !empty($job->duties) ? PHP_EOL . "<b>" . Yii::t('app', "DUTIES") . "</b>" . PHP_EOL . self::replaceHTML($job->duties) : "";
         $view = str_replace("[JOB_DUTIES]", $duties, $view);
         $requirements = !empty($job->requirements) ? "<b>" . Yii::t('app', "REQUIREMENTS") . "</b>" . PHP_EOL . self::replaceHTML($job->requirements) : "";
         $view = str_replace("[JOB_REQUIREMENTS]", $requirements, $view);
-        $conditions = !empty($job->conditions) ? "<b>" . Yii::t('app', "CONDITIONS") . "</b>" . PHP_EOL . self::replaceHTML($job->conditions) : "";
+        $conditions = !empty($job->conditions) ? PHP_EOL . "<b>" . Yii::t('app', "CONDITIONS") . "</b>" . PHP_EOL . self::replaceHTML($job->conditions) : "";
         $view = str_replace("[JOB_CONDITIONS]", $conditions, $view);
         $salary = self::getSalary($job->min_salary, $job->max_salary, $job->currency);
         $view = str_replace("[SALARY]", $salary, $view);
         $view = str_replace("[CONTACT_NAME]", $job->contact_person_name, $view);
         $view = str_replace("[CONTACT_PHONE]", $job->contact_person_other, $view);
-        $view = str_replace("[CONTACT_EMAIL]", $job->contact_person_email, $view);
+//        $view = str_replace("[CONTACT_EMAIL]", $job->contact_person_email, $view);
 
         $view = str_replace("&nbsp;", "", $view);
         return $view;
@@ -282,16 +283,24 @@ class Telegram
 
     private static function replaceHTML($str)
     {
-        $result = preg_replace("~(<p>|</p>|<ul>|</ul>|</li>)~", "", $str);
-        $result = preg_replace("~<li>~", "-", $result);
+        $result = preg_replace("~(<p>|</p>|<ul>|</ul>|<ol>|</ol>|</li>)~", "", $str);
+        $result = preg_replace("~(<br />|<br>|</br>)~", "\n", $result);
+        $result = preg_replace("~(<li>|&mdash;)~", "-", $result);
+        $result = preg_replace("~(&ldquo;|&rdquo;)~", '"', $result);
 
         $arr = explode("\n", $result);
-        foreach ($arr as $key => $item){
-            if(strlen(strip_tags($item)) < 3)
+        $cutArr = [];
+        foreach ($arr as $key => $item) {
+            if (strlen(strip_tags($item)) < 3){
                 unset($arr[$key]);
+            }else{
+                $cutArr[] = $item;
+                if (count($cutArr) > 3)
+                    break;
+            }
         }
 
-        $result = implode("\n", $arr);
+        $result = implode("\n", $cutArr);
         return $result;
     }
 
@@ -300,12 +309,13 @@ class Telegram
         if(empty($min) && empty($max)){
             $salary = "";
         }else{
+            $salary = "<strong>Оклад</strong>\n";
             if(!empty($min) && !empty($max))
-                $salary = $min . " - " . $max;
+                $salary .= $min . " - " . $max;
             elseif (!empty($min))
-                $salary = Yii::t('app', 'PH_SALARY_FROM') . " " . $min;
+                $salary .= Yii::t('app', 'PH_SALARY_FROM') . " " . $min;
             else
-                $salary = Yii::t('app', 'PH_SALARY_TO') . " " . $max;
+                $salary .= Yii::t('app', 'PH_SALARY_TO') . " " . $max;
             $salary .= " " . strtoupper($cur);
         }
 

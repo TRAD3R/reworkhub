@@ -734,6 +734,12 @@ div.box-job:hover{
   margin: 0 15px 20px;
 }
 
+.holder-form .box-input-full {
+  /*width: -webkit-calc(50% - 30px);*/
+  /*width: calc(50% - 30px);*/
+  margin: 0 15px 20px;
+}
+
 .holder-form .box-input.editor .form-group{
 	margin: 0 0 20px;
 }

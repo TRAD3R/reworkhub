@@ -9,7 +9,6 @@
 namespace app\modules\main\models;
 
 
-use trad3r\dump\Dump;
 use Yii;
 use yii\base\Model;
 use yii\web\UploadedFile;
@@ -33,7 +32,6 @@ class JobForm extends Model
     public $contactPersonEmail;
     public $contactPersonOther;
     public $reCaptcha;
-    public $token;
 
     /**
      * @var UploadedFile
@@ -47,15 +45,13 @@ class JobForm extends Model
             [['jobCategories', 'title', 'employmentType', 'requirements', 'contactPersonEmail', 'currency'], 'required'],
             [['contactPersonEmail'], 'email'],
             [['duties', 'conditions'], 'safe'],
-//            [['minSalary', 'maxSalary'], 'integer'],
-            ['minSalary', 'errorSalaryNotSet'],
-            [['companyLogo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, ico, bmp, svg'],
-            [['companyTitle', 'title', 'companyAbout', 'skills'], 'string', 'max' => 255],
+            [['companyLogo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, ico, bmp, svg', 'message' => Yii::t('app', 'ERROR_CHECK_IMAGE_FORMAT')],
+            [['companyTitle', 'title', 'skills'], 'string', 'max' => 255],
+            ['companyAbout', 'string', 'max' => 1000],
             [['contactPersonName'], 'string', 'max' => 150],
-            [['minSalary', 'maxSalary'], 'string', 'max' => 10],
             [['contactPersonEmail', 'contactPersonOther'], 'string', 'max' => 50],
 
-            ['token', 'recaptcha']
+//            [['reCaptcha'], ReCaptchaValidator::class, 'secret' => '6LcBgZYUAAAAAD_BgjqcJRIfrRLZ3c8emZFTc0Dq', 'uncheckedMessage' => Yii::t('app', 'ERROR_CHECK_RECAPTCHA')],
         ];
     }
 
@@ -69,9 +65,9 @@ class JobForm extends Model
             'title' => Yii::t('app', 'JOB_TITLE'),
             'employmentType' => Yii::t('app', 'JOB_EMPLOYMENT_TYPE'),
             'description' => Yii::t('app', 'JOB_DESCRIPTION'),
-            'duties' => Yii::t('app', 'JOB_DESCRIPTION'),
-            'requirements' => Yii::t('app', 'JOB_DESCRIPTION'),
-            'conditions' => Yii::t('app', 'JOB_DESCRIPTION'),
+            'duties' => Yii::t('app', 'JOB_DUTIES'),
+            'requirements' => Yii::t('app', 'JOB_REQUIREMENTS'),
+            'conditions' => Yii::t('app', 'JOB_CONDITIONS'),
             'skills' => Yii::t('app', 'JOB_SKILLS'),
             'minSalary' => Yii::t('app', 'JOB_SALARY_FROM'),
             'maxSalary' => Yii::t('app', 'JOB_SALARY_TO'),
@@ -87,32 +83,5 @@ class JobForm extends Model
         $this->companyLogo->saveAs('img/companies/' . $logoTitle . '.' . $this->companyLogo->extension, true);
         $this->companyLogo = $logoTitle . '.' . $this->companyLogo->extension;
         return  true;
-    }
-
-    public function recaptcha(){
-        if($this->hasErrors())
-            return;
-
-        if($this->token){
-            $url = "https://www.google.com/recaptcha/api/siteverify?secret=6Lew0ZoUAAAAAJ3AJ2YjCG-sNTzxQqTbI5OysptR&response={$this->token}";
-
-            $verify = file_get_contents($url);
-            $captcha_success=json_decode($verify);
-
-            if ($captcha_success->success==false || $captcha_success->score < 0.3) {
-                $this->addError('token', Yii::t('app', 'ERROR_RECAPTCHA'));
-            }
-        }else{
-            $this->addError('token', Yii::t('app', 'ERROR_RECAPTCHA'));
-        }
-    }
-
-    public function errorSalaryNotSet(){
-        if($this->hasErrors())
-            return;
-
-        if(empty($this->minSalary) && empty($this->maxSalary)){
-            $this->addError('minSalary', Yii::t('app', 'ERROR_NOT_SET_SALARY'));
-        }
     }
 }

@@ -21,8 +21,14 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <meta name="description" itemprop="description" content="">
+    <meta itemprop="image" content="images/logo.svg">
+    <meta property="og:image" content="images/logo.svg">
+    <meta property="og:site_name" content="<?=Yii::$app->name;?>">
+    <meta property="og:title" content="<?= Html::encode($this->title) ?>">
+    <meta property="og:description" content="">
+
     <!-- Template Basic Images Start -->
-    <meta property="og:image" content="path/to/image.jpg">
     <link rel="icon" href="img/favicon/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
     <!-- Template Basic Images End -->

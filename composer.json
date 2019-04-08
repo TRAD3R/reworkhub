@@ -23,7 +23,8 @@
         "2amigos/yii2-tinymce-widget": "~1.1",
         "yiisoft/yii2-httpclient": "*",
         "ezyang/htmlpurifier": "^4.10",
-      "ext-json": "*"
+      "ext-json": "*",
+        "himiklab/yii2-recaptcha-widget": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

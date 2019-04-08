@@ -5,7 +5,7 @@
 /* @var $job \app\modules\main\models\Job */
 /* @var $pages \yii\data\Pagination */
 
-$this->title = Yii::$app->name . ' — ' . Yii::t('app', 'TITLE_POST_JOB');
+$this->title = Yii::$app->name;
 
 use app\helpers\ViewHelper;
 use yii\helpers\Url;
@@ -29,16 +29,18 @@ use yii\widgets\LinkPager; ?>
                             echo $companyTitle;
                             ?>
                         </span>
+                        <?php if((int) $job->min_salary > 0 || (int) $job->max_salary > 0):?>
                             <span class="job-salary">
-                            <?php if(!empty($job->min_salary) && !empty($job->max_salary)):?>
-                                <?php echo $job->min_salary . " - " . $job->max_salary;?>
-                            <?php elseif (!empty($job->min_salary)):?>
-                                <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $job->min_salary;?>
-                            <?php else:?>
-                                <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $job->max_salary;?>
-                            <?php endif;?>
-                            <?=strtoupper($job->currency)?>
-                        </span>
+                                <?php if(!empty($job->min_salary) && !empty($job->max_salary)):?>
+                                    <?php echo $job->min_salary . " - " . $job->max_salary;?>
+                                <?php elseif (!empty($job->min_salary)):?>
+                                    <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $job->min_salary;?>
+                                <?php else:?>
+                                    <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $job->max_salary;?>
+                                <?php endif;?>
+                                <?=strtoupper($job->currency)?>
+                            </span>
+                        <?php endif; ?>
                         </div>
                     </div>
                     <div class="hold-content">
@@ -66,7 +68,7 @@ use yii\widgets\LinkPager; ?>
                                     <li><?=$skill?></li>
                                 <?php endforeach; ?>
                             </ul>
-                            <span class="date-job"><?php echo Yii::$app->formatter->asDate($job->created_at); ?></span>
+                            <span class="date-job"><?php  /* echo */ Yii::$app->formatter->asDate($job->created_at); ?></span>
                         </div>
                     </div>
                 </a>
