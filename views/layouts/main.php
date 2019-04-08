@@ -52,6 +52,7 @@ AppAsset::register($this);
                 <a href="<?= Url::to('/')?>" class="logo">
                     <img src="/images/logo.svg" alt="Reworkhub">
                 </a>
+                <input id="search" type="text" placeholder=""><i class="fa fa-search" onclick="trd_search()"></i>
                 <a href="<?= Url::to('/add')?>" class="btn"><?= Yii::t('app', 'BTN_POST_JOB')?></a>
             </div>
         </header>
@@ -90,7 +91,6 @@ AppAsset::register($this);
             </div>
         </div>
     </footer>
-
 </div>
 
 <?php $this->endBody() ?>
