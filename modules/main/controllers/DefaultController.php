@@ -7,11 +7,13 @@ use app\modules\main\models\Job;
 use app\modules\main\models\JobCategories;
 use app\modules\main\models\JobForm;
 use app\modules\telegram\models\Telegram;
+use function Sodium\add;
 use Yii;
 use yii\data\Pagination;
 use yii\helpers\Json;
 use yii\swiftmailer\Message;
 use yii\web\Controller;
+use yii\web\Response;
 use yii\web\UploadedFile;
 
 /**
@@ -206,4 +208,25 @@ class DefaultController extends Controller
             return $this->redirect("/preview");
         }
     } // actionSave
+
+    public function actionSearch(){
+        $phrase = Yii::$app->request->get('phrase');
+
+        $query = Job::findBySql("SELECT j.*
+                FROM rw_jobs j JOIN rw_job_categories rjc on j.job_categories_id = rjc.id
+                WHERE (j.title LIKE :phrase OR rjc.category LIKE :phrase) AND j.status = 1
+                ORDER BY published DESC
+            ", [':phrase' => "%$phrase%"]);
+
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('search', [
+            "jobs" => $models,
+            'pages' => $pages
+        ]);
+    } // actionPhraseSearch
 }
