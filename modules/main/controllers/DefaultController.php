@@ -203,6 +203,7 @@ class DefaultController extends Controller
             return $this->goHome();
         }else {
             Yii::error($job->getErrors(), 'trd_error');
+            return $this->redirect("/preview");
         }
     } // actionSave
 }

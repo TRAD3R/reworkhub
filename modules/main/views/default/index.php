@@ -29,16 +29,18 @@ use yii\widgets\LinkPager; ?>
                             echo $companyTitle;
                             ?>
                         </span>
+                        <?php if((int) $job->min_salary > 0 || (int) $job->max_salary > 0):?>
                             <span class="job-salary">
-                            <?php if(!empty($job->min_salary) && !empty($job->max_salary)):?>
-                                <?php echo $job->min_salary . " - " . $job->max_salary;?>
-                            <?php elseif (!empty($job->min_salary)):?>
-                                <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $job->min_salary;?>
-                            <?php else:?>
-                                <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $job->max_salary;?>
-                            <?php endif;?>
-                            <?=strtoupper($job->currency)?>
-                        </span>
+                                <?php if(!empty($job->min_salary) && !empty($job->max_salary)):?>
+                                    <?php echo $job->min_salary . " - " . $job->max_salary;?>
+                                <?php elseif (!empty($job->min_salary)):?>
+                                    <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $job->min_salary;?>
+                                <?php else:?>
+                                    <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $job->max_salary;?>
+                                <?php endif;?>
+                                <?=strtoupper($job->currency)?>
+                            </span>
+                        <?php endif; ?>
                         </div>
                     </div>
                     <div class="hold-content">

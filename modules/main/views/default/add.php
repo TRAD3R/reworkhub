@@ -189,9 +189,9 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                                     ->input('email', ['placeholder' => 'example@mail.ru'])
                                     ->label(Yii::t('app', 'JOB_CONTACT_PERSON_EMAIL'), ['class' => 'title-input']) ?>
                             </div>
-                            <div class="box-input">
+                            <div class="box-input-full">
                                 <?= $form->field($model, 'contactPersonOther')
-                                    ->input('text', ['placeholder' => 'Например +380441234567'])
+                                    ->textarea()
                                     ->label(Yii::t('app', 'JOB_CONTACT_PERSON_OTHER'), ['class' => 'title-input']) ?>
                             </div>
                         </div>

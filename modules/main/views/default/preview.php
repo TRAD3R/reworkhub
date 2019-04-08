@@ -35,17 +35,19 @@ use yii\widgets\ActiveForm;
                             <span class="job-company"><?=$model->companyAbout?></span>
                         <?php endif; ?>
 
-                        <span class="job-salary">
-                            <?php
-                            if(!empty($model->minSalary) && !empty($model->maxSalary)):?>
-                                <?php echo $model->minSalary . " - " . $model->maxSalary;?>
-                            <?php elseif (!empty($model->minSalary)):?>
-                                <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $model->minSalary;?>
-                            <?php else:?>
-                                <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $model->maxSalary;?>
-                            <?php endif;?>
-                            <?=strtoupper($model->currency)?>
-                        </span>
+                        <?php if((int) $model->minSalary > 0 || (int) $model->maxSalary > 0):?>
+                            <span class="job-salary">
+                                <?php
+                                if(!empty($model->minSalary) && !empty($model->maxSalary)):?>
+                                    <?php echo $model->minSalary . " - " . $model->maxSalary;?>
+                                <?php elseif (!empty($model->minSalary)):?>
+                                    <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $model->minSalary;?>
+                                <?php else:?>
+                                    <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $model->maxSalary;?>
+                                <?php endif;?>
+                                <?=strtoupper($model->currency)?>
+                            </span>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="content-job">
@@ -84,16 +86,6 @@ use yii\widgets\ActiveForm;
                                     <path d="M8.00079 0C3.58267 0 0.000976562 3.5818 0.000976562 7.99992C0.000976562 12.4179 3.58267 16 8.00079 16C12.4189 16 16.0009 12.4179 16.0009 7.99992C16.0009 3.58169 12.4189 0 8.00079 0ZM8.02516 11.7741V11.774H7.97631H4.5591C4.5591 9.27503 6.7539 9.27561 7.24094 8.62217L7.29668 8.32419C6.6124 7.97741 6.12936 7.14135 6.12936 6.16353C6.12936 4.8753 6.96734 3.83081 8.00079 3.83081C9.03424 3.83081 9.87222 4.8753 9.87222 6.16353C9.87222 7.13303 9.39776 7.96387 8.72261 8.31614L8.78608 8.65475C9.32043 9.27652 11.4422 9.31705 11.4422 11.7741H8.02516Z" fill="#00B473" fill-opacity="0.7"/>
                                 </svg>
                                 <?=$model->contactPersonName?>
-                            </a>
-                        </div>
-                    <?php endif; ?>
-                    <?php if(!empty($model->contactPersonEmail)):?>
-                        <div class="box-link">
-                            <a href="mailto:<?=$model->contactPersonEmail?>">
-                                <svg width="100%" height="100%" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 9.99994C16 10.3507 15.9013 10.6759 15.7433 10.962L10.6914 5.30966L15.6885 0.937654C15.8829 1.24614 16 1.6085 16 2.00009V9.99994ZM8.00002 6.33595L14.9533 0.251998C14.668 0.0957933 14.3467 0 14 0H1.99999C1.65296 0 1.33154 0.0957933 1.04736 0.251998L8.00002 6.33595ZM9.93854 5.96788L8.32904 7.37705C8.2349 7.45905 8.11767 7.50001 8.00002 7.50001C7.88229 7.50001 7.76507 7.45905 7.67092 7.37705L6.06107 5.96781L0.945304 11.6924C1.25194 11.8847 1.61131 12 1.99995 12H14C14.3886 12 14.7482 11.8847 15.0547 11.6924L9.93854 5.96788ZM0.311551 0.937621C0.117194 1.24611 0 1.60847 0 2.00009V9.99997C0 10.3507 0.0982006 10.6759 0.256845 10.962L5.30811 5.3087L0.311551 0.937621Z" fill="#00B473" fill-opacity="0.7"></path>
-                                </svg>
-                                <?=$model->contactPersonEmail?>
                             </a>
                         </div>
                     <?php endif; ?>
