@@ -26,6 +26,7 @@ class AppAsset extends AssetBundle
     public $js = [
 //        'js/common.js',
         'js/scripts.min.js',
+        'js/trd_scripts.js',
         'https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js',
 //        "https://www.google.com/recaptcha/api.js?render=6Lew0ZoUAAAAADwqYCBxKYSnnEWmUgxh0nZwTE3w"
     ];

@@ -86,6 +86,7 @@ return [
     "PH_CONTACT_INFORMATION" => 'Контактная информация',
     "PH_INSERT_SKIILS" => 'Разделяйте навыки пробелом',
     "PH_COMPANY" => 'Компания',
+    "PH_SEARCH_BY_QUERY" => 'Результаты поиска по запросу: %s',
     /** Placeholders */
 
     /** Messages */
@@ -106,6 +107,7 @@ return [
     'ERROR_RECAPTCHA' => 'Проверка на человечность не пройдена',
     'ERROR_CHECK_RECAPTCHA' => 'Подтвердите, что Вы не робот',
     'ERROR_CHECK_IMAGE_FORMAT' => 'Проверьте формат изображения',
+    'ERROR_FOUND_NOTHING' => 'По Вашему запросу ничего не найдено. Попробуйте изменить запрос.',
 
     /** Errors */
 
