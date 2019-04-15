@@ -210,7 +210,7 @@ class DefaultController extends Controller
     } // actionSave
 
     public function actionSearch(){
-        $phrase = Yii::$app->request->get('phrase');
+        $phrase = trim(Yii::$app->request->get('phrase'));
 
         $query = Job::findBySql("SELECT j.*
                 FROM rw_jobs j JOIN rw_job_categories rjc on j.job_categories_id = rjc.id

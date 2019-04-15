@@ -26,7 +26,7 @@ $(document).ready(function() {
 	$(function() {
 		jcf.replaceAll();
 	});
-
+	
 });
 
 /*!

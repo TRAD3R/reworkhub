@@ -27,26 +27,25 @@ use yii\widgets\ActiveForm;
                             <img src="img/companies/<?=$model->companyLogo?>" alt="<?=$model->companyTitle?>">
                         </div>
                         <?php endif; ?>
-
-                        <h1 class="job-title"><?= $model->title?></h1>
-
+                        <div class="hold-title">
+                            <h1 class="job-title"><?= $model->title?></h1>
+                            <?php if((int) $model->minSalary > 0 || (int) $model->maxSalary > 0):?>
+                                <span class="job-salary">
+                                    <?php
+                                    if(!empty($model->minSalary) && !empty($model->maxSalary)):?>
+                                        <?php echo $model->minSalary . " - " . $model->maxSalary;?>
+                                    <?php elseif (!empty($model->minSalary)):?>
+                                        <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $model->minSalary;?>
+                                    <?php else:?>
+                                        <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $model->maxSalary;?>
+                                    <?php endif;?>
+                                    <?=strtoupper($model->currency)?>
+                                </span>
+                            <?php endif; ?>
+                        </div>
                         <?php if(!empty($model->companyTitle)): ?>
                             <span class="job-company"><strong><?=Yii::t('app', 'PH_COMPANY')?>:</strong> <?=$model->companyTitle?></span>
                             <span class="job-company"><?=$model->companyAbout?></span>
-                        <?php endif; ?>
-
-                        <?php if((int) $model->minSalary > 0 || (int) $model->maxSalary > 0):?>
-                            <span class="job-salary">
-                                <?php
-                                if(!empty($model->minSalary) && !empty($model->maxSalary)):?>
-                                    <?php echo $model->minSalary . " - " . $model->maxSalary;?>
-                                <?php elseif (!empty($model->minSalary)):?>
-                                    <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $model->minSalary;?>
-                                <?php else:?>
-                                    <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $model->maxSalary;?>
-                                <?php endif;?>
-                                <?=strtoupper($model->currency)?>
-                            </span>
                         <?php endif; ?>
                     </div>
                 </div>

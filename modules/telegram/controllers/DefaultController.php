@@ -29,7 +29,6 @@ class DefaultController extends Controller
     public function actionGet()
     {
         $request = file_get_contents("php://input");
-
         $this->telegram->getMessage(new Result(Json::decode($request)));
     }
 

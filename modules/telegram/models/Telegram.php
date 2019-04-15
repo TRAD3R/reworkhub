@@ -26,8 +26,8 @@ class Telegram
 {
     private $bot;
 //    private $adminChats = [583732141]; // admin's chats array
-    private $admins = ['aleksandr8585', 'trad3r8']; // admin's array
-    private $adminChats = ['349719901', '583732141']; // admin's chats array
+    private $admins = ['aleksandr8585', 'aleksandrrework', 'trad3r8']; // admin's array
+    private $adminChats = [349719901, 583732141, 699972493]; // admin's chats array
 
     public function __construct()
     {
@@ -283,7 +283,9 @@ class Telegram
 
     private static function replaceHTML($str)
     {
-        $result = preg_replace("~(<p>|</p>|<ul>|</ul>|<ol>|</ol>|</li>)~", "", $str);
+        $result = preg_replace("~\n{2,}~sm", "\n", $str);
+//        $result = preg_replace("~<li>\n<p>~sm", "<li><p>", $result);
+        $result = preg_replace("~(<p>|</p>|<ul>|</ul>|<ol>|</ol>|</li>|\t)~", "", $result);
         $result = preg_replace("~(<br />|<br>|</br>)~", "\n", $result);
         $result = preg_replace("~(<li>|&mdash;)~", "-", $result);
         $result = preg_replace("~(&ldquo;|&rdquo;)~", '"', $result);
@@ -294,7 +296,7 @@ class Telegram
             if (strlen(strip_tags($item)) < 3){
                 unset($arr[$key]);
             }else{
-                $cutArr[] = $item;
+                $cutArr[] = preg_match("~^(-|\d)~", $item) == 1 ? $item : "- {$item}";
                 if (count($cutArr) > 3)
                     break;
             }

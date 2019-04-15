@@ -34,22 +34,25 @@ use yii\widgets\ActiveForm;
                                 <img src="/img/companies/<?=$job->company_logo?>" alt="<?=$job->company_title?>">
                             </div>
                         <?php endif; ?>
-                        <h1 class="job-title"><?= $job->title?></h1>
+                        <div class="hold-title">
+                            <h1 class="job-title"><?= $job->title?></h1>
+                            <?php if((int) $job->min_salary > 0 || (int) $job->max_salary > 0):?>
+                                <span class="job-salary">
+                                    <?php
+                                    if(!empty($job->min_salary) && !empty($job->max_salary)):?>
+                                        <?php echo $job->min_salary . " - " . $job->max_salary;?>
+                                    <?php elseif (!empty($job->min_salary)):?>
+                                        <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $job->min_salary;?>
+                                    <?php else:?>
+                                        <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $job->max_salary;?>
+                                    <?php endif;?>
+                                    <?=strtoupper($job->currency)?>
+                                </span>
+                            <?php endif; ?>
+                        </div>
                         <span class="job-company"><?=$job->company_title?></span>
                         <span class="job-company"><?=$job->company_about?></span>
-                        <?php if((int) $job->min_salary > 0 || (int) $job->max_salary > 0):?>
-                            <span class="job-salary">
-                                <?php
-                                if(!empty($job->min_salary) && !empty($job->max_salary)):?>
-                                    <?php echo $job->min_salary . " - " . $job->max_salary;?>
-                                <?php elseif (!empty($job->min_salary)):?>
-                                    <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $job->min_salary;?>
-                                <?php else:?>
-                                    <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $job->max_salary;?>
-                                <?php endif;?>
-                                <?=strtoupper($job->currency)?>
-                            </span>
-                        <?php endif; ?>
+                        <span class="job-company"><?=$job->employmentTypes->type?></span>
                     </div>
                 </div>
                 <div class="content-job">

@@ -29,7 +29,7 @@ body {
   min-width: 320px;
   margin: 0;
   color: #454545;
-  font: 16px/20px 'OxygenRegular', arial, helvetica, sans-serif;
+  font: 14px/20px 'OxygenRegular', arial, helvetica, sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -204,7 +204,11 @@ a[href^="tel"]:hover {
 ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 0 10px;
+}
+
+ol{
+  margin: 0 0 10px;
 }
 
 article, aside, details, figcaption, figure,
@@ -247,8 +251,6 @@ p {
   background-image: -webkit-linear-gradient(left, #64D0A9 0%, #6DC2B7 100%);
   background-image: -o-linear-gradient(left, #64D0A9 0%, #6DC2B7 100%);
   background-image: linear-gradient(90deg, #64D0A9 0%, #6DC2B7 100%);
-  -webkit-background-size: 200% 200%;
-          background-size: 200%;
   color: #fff;
   letter-spacing: 1px;
   padding: 13px 30px;
@@ -290,7 +292,7 @@ p {
 .list {
   list-style: none;
   padding: 0;
-  margin: 0 0 20px;
+  margin: 0 0 10px;
 }
 
 .list li {
@@ -372,6 +374,57 @@ p {
 
 #header .logo:hover {
   opacity: 0.8;
+}
+
+.holder-search{
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.1);
+  box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.1);
+  padding: 20px 40px;
+  margin: 0 0 25px;
+}
+
+.box-search{
+  position: relative;
+  max-width: 630px;
+  width: 100%;
+}
+
+.box-search .input-search{
+  padding: 10px 180px 10px 15px;
+}
+
+.box-search .input-search:focus{
+  border: 1px solid #00B473;
+}
+
+.box-search .fa-search{
+  position: absolute;
+  background: #E6F8F2;
+  color: #454545;
+  font-size: 18px;
+  padding: 10px 74px;
+  border-radius: 8px;
+  top: 1px;
+  bottom: 1px;
+  right: 1px;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+.box-search .fa-search:hover{
+  background: #64D0A9;
+}
+
+.block-jobs .container>p{
+  margin: 0 0 20px;
 }
 
 .block-jobs {
@@ -523,7 +576,7 @@ p {
 }
 
 .box-job {
-  height: 535px;
+  overflow: hidden;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
@@ -533,8 +586,7 @@ p {
 -webkit-box-direction: normal;
     -ms-flex-direction: column;
         flex-direction: column;
-  width: -webkit-calc(50% - 30px);
-  width: calc(50% - 30px);
+  width: 100%;
   background: #fff;
   color: #454545;
   -webkit-box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.2);
@@ -614,20 +666,39 @@ div.box-job:hover{
 
 .box-job .head-job .job-title {
   display: block;
-  font: 20px/22px 'OxygenBold', sans-serif;
+  font: 18px/22px 'OxygenBold', sans-serif;
   margin: 0 0 5px;
 }
 
 .box-job .head-job .job-company {
   display: block;
-  font: 15px/17px 'OxygenRegular', sans-serif;
+  font: 14px/16px 'OxygenRegular', sans-serif;
   margin: 0 0 10px;
+}
+
+.box-job .head-job .job-company:last-child{
+  margin: 0 0 5px;
 }
 
 .box-job .head-job .job-salary {
   display: block;
   font: 18px/20px 'OxygenBold', sans-serif;
   color: #00B473;
+}
+
+.box-job .head-job .hold-title{
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0 -70px 5px 0;
 }
 
 .box-job .head-job .hold-img {
@@ -644,15 +715,14 @@ div.box-job:hover{
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   padding: 3px;
-  margin: 10px -70px 0 0;
+  margin: 25px -70px 0 0;
 }
 
 .box-job .content-job {
   overflow: hidden;
-  height: 305px;
   box-sizing: content-box;
   padding: 20px 0 0;
   margin: 0 0 20px;
@@ -661,12 +731,11 @@ div.box-job:hover{
 .box-job .content-job .sub-title {
   display: block;
   font-weight: bold;
-  margin: 0 0 8px;
+  margin: 0 0 5px;
 }
 
 .box-job .employment-job {
   overflow: hidden;
-  height: 80px;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
@@ -1260,6 +1329,7 @@ body > .jcf-select-drop.jcf-drop-flipped {
 }
 
 #footer {
+  position: relative;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
@@ -1319,7 +1389,12 @@ body > .jcf-select-drop.jcf-drop-flipped {
 }
 
 #footer .box-copyright {
+  position: absolute;
   font: 14px/16px 'OxygenRegular', sans-serif;
+  color: #c9c9c9;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
 }
 
 #footer .box-social {
@@ -1413,6 +1488,22 @@ body > .jcf-select-drop.jcf-drop-flipped {
   color: #454545;
 }
 
+.holder-form .box-input-full{
+  width: 100%;
+}
+
+.box-input-full .form-control:focus{
+  border: 1px solid #00B473;
+  box-shadow: none;
+}
+
+@media only screen and (max-width: 1300px) {
+  #footer .box-copyright{
+    position: static;
+    transform: translateY(0);
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .block-jobs .hold-job .btn-backwards{
     position: relative;
@@ -1441,12 +1532,7 @@ body > .jcf-select-drop.jcf-drop-flipped {
   }
   .box-job {
     height: 100%;
-    width: 100%;
     margin: 0 0 20px;
-  }
-  .box-job .content-job {
-  	height: 100%;
-    margin: 0;
   }
   .box-job .employment-job{
   	height: 100%;
@@ -1472,6 +1558,18 @@ body > .jcf-select-drop.jcf-drop-flipped {
 }
 
 @media only screen and (max-width: 768px) {
+  .holder-search{
+    padding: 20px;
+  }
+  .box-search{
+    max-width: 100%;
+  }
+  .box-search .input-search {
+    padding: 10px 75px 10px 15px;
+  }
+  .box-search .fa-search {
+    padding: 10px 20px;
+  }
   .holder-form .btn-backwards {
     top: -50px;
     left: -25px;
@@ -1576,6 +1674,10 @@ body > .jcf-select-drop.jcf-drop-flipped {
     padding: 7px 10px;
     margin: 0 5px 15px;
   }
+  .box-job .head-job .hold-title{
+    flex-direction: column;
+    margin: 0 0 10px;
+  }
   .block-jobs .hold-job .box-job .head-job {
     padding: 12px 20px;
   }
@@ -1585,7 +1687,7 @@ body > .jcf-select-drop.jcf-drop-flipped {
   }
   .box-job .head-job .hold-img {
     float: none;
-    margin: 0 auto 15px;
+    margin: 0 auto 10px;
   }
   .box-logos .wrap-file {
     -webkit-box-orient: vertical;

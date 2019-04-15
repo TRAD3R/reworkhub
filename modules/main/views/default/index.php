@@ -13,6 +13,13 @@ use yii\web\View;
 use yii\widgets\LinkPager; ?>
 <div class="block-jobs">
     <div class="container">
+        <div class="holder-search">
+            <div class="box-search">
+                <input id="search" type="text" placeholder="Поиск" class="input-search"><i class="fa fa-search" onclick="trd_search()"></i>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="holder-jobs">
             <?php foreach ($jobs as $job):?>
                 <a href="<?=Url::to(['vacancy', 'id' => $job->id])?>" class="box-job">
@@ -23,31 +30,34 @@ use yii\widgets\LinkPager; ?>
                                     <img src="/img/companies/<?=$job->company_logo?>" alt="<?=$job->company_title?>" class="img-responsive company-img">
                                 </div>
                             <?php endif; ?>
-                            <span class="job-title"><?=$job->title?></span>
+                            <div class="hold-title">
+                                <span class="job-title"><?=$job->title?></span>
+                                <?php if((int) $job->min_salary > 0 || (int) $job->max_salary > 0):?>
+                                    <span class="job-salary">
+                                        <?php if(!empty($job->min_salary) && !empty($job->max_salary)):?>
+                                            <?php echo $job->min_salary . " - " . $job->max_salary;?>
+                                        <?php elseif (!empty($job->min_salary)):?>
+                                            <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $job->min_salary;?>
+                                        <?php else:?>
+                                            <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $job->max_salary;?>
+                                        <?php endif;?>
+                                        <?=strtoupper($job->currency)?>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
                             <span class="job-company">
-                            <?php $companyTitle = strlen($job->company_title) > 30 ? mb_substr($job->company_title, 0, 28) . "..." : $job->company_title;
-                            echo $companyTitle;
-                            ?>
-                        </span>
-                        <?php if((int) $job->min_salary > 0 || (int) $job->max_salary > 0):?>
-                            <span class="job-salary">
-                                <?php if(!empty($job->min_salary) && !empty($job->max_salary)):?>
-                                    <?php echo $job->min_salary . " - " . $job->max_salary;?>
-                                <?php elseif (!empty($job->min_salary)):?>
-                                    <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $job->min_salary;?>
-                                <?php else:?>
-                                    <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $job->max_salary;?>
-                                <?php endif;?>
-                                <?=strtoupper($job->currency)?>
+                                <?php $companyTitle = strlen($job->company_title) > 30 ? mb_substr($job->company_title, 0, 28) . "..." : $job->company_title;
+                                echo $companyTitle;
+                                ?>
                             </span>
-                        <?php endif; ?>
+                            <span class="job-company"><?=$job->employmentTypes->type?></span>
                         </div>
                     </div>
                     <div class="hold-content">
                         <div class="content-job">
                             <?php if($job->requirements):?>
                                 <span class="sub-title"><?=Yii::t('app', 'JOB_REQUIREMENTS')?></span>
-                                <?=$job->requirements?>
+                                <?=ViewHelper::cutLists($job->requirements)?>
                             <?php endif;?>
                             <?php if($job->duties):?>
                                 <span class="sub-title"><?=Yii::t('app', 'JOB_DUTIES')?></span>

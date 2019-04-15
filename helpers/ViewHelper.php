@@ -6,15 +6,24 @@ namespace app\helpers;
 
 class ViewHelper
 {
-    public static function cutLists($str)
+    /**
+     * Обрезает количество элементов списка до заданного
+     * @param string $str - строка, включающая список
+     * @param int $count - количество элементов, которые стоит показать
+     * @return string
+     */
+    public static function cutLists($str, $count = 2)
     {
-        $arr = explode("</li>", $str);
+        $delimiter = stripos($str, "ul>") > 0 ? "</li>" : "\n";
 
-        if(count($arr) > 3){
+        $arr = explode($delimiter, $str);
+
+        if(count($arr) > $count){
             $res = "<ul>";
 
-            $res .= $arr[0] . "</li>";
-            $res .= $arr[1] . "</li>";
+            for ($i = 0; $i < $count; $i++) {
+                $res .= $arr[$i] . "</li>";
+            }
 
             $res .= "</ul>";
         }else{
