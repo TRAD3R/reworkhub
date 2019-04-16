@@ -183,13 +183,10 @@ class DefaultController extends Controller
 
 
             if($job->contact_person_email){
-                $message = new Message();
-                $message->setFrom(Yii::$app->params['supportEmail'])
+                $message = Yii::$app->mailer->compose('@app/modules/main/mails/mailConfirmOrder')
+                    ->setFrom(Yii::$app->params['supportEmail'])
                     ->setTo($job->contact_person_email)
-                    ->setSubject('Новая вакансия')
-                    ->setHtmlBody('<div><p>Здравствуйте. <br>Благодарим Вас за оставленную вакансию на нашем сайте.
-                                            В ближайшее время наш менеджер просмотрит ее и она будет размещена на сайте.</p>
-                                        </div>');
+                    ->setSubject('Новая вакансия');
 
                 if ($message->send()) {
                     Yii::$app->getSession()->setFlash('success', 'Спасибо! На ваш Email было отправлено письмо с дальнешими инструкциями.');
