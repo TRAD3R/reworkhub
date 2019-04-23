@@ -170,3 +170,4 @@ $_SERVER = [
     'REQUEST_TIME' => 1553940578,
 ]
 [11-Apr-2019 01:26:48 Europe/Helsinki] PHP Fatal error:  Class declarations may not be nested in /home/ucvhcqdk/public_html/vendor/yiisoft/yii2/base/ErrorException.php on line 20
+[16-Apr-2019 14:00:49 Europe/Helsinki] PHP Fatal error:  Cannot use empty array elements in arrays in /home/ucvhcqdk/public_html/modules/main/views/default/add.php on line 202

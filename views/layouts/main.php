@@ -22,15 +22,15 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta name="description" itemprop="description" content="">
-    <meta itemprop="image" content="images/logo.svg">
-    <meta property="og:image" content="images/logo.svg">
+    <meta itemprop="image" content="<?=Url::base(true)?>/images/logo.svg">
+    <meta property="og:image" content="<?=Url::base(true)?>/images/logo.svg">
     <meta property="og:site_name" content="<?=Yii::$app->name;?>">
     <meta property="og:title" content="<?= Html::encode($this->title) ?>">
     <meta property="og:description" content="">
 
     <!-- Template Basic Images Start -->
-    <link rel="icon" href="img/favicon/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon-180x180.png">
+    <link rel="icon" href="<?=Url::base(true)?>/img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?=Url::base(true)?>/img/favicon/apple-touch-icon-180x180.png">
     <!-- Template Basic Images End -->
 
     <?php $this->registerCsrfMetaTags() ?>
@@ -52,12 +52,42 @@ AppAsset::register($this);
                 <a href="<?= Url::to('/')?>" class="logo">
                     <img src="/images/logo.svg" alt="Reworkhub">
                 </a>
-                <a href="<?= Url::to('/add')?>" class="btn"><?= Yii::t('app', 'BTN_POST_JOB')?></a>
+                <div class="header-hold">
+                    <a href="<?= Url::to('/add')?>" class="btn"><?= Yii::t('app', 'BTN_POST_JOB')?></a>
+                    <div class="box-social">
+                        <a href="https://t.me/ReWorkHUB" target="_blank">
+                            <svg width="100%" height="100%" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 30C23.2843 30 30 23.2843 30 15C30 6.71573 23.2843 0 15 0C6.71573 0 0 6.71573 0 15C0 23.2843 6.71573 30 15 30Z" fill="#59AAE7"/>
+                                <path d="M15 0C14.3369 0 13.6839 0.0435938 13.0435 0.126973C20.4033 1.08574 26.0869 7.37889 26.0869 15C26.0869 22.6211 20.4032 28.9143 13.0434 29.873C13.6839 29.9564 14.3369 30 15 30C23.2843 30 30 23.2842 30 15C30 6.71578 23.2843 0 15 0Z" fill="#3D9AE3"/>
+                                <path d="M9.64974 18.2309L4.81213 15.8121C4.67953 15.7458 4.67824 15.5571 4.8099 15.4889L23.1885 5.98273C23.3235 5.91288 23.4793 6.03025 23.4496 6.17931L20.2853 22.0006C20.2627 22.1135 20.142 22.177 20.0361 22.1317L15.7357 20.2887C15.6842 20.2667 15.6253 20.2696 15.5763 20.2969L10.0193 23.3841C9.89848 23.4512 9.74994 23.3639 9.74994 23.2256V18.3931C9.75 18.3244 9.71121 18.2616 9.64974 18.2309Z" fill="#FCFCFC"/>
+                                <path d="M11.7369 19.8613L11.7068 15.0316C11.7067 15.0006 11.7227 14.9719 11.749 14.9558L19.5947 10.163C19.6836 10.1087 19.7767 10.2264 19.7032 10.3004L13.7325 16.3135C13.7259 16.3202 13.7204 16.3278 13.7162 16.3362L12.6949 18.3786L11.9034 19.9014C11.8609 19.9831 11.7375 19.9534 11.7369 19.8613Z" fill="#D8D7DA"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
             </div>
         </header>
 
     <?= Alert::widget() ?>
     <?= $content ?>
+    </div>
+
+    <div class="block-consent" id="cookie-panel" style="display: none">
+    	<div class="holder-consent">
+    		Этот сайт использует файлы cookie. Продолжая использовать сайт, вы даете согласие на обработку файлов cookie.
+    		<span class="btn-consent" id="cookie-accept">Согласен</span>
+    		<span class="btn-close">
+    			<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="0 0 212.982 212.982" style="enable-background:new 0 0 212.982 212.982;" xml:space="preserve">
+					<g id="Close">
+						<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M131.804,106.491l75.936-75.936c6.99-6.99,6.99-18.323,0-25.312
+						c-6.99-6.99-18.322-6.99-25.312,0l-75.937,75.937L30.554,5.242c-6.99-6.99-18.322-6.99-25.312,0c-6.989,6.99-6.989,18.323,0,25.312
+						l75.937,75.936L5.242,182.427c-6.989,6.99-6.989,18.323,0,25.312c6.99,6.99,18.322,6.99,25.312,0l75.937-75.937l75.937,75.937
+						c6.989,6.99,18.322,6.99,25.312,0c6.99-6.99,6.99-18.322,0-25.312L131.804,106.491z"/>
+					</g>
+				</svg>
+    		</span>
+    	</div>
     </div>
 
     <footer id="footer">
@@ -91,6 +121,7 @@ AppAsset::register($this);
             </div>
         </div>
     </footer>
+
 </div>
 
 <?php $this->endBody() ?>

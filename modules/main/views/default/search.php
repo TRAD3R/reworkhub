@@ -9,7 +9,7 @@ use app\helpers\ViewHelper;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
-$this->title = Yii::$app->name;
+$this->title = "Поиск | " . Yii::$app->name;
 ?>
 <div class="block-jobs">
     <div class="container">

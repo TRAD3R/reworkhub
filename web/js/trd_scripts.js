@@ -13,3 +13,18 @@ function trd_search()
     location.href = "/search?phrase=" + encodeURI(searchPhrase);
 }
 /** Search phrase*/
+
+/**
+ * Accept cookie
+ */
+$(document).ready(function(){
+    var cookie = $('#cookie-panel');
+    if(localStorage.getItem('cookie-accept') == null || localStorage.getItem('cookie-accept').indexOf('accept') == -1){
+        cookie.show();
+    }
+
+    $('#cookie-accept').on('click', function () {
+        localStorage.setItem('cookie-accept', 'accept');
+        cookie.hide();
+    })
+})
