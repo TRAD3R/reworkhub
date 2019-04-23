@@ -1,7 +1,10 @@
 <?php
 /* @var $this yii\web\View */
 ?>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 11f66eef015557d98051a241019e12641d509539
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -83,7 +86,11 @@
                                                                 <table style="width: 100%;">
                                                                     <tr>
                                                                         <th>
+<<<<<<< HEAD
                                                                             <p style="text-align: left; font-size: 16px; font-weight: normal; padding: 10px 0 0; margin: 0 0 10px;">Благодарим Вас за оставленную вакансию на нашем <a href="https://reworkhub.com/" style="font-weight: 700;">сайте.</a><br> После проверки Ваша вакансия будет добавлена в порядке очереди. </p>
+=======
+                                                                            <p style="text-align: left; font-size: 16px; font-weight: normal; padding: 10px 0 0; margin: 0 0 10px;">Благодарим Вас за оставленную вакансию на нашем <a href="https://reworkhub.com/" style="font-weight: 700;">сайте.</a><br> В ближайшее время наш менеджер просмотрит ее и она будет размещена на сайте.</p>
+>>>>>>> 11f66eef015557d98051a241019e12641d509539
                                                                         </th>
                                                                     </tr>
                                                                 </table>
@@ -93,7 +100,11 @@
                                                                 <table style="width: 100%;">
                                                                     <tr>
                                                                         <th>
+<<<<<<< HEAD
                                                                             <p style="text-align: right; margin: -10px 0 0;"><a href="https://reworkhub.com/"><img src="https://reworkhub.com/images/logo.png" class="logo" style="height: 100px; width: 100px; display: inline-block; vertical-align: top;"></a></p>
+=======
+                                                                            <p style="text-align: right; margin: -10px 0 0;"><a href="https://t.me/ReWorkHUB"><img src="http://cleancode.me/test/email-images/logo.png" class="logo" style="height: 100px; width: 100px; display: inline-block; vertical-align: top;"></a></p>
+>>>>>>> 11f66eef015557d98051a241019e12641d509539
                                                                         </th>
                                                                     </tr>
                                                                 </table>
@@ -113,7 +124,11 @@
                                                         </tbody>
                                                     </table>
 
+<<<<<<< HEAD
                                                     <center><p><img src="https://reworkhub.com/images/checked.png" align="center" style="height: 200px; width: 200px;"></p></center>
+=======
+                                                    <center><p><img src="http://cleancode.me/test/email-images/checked.png" align="center" style="height: 200px; width: 200px;"></p></center>
+>>>>>>> 11f66eef015557d98051a241019e12641d509539
 
                                                     <table>
                                                         <tbody>
@@ -123,7 +138,11 @@
                                                         </tbody>
                                                     </table>
 
+<<<<<<< HEAD
                                                     <center style="font-size: 16px; font-weight: normal"><a href="https://reworkhub.com/" style="font-weight: 700;">вернуться</a></center>
+=======
+                                                    <center style="font-size: 16px; font-weight: normal"><a href="https://t.me/ReWorkHUB" style="font-weight: 700;">вернуться</a></center>
+>>>>>>> 11f66eef015557d98051a241019e12641d509539
 
                                                     <table>
                                                         <tbody>

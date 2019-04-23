@@ -35,7 +35,7 @@ return [
                 '' => 'main/default/index',
                 'index' => 'main/default/index',
                 'contact' => 'main/contact/index',
-                'vacancy/<id:\d+>' => 'main/default/vacancy',
+                'vacancy/<id:\w+>' => 'main/default/vacancy',
                 'search' => 'main/default/search',
                 'telegram/<a:[\w\-]+>' => 'telegram/default/<a>',
                 '<_a:(about|error|add|preview|save)>' => 'main/default/<_a>',
