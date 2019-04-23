@@ -83,11 +83,7 @@
                                                                 <table style="width: 100%;">
                                                                     <tr>
                                                                         <th>
-<<<<<<< HEAD
                                                                             <p style="text-align: left; font-size: 16px; font-weight: normal; padding: 10px 0 0; margin: 0 0 10px;">Благодарим Вас за оставленную вакансию на нашем <a href="https://reworkhub.com/" style="font-weight: 700;">сайте.</a><br> После проверки Ваша вакансия будет добавлена в порядке очереди. </p>
-=======
-                                                                            <p style="text-align: left; font-size: 16px; font-weight: normal; padding: 10px 0 0; margin: 0 0 10px;">Благодарим Вас за оставленную вакансию на нашем <a href="https://reworkhub.com/" style="font-weight: 700;">сайте.</a><br> В ближайшее время наш менеджер просмотрит ее и она будет размещена на сайте.</p>
->>>>>>> 11f66eef015557d98051a241019e12641d509539
                                                                         </th>
                                                                     </tr>
                                                                 </table>
