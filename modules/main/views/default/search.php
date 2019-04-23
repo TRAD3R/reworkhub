@@ -24,7 +24,7 @@ $this->title = "Поиск | " . Yii::$app->name;
         <div class="holder-jobs">
             <?php if($jobs):?>
                 <?php foreach ($jobs as $job):?>
-                <a href="<?=Url::to(['vacancy', 'id' => $job->id])?>" class="box-job">
+                <a href="<?=Url::to(['vacancy', 'id' => $job->url])?>" class="box-job">
                     <div class="hold-head-job">
                         <div class="head-job">
                             <?php if(!empty($job->company_logo)): ?>

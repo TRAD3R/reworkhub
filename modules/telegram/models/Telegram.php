@@ -256,7 +256,7 @@ class Telegram
     public static function getChannelView(Job $job)
     {
         $view = file_get_contents(__DIR__ . "/../views/channel.txt");
-        $url = "https://reworkhub.com/vacancy/{$job->id}";
+        $url = "https://reworkhub.com/vacancy/{$job->url}";
         $jobTitle = '<a href="' . $url . '">' . $job->title . '</a>';
         $view = str_replace("[JOB_TITLE]", $jobTitle, $view);
         $companyTitle =  !empty($job->company_title) ? "<b>" . Yii::t('app', "PH_COMPANY") . ":</b>" . PHP_EOL . self::replaceHTML($job->company_title) : "";

@@ -180,8 +180,6 @@ class DefaultController extends Controller
         if($job->save()) {
             Yii::$app->session->remove('model');
 
-
-
             if($job->contact_person_email){
                 $message = Yii::$app->mailer->compose('@app/modules/main/mails/mailConfirmOrder')
                     ->setFrom(Yii::$app->params['supportEmail'])
