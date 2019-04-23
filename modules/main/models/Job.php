@@ -178,4 +178,9 @@ class Job extends \yii\db\ActiveRecord
             ->andWhere("published < $now")
             ->all();
     }
+
+    public static function findByUrl($url)
+    {
+        return self::findOne(['url' => $url]);
+    }
 }

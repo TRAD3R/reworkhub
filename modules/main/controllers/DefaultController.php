@@ -132,10 +132,18 @@ class DefaultController extends Controller
     } // actionPreview
 
     public function actionVacancy(){
-        $id = (int) Yii::$app->request->get('id');
+//        $id = (int) Yii::$app->request->get('id');
+//
+//        if($id) {
+//            $job = Job::findOne($id);
+//        }elseif($tempUrl = Yii::$app->request->get('temp')){
+//            $job = Job::findTemp($tempUrl);
+//        }
 
-        if($id) {
-            $job = Job::findOne($id);
+        $url = Yii::$app->request->get('id');
+
+        if($url) {
+            $job = Job::findByUrl($url);
         }elseif($tempUrl = Yii::$app->request->get('temp')){
             $job = Job::findTemp($tempUrl);
         }
