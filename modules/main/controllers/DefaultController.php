@@ -162,6 +162,10 @@ class DefaultController extends Controller
         return $this->redirect('/index');
     } // actionVacancy
 
+    /**
+     * @return Response
+     * @throws \yii\base\Exception
+     */
     public function actionSave(){
 
         $job = new Job();
@@ -184,6 +188,7 @@ class DefaultController extends Controller
         $job->contact_person_email = $jModel->contactPersonEmail;
         $job->contact_person_other = $jModel->contactPersonOther;
         $job->company_logo = $jModel->companyLogo;
+        $job->url = Yii::$app->security->generateRandomString(7) . time();
 
         if($job->save()) {
             Yii::$app->session->remove('model');

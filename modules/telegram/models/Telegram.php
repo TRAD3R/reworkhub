@@ -278,6 +278,7 @@ class Telegram
 //        $view = str_replace("[CONTACT_EMAIL]", $job->contact_person_email, $view);
 
         $view = str_replace("&nbsp;", "", $view);
+        Yii::info($url, 'telegram');
         return $view;
     }
 
@@ -285,10 +286,10 @@ class Telegram
     {
         $result = preg_replace("~\n{2,}~sm", "\n", $str);
 //        $result = preg_replace("~<li>\n<p>~sm", "<li><p>", $result);
-        $result = preg_replace("~(<p>|</p>|<ul>|</ul>|<ol>|</ol>|</li>|\t)~", "", $result);
+        $result = preg_replace("~(<p>|</p>|<ul>|</ul>|<ol>|</ol>|<li>|</li>|\t)~", "", $result);
         $result = preg_replace("~(<br />|<br>|</br>)~", "\n", $result);
-        $result = preg_replace("~(<li>|&mdash;)~", "-", $result);
-        $result = preg_replace("~(&ldquo;|&rdquo;)~", '"', $result);
+        $result = html_entity_decode($result);
+//        $result = preg_replace("~(&ldquo;|&rdquo;)~", '"', $result);
 
         $arr = explode("\n", $result);
         $cutArr = [];

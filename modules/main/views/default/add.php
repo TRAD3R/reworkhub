@@ -44,7 +44,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         </div>
                         <div class="box-input">
                             <?= $form->field($model, 'jobCategories')
-                                ->dropDownList(ArrayHelper::map(JobCategories::find()->orderBy('id')->all(), 'id', 'category')
+                                ->dropDownList(ArrayHelper::map(JobCategories::find()->orderBy('weight')->all(), 'id', 'category')
                                     , [ 'class' => 'custom color'
                                         , 'prompt' => 'Выберите категорию'
                                         , 'data-jcf' => '{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'
