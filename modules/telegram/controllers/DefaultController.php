@@ -4,6 +4,8 @@ namespace app\modules\telegram\controllers;
 
 use app\helpers\telegramAnswer\Result;
 use app\modules\telegram\models\Telegram;
+use app\modules\telegram\models\TelegramCV;
+use TelegramBot\Api\BotApi;
 use Yii;
 use yii\base\Module;
 use yii\helpers\Json;
@@ -30,6 +32,26 @@ class DefaultController extends Controller
     {
         $request = file_get_contents("php://input");
         $this->telegram->getMessage(new Result(Json::decode($request)));
+    }
+
+    /**
+     * Renders the index view for the module
+     */
+    public function actionGetCv()
+    {
+        $bot = new BotApi(Yii::$app->params['telegram']['botTokenCV']);
+        $telegram = new TelegramCV($bot);
+        $updates = $bot->getUpdates(670475813);
+
+        foreach ($updates as $update){
+            if($update->getMessage()) {
+                $telegram->getMessage($update);
+            }
+            if($update->getCallbackQuery()){
+                $telegram->getCallback($update);
+            }
+//            var_dump($update);
+        }
     }
 
     public function actionParseChannel(){

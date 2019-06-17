@@ -39,6 +39,7 @@ return [
                 'search' => 'main/default/search',
                 'telegram/<a:[\w\-]+>' => 'telegram/default/<a>',
                 '<_a:(about|error|add|preview|save)>' => 'main/default/<_a>',
+                'summary/<_a>' => 'main/summary/<_a>',
                 '<_a:(login|logout|signup|email-confirm|request-password-reset|password-reset)>' => 'user/default/<_a>',
 
                 '<_m:[\w\-]+>' => '<_m>/default/index',
@@ -63,6 +64,10 @@ return [
         'i18n' => [
             'translations' => [
                 'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'forceTranslation' => true,
+                ],
+                'bot-cv' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'forceTranslation' => true,
                 ],
