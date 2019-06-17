@@ -46,6 +46,7 @@ return [
     'TITLE_PASSWORD_RESET_REQUEST' => 'Восстановление пароля',
     'TITLE_POST_JOB' => 'Разместить вакансию',
     'TITLE_MAIN' => 'Вашу вакансию увидят<br><strong>более 40 000</strong> специалистов',
+    'TITLE_ADD_SUMMARY' => 'Добавить резюме',
     /** Titles */
 
     /** User labels */
@@ -108,7 +109,5 @@ return [
     'ERROR_CHECK_RECAPTCHA' => 'Подтвердите, что Вы не робот',
     'ERROR_CHECK_IMAGE_FORMAT' => 'Проверьте формат изображения',
     'ERROR_FOUND_NOTHING' => 'По Вашему запросу ничего не найдено. Попробуйте изменить запрос.',
-
     /** Errors */
-
 ];
