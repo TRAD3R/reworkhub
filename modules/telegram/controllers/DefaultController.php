@@ -6,6 +6,7 @@ use app\helpers\telegramAnswer\Result;
 use app\modules\telegram\models\Telegram;
 use app\modules\telegram\models\TelegramCV;
 use TelegramBot\Api\BotApi;
+use TelegramBot\Api\Types\ArrayOfUpdates;
 use Yii;
 use yii\base\Module;
 use yii\helpers\Json;
@@ -35,13 +36,17 @@ class DefaultController extends Controller
     }
 
     /**
-     * Renders the index view for the module
+     * @throws \TelegramBot\Api\Exception
+     * @throws \TelegramBot\Api\InvalidArgumentException
+     * @throws \TelegramBot\Api\InvalidJsonException
      */
     public function actionGetCv()
     {
         $bot = new BotApi(Yii::$app->params['telegram']['botTokenCV']);
         $telegram = new TelegramCV($bot);
-        $updates = $bot->getUpdates(670475813);
+        $response = file_get_contents("php://input");
+        //                            если отключен webhook     если включен webhook
+        $updates = empty($response) ? $bot->getUpdates() : $this->gotNewMessage($response);
 
         foreach ($updates as $update){
             if($update->getMessage()) {
@@ -50,7 +55,6 @@ class DefaultController extends Controller
             if($update->getCallbackQuery()){
                 $telegram->getCallback($update);
             }
-//            var_dump($update);
         }
     }
 
@@ -97,4 +101,22 @@ class DefaultController extends Controller
             "error" => $error
         ]);
     } // actionParseChannel
+
+    /**
+     * Возвращает массив сообщений если включен webhook
+     * @param string $responce
+     * @return array
+     * @throws \TelegramBot\Api\InvalidJsonException
+     */
+    public function gotNewMessage($responce)
+    {
+        $result = BotApi::jsonValidate($responce, true);
+        if (!isset($result['ok'])) {
+            Yii::info($result['description'], 'telegram');
+        }
+
+        $updates = ArrayOfUpdates::fromResponse( $result['result']);
+
+        return $updates;
+    }
 }
