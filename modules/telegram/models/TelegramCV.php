@@ -46,8 +46,8 @@ class TelegramCV
                     $this->bot->sendMessage($this->chatId, YII::t('bot-cv', 'GOTO_SUMMARY_ADD'
                         , ['url' => Url::to('summary/add', true)])
                         , 'HTML'
-                        , null
                         , true
+                        , null
                         , new ReplyKeyboardRemove());
                     break;
                 case strtolower(Yii::t('bot-cv', 'SEARCH_SUMMARIES')):
