@@ -7,6 +7,7 @@ use app\modules\telegram\models\Telegram;
 use app\modules\telegram\models\TelegramCV;
 use TelegramBot\Api\BotApi;
 use TelegramBot\Api\Types\ArrayOfUpdates;
+use TelegramBot\Api\Types\Update;
 use Yii;
 use yii\base\Module;
 use yii\helpers\Json;
@@ -110,12 +111,13 @@ class DefaultController extends Controller
      */
     public function gotNewMessage($responce)
     {
-        $result = BotApi::jsonValidate($responce, true);
-        if (!isset($result['ok'])) {
-            Yii::info($result['description'], 'telegram');
-        }
+        $updates = [];
 
-        $updates = ArrayOfUpdates::fromResponse( $result['result']);
+        $result = BotApi::jsonValidate($responce, true);
+
+        $update = Update::fromResponse($result);
+
+        if(is_object($update)) $updates[] = $update;
 
         return $updates;
     }
