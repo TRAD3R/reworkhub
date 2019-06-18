@@ -4,12 +4,12 @@
 namespace app\modules\telegram\models;
 
 
-use app\helpers\buttons\InLineKeyboardButton;
+use app\modules\main\models\Filter;
+use app\modules\main\models\UserTelegram;
+use TelegramBot\Api\Types\ReplyKeyboardHide;
 use TelegramBot\Api\Types\ReplyKeyboardRemove;
 use yii\helpers\Url;
-use \TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Types\ReplyKeyboardHide;
 use TelegramBot\Api\Types\ReplyKeyboardMarkup;
 use TelegramBot\Api\Types\Update;
 use Yii;
@@ -17,6 +17,7 @@ use Yii;
 class TelegramCV
 {
     private $bot;
+    private $chatId;
 
     public function __construct(BotApi $bot)
     {
@@ -30,20 +31,29 @@ class TelegramCV
      */
     public function getMessage(Update $update)
     {
-
+        $userTelegramId = $this->getUserTelegramId($update->getMessage()->getFrom()->getId());
         $message = $update->getMessage()->getText();
-        $chat_id = $update->getMessage()->getChat()->getId();
-        switch (strtolower($message)){
-            case "/start":
-                $this->startMenu($chat_id);
-                break;
-            case strtolower(Yii::t('bot-cv', 'ADD_SUMMARY')):
-                var_dump(Url::to('summary/add', true));
-                $this->bot->sendMessage($chat_id, YII::t('bot-cv', 'GOTO_SUMMARY_ADD', ['url' => Url::to('summary/add', true)]), 'HTML', null, null, new ReplyKeyboardRemove());
-                break;
-            case strtolower(Yii::t('bot-cv', 'SEARCH_SUMMARIES')):
+        $this->chatId = $update->getMessage()->getChat()->getId();
+        if(mb_substr($message, 0, 1) === '#'){
+            $this->gotFilter(mb_substr($message, 1));
 
-                break;
+        }else {
+            switch (strtolower($message)) {
+                case "/start":
+                    $this->startMenu();
+                    break;
+                case strtolower(Yii::t('bot-cv', 'ADD_SUMMARY')):
+                    $this->bot->sendMessage($this->chatId, YII::t('bot-cv', 'GOTO_SUMMARY_ADD'
+                        , ['url' => Url::to('summary/add', true)])
+                        , 'HTML'
+                        , null
+                        , true
+                        , new ReplyKeyboardRemove());
+                    break;
+                case strtolower(Yii::t('bot-cv', 'SEARCH_SUMMARIES')):
+                    $this->createFilter(1);
+                    break;
+            }
         }
     }
 
@@ -69,11 +79,10 @@ class TelegramCV
      * @throws \TelegramBot\Api\Exception
      * @throws \TelegramBot\Api\InvalidArgumentException
      */
-    private function startMenu($chat_id)
+    private function startMenu()
     {
         $keyboard = [
-            [Yii::t('bot-cv', 'ADD_SUMMARY'), Yii::t('bot-cv', 'SEARCH_SUMMARIES')],
-            []
+            [Yii::t('bot-cv', 'ADD_SUMMARY'), Yii::t('bot-cv', 'SEARCH_SUMMARIES')]
         ];
 
         $replyMarkup = new ReplyKeyboardMarkup($keyboard, true, true);
@@ -85,7 +94,66 @@ class TelegramCV
 //        $inlineMarkup = new InlineKeyboardMarkup($keyboard);
 
 
-        $response = $this->bot->sendMessage($chat_id, Yii::t('bot-cv', 'CHOOSE_ACTION'), null, null, null, $replyMarkup);
+        $this->bot->sendMessage($this->chatId, Yii::t('bot-cv', 'CHOOSE_ACTION')
+            , null
+            , null
+            , null
+            , $replyMarkup);
+    }
+
+    /**
+     * @param $level
+     * @throws \TelegramBot\Api\Exception
+     * @throws \TelegramBot\Api\InvalidArgumentException
+     */
+    private function createFilter($level)
+    {
+        $filters = Filter::findAllByLevel($level);
+
+        $keyboard = [];
+        $iterator = 0;
+        $lineCount = 0;
+        foreach ($filters as $id => $filter){
+            $keyboard[$iterator][] = "#" . $filter;
+            if(++$lineCount % 2 == 0){
+                $iterator++;
+                $lineCount = 0;
+            }
+        }
+
+        $replyMarkup = new ReplyKeyboardMarkup($keyboard, true, true);
+
+        $this->bot->sendMessage($this->chatId, Yii::t('bot-cv', 'SELECT_SPHERE')
+            , null
+            , null
+            , null
+            , $replyMarkup);
+    }
+
+    private function gotFilter($filter)
+    {
+        $message = Yii::t('bot-cv', 'FOUND_COUNT_SUMMARIES', ['sphere' => $filter, 'count' => 0]);
+        $this->bot->sendMessage($this->chatId
+            , $message, null
+            , null
+            , null
+            , new ReplyKeyboardRemove());
+    }
+
+    /**
+     * @param $telegram_id
+     * @return UserTelegram|null
+     */
+    private function getUserTelegramId($telegram_id)
+    {
+        if($telegramUser = UserTelegram::findOne(['telegram_id' => $telegram_id])){
+            return $telegramUser;
+        }else{
+            $telegramUser = new UserTelegram();
+            $telegramUser->telegram_id = "$telegram_id";
+        }
+
+        return $telegramUser;
     }
 
 }
