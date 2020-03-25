@@ -48,7 +48,7 @@ class DefaultController extends Controller
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
         $models = $query->offset($pages->offset)
-            ->limit($pages->limit)
+            ->limit(3)
             ->all();
 
         return $this->render('index', [
@@ -237,4 +237,22 @@ class DefaultController extends Controller
             'pages' => $pages
         ]);
     } // actionPhraseSearch
+
+    public function actionJobs(){
+      $query = Job::find()
+          ->where(['status' => 1])
+          ->andWhere('published <= ' . time() )
+          ->orderBy('published DESC');
+
+      $countQuery = clone $query;
+      $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
+      $models = $query->offset($pages->offset)
+          ->limit($pages->limit)
+          ->all();
+
+      return $this->render('jobs', [
+          "jobs" => $models,
+          'pages' => $pages
+      ]);
+    } // actionJob
 }

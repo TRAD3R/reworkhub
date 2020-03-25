@@ -38,7 +38,7 @@ return [
                 'vacancy/<id>' => 'main/default/vacancy',
                 'search' => 'main/default/search',
                 'telegram/<a:[\w\-]+>' => 'telegram/default/<a>',
-                '<_a:(about|error|add|preview|save)>' => 'main/default/<_a>',
+                '<_a:(about|error|add|preview|save|jobs)>' => 'main/default/<_a>',
                 'summary/<_a>' => 'main/summary/<_a>',
                 '<_a:(login|logout|signup|email-confirm|request-password-reset|password-reset)>' => 'user/default/<_a>',
 
