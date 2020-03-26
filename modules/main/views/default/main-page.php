@@ -11,7 +11,48 @@ use yii\helpers\Url;
         <div class="promo-composition">
           <h1 class="dr-h1">Найдите сотрудника на удалёнку за 1 день в самой большой базе удалёнщиков России</h1>
           <p class="dr-subtitle">База удаленных сотрудников из 250 000 соискателей. Охват каждой вакансии от 50 000 живых человек. Сотни откликов!</p>
-          <button class="btn" type="button">Разместить вакансию</button>
+          <a href="<?= Url::to('/add')?>" class="btn" type="button">Разместить вакансию</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-features">
+    <div class="container">
+      <div class="section-content">
+        <div class="features">
+          <div class="features-item">
+            <div class="features-icon">
+              <img src="/images/features1.svg" alt="">
+            </div>
+            <div class="dr-h4 features-title text-center">
+              Крупнейшая база удалёнщиков в РФ
+            </div>
+            <div class="features-description tariffs-subtitle text-center">
+              Вашу вакансию увидят более 50 000 соискателей
+            </div>
+          </div>
+          <div class="features-item">
+            <div class="features-icon">
+              <img src="/images/features2.svg" alt="">
+            </div>
+            <div class="dr-h4 features-title text-center">
+              Много откликов
+            </div>
+            <div class="features-description tariffs-subtitle text-center">
+              Вы получите десятки откликов от целевых кандитатов. Наш рекорд - 500 качественных откликов в первые сутки.
+            </div>
+          </div>
+          <div class="features-item">
+            <div class="features-icon">
+              <img src="/images/features3.svg" alt="">
+            </div>
+            <div class="dr-h4 features-title text-center">
+              Низкая цена
+            </div>
+            <div class="features-description tariffs-subtitle text-center">
+              У нас три эффективных формата: за 1399, 2199 и за 7000 рублей
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -22,42 +63,9 @@ use yii\helpers\Url;
         <p class="dr-h2 section-title">
           Тарифы на размещение
         </p>
-        <div class="tariffs">
-          <div class="tariffs-item">
-            <div class="tariffs-item-content">
-              <p class="dr-h3 tariffs-title">Стандарт</p>
-              <p class="tariffs-subtitle">Широкий охват за минимальную цену — отлично подойдет для знакомства с нашим проектом
-              </p>
-              <p class="tariffs-description">~65 000 просмотров, десятки откликов.
-                Подробный анонс на сайте и краткий анонс в канале + <a href="#">вк</a> + <a href="#">чате</a> + <a
-                    href="#">рассылке</a>.</p>
-            </div>
-            <div class="tariffs-item-cta">
-              <button class="btn" type="button">1399 руб.</button>
-            </div>
-          </div>
-          <div class="tariffs-item primary">
-            <div class="tariffs-item-content">
-              <p class="dr-h3 tariffs-title">Лучший</p>
-              <p class="tariffs-subtitle">Большой охват. Лучшее сочетание цены и результата.
-              </p>
-              <p class="tariffs-description">~ 85 000 просмотров, десятки/сотни откликов. Подробный анонс на всех площадках + бесплатное повторное размещение.</p>
-            </div>
-            <div class="tariffs-item-cta">
-              <button class="btn" type="button">1399 руб.</button>
-            </div>
-          </div>
-          <div class="tariffs-item">
-            <div class="tariffs-item-content">
-              <p class="dr-h3 tariffs-title">Ультра</p>
-              <p class="tariffs-subtitle">Максимальный охват: вашу вакансию увидят десятки тысяч людей.
-              </p>
-              <p class="tariffs-description">~ 130 000 просмотров. Включает в себя тариф "Лучший" + рассылку по всем крупным телеграм-каналам с вакансиями.</p>
-            </div>
-            <div class="tariffs-item-cta">
-              <button class="btn" type="button">1399 руб.</button>
-            </div>
-          </div>
+        <?php echo $this->render("tariffs-items") ?>
+        <div class="section-content-cta">
+          <a href="<?= Url::to('/add')?>" class="btn" type="button">Разместить вакансию</a>
         </div>
       </div>
     </div>

@@ -255,4 +255,12 @@ class DefaultController extends Controller
           'pages' => $pages
       ]);
     } // actionJob
+
+  public function actionTariffs(){
+    return $this->render('tariffs');
+  } // actionJob
+
+  public function actionPaymentMethod(){
+    return $this->render('payment-method');
+  } // actionJob
 }
