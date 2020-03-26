@@ -23,6 +23,13 @@ class m190309_100545_create_employment_types_table extends Migration
         ], $tableOptions);
 
         $this->createIndex('idx-employment-types-type', '{{%employment_types}}', 'type');
+
+        $this->batchInsert('{{%employment_types}}', ['type'], [
+           ['Полная занятость'],
+           ['Проектная работа'],
+           ['Стажировка'],
+           ['Частичная занятость'],
+        ]);
     }
 
     /**

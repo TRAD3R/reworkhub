@@ -6,7 +6,6 @@ use app\helpers\telegramAnswer\Result;
 use app\modules\telegram\models\Telegram;
 use app\modules\telegram\models\TelegramCV;
 use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Types\ArrayOfUpdates;
 use TelegramBot\Api\Types\Update;
 use Yii;
 use yii\base\Module;
@@ -47,7 +46,7 @@ class DefaultController extends Controller
         $telegram = new TelegramCV($bot);
         $response = file_get_contents("php://input");
         //                            если отключен webhook     если включен webhook
-        $updates = empty($response) ? $bot->getUpdates() : $this->gotNewMessage($response);
+        $updates = empty($response) ? $bot->getUpdates(670475838) : $this->gotNewMessage($response);
 
         foreach ($updates as $update){
             if($update->getMessage()) {
