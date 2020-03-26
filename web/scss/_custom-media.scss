@@ -34,6 +34,20 @@
     font-size: 18px;
     line-height: 32px;
   }
+
+  .features {
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    &-item {
+      width: 100%;
+      &:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid $light-gray;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 550px) {

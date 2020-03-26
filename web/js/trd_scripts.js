@@ -68,17 +68,21 @@ function getMaxHeight(el, maxHeight) {
 
 function showReviewItems(parent) {
     var reviewNameFile = ['review1.png', 'review2.png', 'review3.png'];
-    var reviewItemHtml = `
-            <div class="reviews-carousel-item">
-                <div class="reviews-photo">
-                  <img src='/images/%reviewNameFile%'>
-                </div>
-            </div>
-    `;
+
     var reviewsHtml = '';
     reviewNameFile.forEach(value => {
-        reviewsHtml += reviewItemHtml.replace('%reviewNameFile%', value);
+        reviewsHtml += getReviewItemHtml(value);
     });
 
     $(parent).html(reviewsHtml);
+}
+
+function getReviewItemHtml(image) {
+    return `
+            <div class="reviews-carousel-item">
+                <div class="reviews-photo">
+                  <img src="/images/${image}">
+                </div>
+            </div>
+    `;
 }

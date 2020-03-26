@@ -25,6 +25,13 @@
   font-weight: bold;
 }
 
+.dr-h4 {
+  font-size: 24px;
+  line-height: 35px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
 .dr-subtitle {
   font-family: 'Montserrat', sans-serif;
 }
@@ -107,6 +114,28 @@
 
   &-tariffs{
     background-color: $light-gray;
+    .section-content-cta {
+      margin-top: 50px;
+    }
+  }
+
+  &-select-tariffs {
+    .visible-select-tariff {
+      display: flex!important;
+    }
+  }
+
+  &-payment-method {
+    background: $light-gray;
+    .vacancy-button {
+      .btn-secondary {
+        background: $super-light-gray;
+      }
+    }
+  }
+
+  &-features {
+    padding: 5em 0;
   }
 }
 
@@ -191,7 +220,7 @@
     text-align: center;
     color: $black;
   }
-  a {
+  a:not(.btn) {
     color: $accent;
     font-family: 'Montserrat', sans-serif;
   }
@@ -290,31 +319,70 @@
   width: 100%;
 }
 
+
+
+
 .btn {
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all .2s ease;
-}
 
-.btn-accent {
   .icon {
     transition: all .2s ease;
-    margin-left: 15px;
+    transform: translateX(0);
     svg {
-      stroke: $white;
+      transition: all .2s ease;
     }
   }
+
   &.btn-route {
+
     .icon {
-      transform: translateX(0);
+      margin: 0 0 0 10px;
     }
+
     &:hover {
       .icon {
         transform: translateX(8px);
         svg {
           stroke: $text;
         }
+      }
+    }
+
+    &.btn-route-right {
+      .icon {
+        transform: translateX(0px);
+        margin: 0 10px 0 0;
+
+        svg {
+          stroke: $text;
+        }
+      }
+      &:hover {
+        .icon {
+          transform: translateX(-8px);
+          svg {
+            stroke: $text;
+          }
+        }
+      }
+    }
+  }
+
+  &-accent {
+    .icon {
+      svg {
+        stroke: $white;
+      }
+    }
+  }
+
+  &-secondary {
+    .icon {
+      svg {
+        stroke: $text;
       }
     }
   }
@@ -379,6 +447,142 @@ p > a {
     &:hover {
       background: $accent;
     }
+  }
+}
+
+.vacancy-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+  .btn {
+    margin: 0;
+    &:not(:last-child) {
+      margin: 0 10px 0 0;
+    }
+  }
+}
+
+.btn-secondary {
+  color: $black;
+  background: $light-gray;
+  box-shadow: none;
+  &:hover {
+    box-shadow: none;
+    background: $super-light-gray;
+  }
+}
+
+.visible-select-tariff {
+  display: none!important;
+  margin-top: 15px;
+}
+
+
+
+.price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  &-old {
+    position: relative;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: darken($gray, 10%);
+    &:before {
+      content: '';
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -.6px;
+      height: 1px;
+      background: darken($gray, 10%);
+    }
+  }
+  &-current {
+    position: relative;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: $accent;
+  }
+}
+
+.payment-methods {
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+  &-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &-item {
+    display: flex;
+    align-items: center;
+    background: $white;
+    -webkit-box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.3);
+    box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.3);
+    border-radius: 8px 30px 8px 8px;
+    z-index: 2;
+    overflow: hidden;
+    border: none;
+    padding: 2em;
+    transition: all .2s ease;
+    &:hover {
+      background-color: #fdfdfd;
+      .payment-methods-title {
+        color: $accent;
+      }
+    }
+    &:not(:last-child) {
+      margin: 0 0 20px 0;
+    }
+  }
+  &-title {
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+  }
+  &-photo {
+    width: 35%;
+    margin-right: 20px;
+    display: flex;
+    justify-content: flex-start;
+    > * {
+      max-height: 80px;
+      width: 100%;
+    }
+  }
+}
+
+.features {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    padding: 2em;
+    transition: all .2s ease;
+    width: calc(100% / 3);
+    color: $black;
+    &:not(:last-child) {
+      border-right: 1px solid $light-gray;
+    }
+  }
+  &-icon {
+    margin-bottom: 35px;
+  }
+  &-title {
+    margin-bottom: 15px;
   }
 }
 
