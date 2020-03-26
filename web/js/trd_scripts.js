@@ -86,3 +86,7 @@ function getReviewItemHtml(image) {
             </div>
     `;
 }
+
+function toPayment() {
+    $('#btn-to-payment').click();
+}
