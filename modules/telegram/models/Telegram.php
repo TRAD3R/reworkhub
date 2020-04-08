@@ -25,9 +25,8 @@ use yii\helpers\Url;
 class Telegram
 {
     private $bot;
-//    private $adminChats = [583732141]; // admin's chats array
-    private $admins = ['aleksandr8585', 'aleksandrrework', 'trad3r8']; // admin's array
-    private $adminChats = [349719901, 583732141, 699972493]; // admin's chats array
+    private $admins = ['aleksandr8585', 'aleksandrrework', 'trad3r8', 'websalat']; // admin's array
+    private $adminChats = [349719901, 583732141, 699972493, 506873756]; // admin's chats array
 
     public function __construct()
     {
@@ -135,7 +134,7 @@ class Telegram
                     $view = self::getChannelView($job);
 
                     $this->bot->sendMessage($this->bot->channelId, $view, ["parse_mode" => "HTML"]);
-                    
+
                     $job->status = 1;
                     $job->temp_url = "";
                     $job->published = time();
@@ -191,7 +190,7 @@ class Telegram
             "msg" => "",
             "options" => []
         ];
-        
+
         $newJob = Job::findNew();
         if($newJob){
             $result->options['reply_markup'] = $this->getNewJobKeyboard($newJob);
@@ -231,7 +230,7 @@ class Telegram
     {
         $this->bot->sendMessage($cbq->message->chat->id, "Введите дату публикации в формате  гггг-мм-дд чч:мм");
     }
-    
+
     public function setPublishedDate($date, $query)
     {
         $job = Job::find()->where(['status' => 2])->orderBy('id')->one();
@@ -245,7 +244,7 @@ class Telegram
         }
 
         $this->bot->sendMessage($query->chat->id, $msg);
-        
+
         return "/getNew";
     }
 

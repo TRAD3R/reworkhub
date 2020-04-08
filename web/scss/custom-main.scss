@@ -398,7 +398,7 @@ p > a {
   color: $accent;
 }
 
-.feedback {
+.feedback, .section-thank-you {
   .dr-subtitle {
     max-width: 500px;
     margin: 0 auto;
@@ -679,6 +679,10 @@ input::-webkit-inner-spin-button {
 }
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+.content-right {
+  justify-content: flex-end;
 }
 
 @import "custom-media"; //always at the end of file
