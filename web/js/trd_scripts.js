@@ -90,3 +90,6 @@ function getReviewItemHtml(image) {
 function toPayment() {
     $('#btn-to-payment').click();
 }
+
+
+
