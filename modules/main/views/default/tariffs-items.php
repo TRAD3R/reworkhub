@@ -51,6 +51,10 @@ use yii\helpers\Url;
         <span class="price-current">1399 руб.</span>
       </p>
       <!--TODO: после нажатия на выбор тарифа - перекидывать на кассу -->
+        <?php
+            $freekassa = Yii::$app->params['freeKassa'];
+            $sign = md5($freekassa['merchantId'] . ":" . '1399' . $freekassa['firstSecret'] . ':' . 1);
+        ?>
       <a href="https://www.free-kassa.ru/merchant/cash.php?m=199940&oa=1399&o=1&s=125354909ac552122c9335d1e75500f7" class="btn visible-select-tariff">
         Выбрать
       </a>
