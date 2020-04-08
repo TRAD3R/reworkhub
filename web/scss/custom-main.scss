@@ -513,6 +513,22 @@ p > a {
   }
 }
 
+.dr-panel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  background: $white;
+  -webkit-box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.3);
+  box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.3);
+  border-radius: 8px 30px 8px 8px;
+  z-index: 2;
+  overflow: hidden;
+  border: none;
+  padding: 2em;
+  transition: all .2s ease;
+}
+
 .payment-methods {
   max-width: 400px;
   margin: 0 auto;
@@ -525,19 +541,60 @@ p > a {
   &-item {
     display: flex;
     align-items: center;
-    background: $white;
-    -webkit-box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.3);
-    box-shadow: 4px 4px 30px rgba(125, 125, 125, 0.3);
-    border-radius: 8px 30px 8px 8px;
-    z-index: 2;
-    overflow: hidden;
-    border: none;
-    padding: 2em;
-    transition: all .2s ease;
-    &:hover {
-      background-color: #fdfdfd;
-      .payment-methods-title {
-        color: $accent;
+
+    > label {
+      cursor: pointer;
+      padding: 2em 2em 2em 4em;
+      &:hover {
+        background-color: #fdfdfd;
+        .payment-methods-title {
+          color: $accent;
+        }
+      }
+    }
+    > input {
+      &[type="radio"] {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        z-index: -1;
+      }
+      &:checked {
+        &~label {
+          color: $accent;
+          &:after {
+            transform: scale(1);
+          }
+
+        }
+      }
+    }
+
+    > label {
+      position: relative;
+
+      &:before, &:after {
+        position: absolute;
+        content: '';
+        left: 20px;
+        display: flex;
+        border-radius: 50px;
+        top: 50%;
+      }
+      &:before {
+        border: 1px solid $gray;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+      }
+      &:after {
+        transition: all .2s ease;
+        transform: scale(0);
+        left: 24px;
+        width: 12px;
+        height: 12px;
+        margin-top: -6px;
+        background: $accent;
       }
     }
     &:not(:last-child) {
@@ -555,7 +612,7 @@ p > a {
     display: flex;
     justify-content: flex-start;
     > * {
-      max-height: 80px;
+      max-height: 50px;
       width: 100%;
     }
   }
@@ -577,6 +634,8 @@ p > a {
     &:not(:last-child) {
       border-right: 1px solid $light-gray;
     }
+
+
   }
   &-icon {
     margin-bottom: 35px;
@@ -584,6 +643,42 @@ p > a {
   &-title {
     margin-bottom: 15px;
   }
+}
+
+
+
+.form-control:hover, .form-control:focus, .form-control:active {
+  border: 1px solid rgba(0, 180, 115, 0.5);
+  -webkit-box-shadow: 4px 4px 16px rgba(0, 180, 115, 0.1);
+  box-shadow: 4px 4px 16px rgba(0, 180, 115, 0.1);
+}
+
+.paymets-methods-fields {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-top: 4em;
+  padding: 3em 2em;
+  .form-group {
+    width: 100%;
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+  label {
+    color: #adadbc;
+    letter-spacing: 0.2px;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 @import "custom-media"; //always at the end of file
