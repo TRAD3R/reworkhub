@@ -7,9 +7,9 @@ use yii\helpers\Url;
   <div class="container">
     <div class="section-content">
       <p class="dr-h1 section-title">
-        Методы оплаты
+        Методы возврата кэшбека
       </p>
-      <form action="" class="payment-methods">
+      <form action="/" class="payment-methods">
         <div class="payment-methods-wrapper">
           <div class="payment-methods-item">
             <input type="radio" id="id-yandexmoney" name="radio-group-payment" checked>
@@ -50,15 +50,11 @@ use yii\helpers\Url;
         </div>
         <button type="submit" id="btn-to-payment" style="display: none;">отправить форму</button>
       </form>
-      <div class="vacancy-button">
-        <a href="<?= Url::to('/tariffs')?>" class="btn btn-secondary btn-route btn-route-right">
-          <span class="icon">
-            <svg width='13' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M7 13L1 7M1 7L7 0.999999M1 7L13 7' stroke='inherit' stroke-width='2' stroke-linejoin='round'/></svg>
-          </span>
-          К выбору тарифа
-        </a>
+      <div class="vacancy-button content-right">
+
+        <!--TODO: после нажатия на кн. Выбор тарифа - срабатывает клик по скрытой кнопке submit в форме в :51 -->
         <button class="btn btn-accent btn-route" onclick="toPayment()">
-          К оплате
+          К выбору тарифа
           <span class="icon">
             <svg width='13' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6 1L12 7M12 7L6 13M12 7H0' stroke='inherit' stroke-width='2' stroke-linejoin='round'/></svg>
           </span>

@@ -258,9 +258,13 @@ class DefaultController extends Controller
 
   public function actionTariffs(){
     return $this->render('tariffs');
-  } // actionJob
+  } // actionTariffs
 
   public function actionPaymentMethod(){
     return $this->render('payment-method');
-  } // actionJob
+  } // actionPaymentMethod
+
+  public function actionThankYou(){
+    return $this->render('thank-you');
+  } // actionPaymentMethod
 }

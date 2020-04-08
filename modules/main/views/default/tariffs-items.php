@@ -20,7 +20,7 @@ use yii\helpers\Url;
         <span class="price-old"></span>
         <span class="price-current">1399 руб.</span>
       </p>
-      <a href="<?= Url::to('/payment-method')?>" class="btn visible-select-tariff">Выбрать</a>
+      <a href="#" class="btn visible-select-tariff">Выбрать</a>
     </div>
   </div>
   <div class="tariffs-item primary">
@@ -35,7 +35,7 @@ use yii\helpers\Url;
         <span class="price-old">1600 руб.</span>
         <span class="price-current">1399 руб.</span>
       </p>
-      <a href="<?= Url::to('/payment-method')?>" class="btn visible-select-tariff">Выбрать</a>
+      <a href="#" class="btn visible-select-tariff">Выбрать</a>
     </div>
   </div>
   <div class="tariffs-item">
@@ -50,7 +50,8 @@ use yii\helpers\Url;
         <span class="price-old">1600 руб.</span>
         <span class="price-current">1399 руб.</span>
       </p>
-      <a href="<?= Url::to('/payment-method')?>" class="btn visible-select-tariff">Выбрать</a>
+      <!--TODO: после нажатия на выбор тарифа - перекидывать на кассу -->
+      <a href="#" class="btn visible-select-tariff">Выбрать</a>
     </div>
   </div>
 </div>
