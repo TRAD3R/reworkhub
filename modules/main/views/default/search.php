@@ -9,15 +9,22 @@ use app\helpers\ViewHelper;
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
-$this->title = Yii::$app->name;
+$this->title = "Поиск | " . Yii::$app->name;
 ?>
 <div class="block-jobs">
+    <div class="container">
+        <div class="holder-search">
+            <div class="box-search">
+                <input id="search" type="text" placeholder="Поиск" class="input-search"><i class="fa fa-search" onclick="trd_search()"></i>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <p><?php echo sprintf(Yii::t('app', 'PH_SEARCH_BY_QUERY'), Yii::$app->request->get('phrase'))?></p>
         <div class="holder-jobs">
             <?php if($jobs):?>
                 <?php foreach ($jobs as $job):?>
-                <a href="<?=Url::to(['vacancy', 'id' => $job->id])?>" class="box-job">
+                <a href="<?=Url::to(['vacancy', 'id' => $job->url])?>" class="box-job">
                     <div class="hold-head-job">
                         <div class="head-job">
                             <?php if(!empty($job->company_logo)): ?>
@@ -43,6 +50,7 @@ $this->title = Yii::$app->name;
                                 <?=strtoupper($job->currency)?>
                             </span>
                         <?php endif; ?>
+                            <span class="job-company"><?=$job->employmentTypes->type?></span>
                         </div>
                     </div>
                     <div class="hold-content">

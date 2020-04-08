@@ -4,6 +4,9 @@ namespace app\modules\telegram\controllers;
 
 use app\helpers\telegramAnswer\Result;
 use app\modules\telegram\models\Telegram;
+use app\modules\telegram\models\TelegramCV;
+use TelegramBot\Api\BotApi;
+use TelegramBot\Api\Types\Update;
 use Yii;
 use yii\base\Module;
 use yii\helpers\Json;
@@ -29,8 +32,30 @@ class DefaultController extends Controller
     public function actionGet()
     {
         $request = file_get_contents("php://input");
-
         $this->telegram->getMessage(new Result(Json::decode($request)));
+    }
+
+    /**
+     * @throws \TelegramBot\Api\Exception
+     * @throws \TelegramBot\Api\InvalidArgumentException
+     * @throws \TelegramBot\Api\InvalidJsonException
+     */
+    public function actionGetCv()
+    {
+        $bot = new BotApi(Yii::$app->params['telegram']['botTokenCV']);
+        $telegram = new TelegramCV($bot);
+        $response = file_get_contents("php://input");
+        //                            если отключен webhook     если включен webhook
+        $updates = empty($response) ? $bot->getUpdates(670475838) : $this->gotNewMessage($response);
+
+        foreach ($updates as $update){
+            if($update->getMessage()) {
+                $telegram->getMessage($update);
+            }
+            if($update->getCallbackQuery()){
+                $telegram->getCallback($update);
+            }
+        }
     }
 
     public function actionParseChannel(){
@@ -76,4 +101,23 @@ class DefaultController extends Controller
             "error" => $error
         ]);
     } // actionParseChannel
+
+    /**
+     * Возвращает массив сообщений если включен webhook
+     * @param string $responce
+     * @return array
+     * @throws \TelegramBot\Api\InvalidJsonException
+     */
+    public function gotNewMessage($responce)
+    {
+        $updates = [];
+
+        $result = BotApi::jsonValidate($responce, true);
+
+        $update = Update::fromResponse($result);
+
+        if(is_object($update)) $updates[] = $update;
+
+        return $updates;
+    }
 }

@@ -1,0 +1,72 @@
+@media only screen and (max-width: 768px) {
+  .tariffs {
+    flex-direction: column;
+    &-item {
+      width: 100%;
+      margin: 0 0 20px 0;
+      &.primary {
+        transform: none;
+      }
+    }
+  }
+  .dr-h1 {
+    font-size: 36px;
+    line-height: 44px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+  }
+
+  .dr-h2 {
+    font-size: 32px;
+    line-height: 39px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+  }
+
+  .dr-h3 {
+    font-size: 24px;
+    line-height: 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+  }
+
+  .dr-subtitle {
+    font-size: 18px;
+    line-height: 32px;
+  }
+
+  .features {
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    &-item {
+      width: 100%;
+      &:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid $light-gray;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .owl-nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+  }
+
+  .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
+    position: relative;
+    top: auto;
+    margin: 20px 10px;
+    right: auto;
+    left: auto;
+  }
+
+  .reviews-carousel-item {
+    padding: 0;
+  }
+}

@@ -48,7 +48,7 @@ class DefaultController extends Controller
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
         $models = $query->offset($pages->offset)
-            ->limit($pages->limit)
+            ->limit(3)
             ->all();
 
         return $this->render('index', [
@@ -132,10 +132,18 @@ class DefaultController extends Controller
     } // actionPreview
 
     public function actionVacancy(){
-        $id = (int) Yii::$app->request->get('id');
+//        $id = (int) Yii::$app->request->get('id');
+//
+//        if($id) {
+//            $job = Job::findOne($id);
+//        }elseif($tempUrl = Yii::$app->request->get('temp')){
+//            $job = Job::findTemp($tempUrl);
+//        }
 
-        if($id) {
-            $job = Job::findOne($id);
+        $url = Yii::$app->request->get('id');
+
+        if($url) {
+            $job = Job::findByUrl($url);
         }elseif($tempUrl = Yii::$app->request->get('temp')){
             $job = Job::findTemp($tempUrl);
         }
@@ -154,6 +162,10 @@ class DefaultController extends Controller
         return $this->redirect('/index');
     } // actionVacancy
 
+    /**
+     * @return Response
+     * @throws \yii\base\Exception
+     */
     public function actionSave(){
 
         $job = new Job();
@@ -176,20 +188,16 @@ class DefaultController extends Controller
         $job->contact_person_email = $jModel->contactPersonEmail;
         $job->contact_person_other = $jModel->contactPersonOther;
         $job->company_logo = $jModel->companyLogo;
+        $job->url = Yii::$app->security->generateRandomString(7) . time();
 
         if($job->save()) {
             Yii::$app->session->remove('model');
 
-
-
             if($job->contact_person_email){
-                $message = new Message();
-                $message->setFrom(Yii::$app->params['supportEmail'])
+                $message = Yii::$app->mailer->compose('@app/modules/main/mails/mailConfirmOrder')
+                    ->setFrom(Yii::$app->params['supportEmail'])
                     ->setTo($job->contact_person_email)
-                    ->setSubject('Новая вакансия')
-                    ->setHtmlBody('<div><p>Здравствуйте. <br>Благодарим Вас за оставленную вакансию на нашем сайте.
-                                            В ближайшее время наш менеджер просмотрит ее и она будет размещена на сайте.</p>
-                                        </div>');
+                    ->setSubject('Новая вакансия');
 
                 if ($message->send()) {
                     Yii::$app->getSession()->setFlash('success', 'Спасибо! На ваш Email было отправлено письмо с дальнешими инструкциями.');
@@ -210,7 +218,7 @@ class DefaultController extends Controller
     } // actionSave
 
     public function actionSearch(){
-        $phrase = Yii::$app->request->get('phrase');
+        $phrase = trim(Yii::$app->request->get('phrase'));
 
         $query = Job::findBySql("SELECT j.*
                 FROM rw_jobs j JOIN rw_job_categories rjc on j.job_categories_id = rjc.id
@@ -229,4 +237,34 @@ class DefaultController extends Controller
             'pages' => $pages
         ]);
     } // actionPhraseSearch
+
+    public function actionJobs(){
+      $query = Job::find()
+          ->where(['status' => 1])
+          ->andWhere('published <= ' . time() )
+          ->orderBy('published DESC');
+
+      $countQuery = clone $query;
+      $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
+      $models = $query->offset($pages->offset)
+          ->limit($pages->limit)
+          ->all();
+
+      return $this->render('jobs', [
+          "jobs" => $models,
+          'pages' => $pages
+      ]);
+    } // actionJob
+
+  public function actionTariffs(){
+    return $this->render('tariffs');
+  } // actionTariffs
+
+  public function actionPaymentMethod(){
+    return $this->render('payment-method');
+  } // actionPaymentMethod
+
+  public function actionThankYou(){
+    return $this->render('thank-you');
+  } // actionPaymentMethod
 }

@@ -25,9 +25,8 @@ use yii\helpers\Url;
 class Telegram
 {
     private $bot;
-//    private $adminChats = [583732141]; // admin's chats array
-    private $admins = ['aleksandr8585', 'trad3r8']; // admin's array
-    private $adminChats = ['349719901', '583732141']; // admin's chats array
+    private $admins = ['aleksandr8585', 'aleksandrrework', 'trad3r8', 'websalat']; // admin's array
+    private $adminChats = [349719901, 583732141, 699972493, 506873756]; // admin's chats array
 
     public function __construct()
     {
@@ -135,7 +134,7 @@ class Telegram
                     $view = self::getChannelView($job);
 
                     $this->bot->sendMessage($this->bot->channelId, $view, ["parse_mode" => "HTML"]);
-                    
+
                     $job->status = 1;
                     $job->temp_url = "";
                     $job->published = time();
@@ -191,7 +190,7 @@ class Telegram
             "msg" => "",
             "options" => []
         ];
-        
+
         $newJob = Job::findNew();
         if($newJob){
             $result->options['reply_markup'] = $this->getNewJobKeyboard($newJob);
@@ -231,7 +230,7 @@ class Telegram
     {
         $this->bot->sendMessage($cbq->message->chat->id, "Введите дату публикации в формате  гггг-мм-дд чч:мм");
     }
-    
+
     public function setPublishedDate($date, $query)
     {
         $job = Job::find()->where(['status' => 2])->orderBy('id')->one();
@@ -245,7 +244,7 @@ class Telegram
         }
 
         $this->bot->sendMessage($query->chat->id, $msg);
-        
+
         return "/getNew";
     }
 
@@ -256,7 +255,7 @@ class Telegram
     public static function getChannelView(Job $job)
     {
         $view = file_get_contents(__DIR__ . "/../views/channel.txt");
-        $url = "https://reworkhub.com/vacancy/{$job->id}";
+        $url = "https://reworkhub.com/vacancy/{$job->url}";
         $jobTitle = '<a href="' . $url . '">' . $job->title . '</a>';
         $view = str_replace("[JOB_TITLE]", $jobTitle, $view);
         $companyTitle =  !empty($job->company_title) ? "<b>" . Yii::t('app', "PH_COMPANY") . ":</b>" . PHP_EOL . self::replaceHTML($job->company_title) : "";
@@ -278,15 +277,18 @@ class Telegram
 //        $view = str_replace("[CONTACT_EMAIL]", $job->contact_person_email, $view);
 
         $view = str_replace("&nbsp;", "", $view);
+        Yii::info($url, 'telegram');
         return $view;
     }
 
     private static function replaceHTML($str)
     {
-        $result = preg_replace("~(<p>|</p>|<ul>|</ul>|<ol>|</ol>|</li>)~", "", $str);
+        $result = preg_replace("~\n{2,}~sm", "\n", $str);
+//        $result = preg_replace("~<li>\n<p>~sm", "<li><p>", $result);
+        $result = preg_replace("~(<p>|</p>|<ul>|</ul>|<ol>|</ol>|<li>|</li>|\t)~", "", $result);
         $result = preg_replace("~(<br />|<br>|</br>)~", "\n", $result);
-        $result = preg_replace("~(<li>|&mdash;)~", "-", $result);
-        $result = preg_replace("~(&ldquo;|&rdquo;)~", '"', $result);
+        $result = html_entity_decode($result);
+//        $result = preg_replace("~(&ldquo;|&rdquo;)~", '"', $result);
 
         $arr = explode("\n", $result);
         $cutArr = [];
@@ -294,7 +296,7 @@ class Telegram
             if (strlen(strip_tags($item)) < 3){
                 unset($arr[$key]);
             }else{
-                $cutArr[] = $item;
+                $cutArr[] = preg_match("~^(-|\d)~", $item) == 1 ? $item : "- {$item}";
                 if (count($cutArr) > 3)
                     break;
             }

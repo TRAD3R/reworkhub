@@ -29,7 +29,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
     <div class="block-jobs">
         <div class="container">
             <div class="holder-form">
-                <a href="http://reworkhub.com/" class="btn-backwards">
+                <a href="/" class="btn-backwards">
                     <svg viewBox="0 0 8 12" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.871797 6.42828L6.26814 11.8228C6.50493 12.059 6.88857 12.059 7.12595 11.8228C7.36274 11.5866 7.36274 11.203 7.12595 10.9668L2.15764 6.0003L7.12535 1.03378C7.36214 0.797595 7.36214 0.413961 7.12535 0.177173C6.88856 -0.0590169 6.50433 -0.0590169 6.26754 0.177173L0.871199 5.57167C0.638049 5.80542 0.638049 6.19508 0.871797 6.42828Z"/>
                     </svg>
@@ -44,7 +44,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         </div>
                         <div class="box-input">
                             <?= $form->field($model, 'jobCategories')
-                                ->dropDownList(ArrayHelper::map(JobCategories::find()->orderBy('id')->all(), 'id', 'category')
+                                ->dropDownList(ArrayHelper::map(JobCategories::find()->orderBy('weight')->all(), 'id', 'category')
                                     , [ 'class' => 'custom color'
                                         , 'prompt' => 'Выберите категорию'
                                         , 'data-jcf' => '{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'
@@ -196,7 +196,12 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             </div>
                         </div>
                     </div>
-                <?php /*echo */ $form->field($model, 'reCaptcha')->widget(ReCaptcha::class) ?>
+                    <?php echo $form->field($model, 'reCaptcha')->widget(
+                        ReCaptcha::class,
+                        [
+                            'siteKey' => '6LcBgZYUAAAAAKkARW9Ch0y8gvlLGvOr9by2w0lq', // unnecessary is reCaptcha component was set up
+                        ]
+                    )->label(false) ?>
                 <div id="trd-submit"><?= Html::submitButton(Yii::t('app', 'BTN_PREVIEW'), ['class' => 'btn']) ?></div>
                 <?php ActiveForm::end()?>
             </div>

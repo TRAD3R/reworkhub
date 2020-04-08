@@ -27,26 +27,25 @@ use yii\widgets\ActiveForm;
                             <img src="img/companies/<?=$model->companyLogo?>" alt="<?=$model->companyTitle?>">
                         </div>
                         <?php endif; ?>
-
-                        <h1 class="job-title"><?= $model->title?></h1>
-
+                        <div class="hold-title">
+                            <h1 class="job-title"><?= $model->title?></h1>
+                            <?php if((int) $model->minSalary > 0 || (int) $model->maxSalary > 0):?>
+                                <span class="job-salary">
+                                    <?php
+                                    if(!empty($model->minSalary) && !empty($model->maxSalary)):?>
+                                        <?php echo $model->minSalary . " - " . $model->maxSalary;?>
+                                    <?php elseif (!empty($model->minSalary)):?>
+                                        <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $model->minSalary;?>
+                                    <?php else:?>
+                                        <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $model->maxSalary;?>
+                                    <?php endif;?>
+                                    <?=strtoupper($model->currency)?>
+                                </span>
+                            <?php endif; ?>
+                        </div>
                         <?php if(!empty($model->companyTitle)): ?>
                             <span class="job-company"><strong><?=Yii::t('app', 'PH_COMPANY')?>:</strong> <?=$model->companyTitle?></span>
                             <span class="job-company"><?=$model->companyAbout?></span>
-                        <?php endif; ?>
-
-                        <?php if((int) $model->minSalary > 0 || (int) $model->maxSalary > 0):?>
-                            <span class="job-salary">
-                                <?php
-                                if(!empty($model->minSalary) && !empty($model->maxSalary)):?>
-                                    <?php echo $model->minSalary . " - " . $model->maxSalary;?>
-                                <?php elseif (!empty($model->minSalary)):?>
-                                    <?php echo Yii::t('app', 'PH_SALARY_FROM') . " " . $model->minSalary;?>
-                                <?php else:?>
-                                    <?php echo Yii::t('app', 'PH_SALARY_TO') . " " . $model->maxSalary;?>
-                                <?php endif;?>
-                                <?=strtoupper($model->currency)?>
-                            </span>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -109,8 +108,18 @@ use yii\widgets\ActiveForm;
                 </div>
                 <?php endif; ?>
                 <div class="vacancy-button">
-                    <a href="<?= Url::to('/add')?>" class="btn"><?=Yii::t('app', 'BTN_BACK')?></a>
-                    <a href="<?= Url::to('/save')?>" class="btn"><?=Yii::t('app', 'BTN_SEND')?></a>
+                    <a href="<?= Url::to('/add')?>" class="btn btn-secondary btn-route btn-route-right">
+                      <span class="icon">
+                        <svg width='13' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M7 13L1 7M1 7L7 0.999999M1 7L13 7' stroke='inherit' stroke-width='2' stroke-linejoin='round'/></svg>
+                      </span>
+                      <?=Yii::t('app', 'BTN_BACK')?>
+                    </a>
+                    <a href="<?= Url::to('/payment-method')?>" class="btn btn-accent btn-route">
+                      Далее
+                      <span class="icon">
+                        <svg width='13' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6 1L12 7M12 7L6 13M12 7H0' stroke='inherit' stroke-width='2' stroke-linejoin='round'/></svg>
+                      </span>
+                    </a>
                 </div>
             </div>
         </div>

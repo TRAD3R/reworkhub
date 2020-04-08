@@ -9,6 +9,7 @@
 namespace app\modules\main\models;
 
 
+use himiklab\yii2\recaptcha\ReCaptchaValidator;
 use Yii;
 use yii\base\Model;
 use yii\web\UploadedFile;
@@ -46,12 +47,15 @@ class JobForm extends Model
             [['contactPersonEmail'], 'email'],
             [['duties', 'conditions'], 'safe'],
             [['companyLogo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, ico, bmp, svg', 'message' => Yii::t('app', 'ERROR_CHECK_IMAGE_FORMAT')],
-            [['companyTitle', 'title', 'skills'], 'string', 'max' => 255],
+            [['companyTitle', 'title'], 'string', 'max' => 255],
+            [['skills', 'contactPersonOther'], 'string', 'max' => 250],
             ['companyAbout', 'string', 'max' => 1000],
             [['contactPersonName'], 'string', 'max' => 150],
-            [['contactPersonEmail', 'contactPersonOther'], 'string', 'max' => 50],
+            [['contactPersonEmail'], 'string', 'max' => 50],
 
-//            [['reCaptcha'], ReCaptchaValidator::class, 'secret' => '6LcBgZYUAAAAAD_BgjqcJRIfrRLZ3c8emZFTc0Dq', 'uncheckedMessage' => Yii::t('app', 'ERROR_CHECK_RECAPTCHA')],
+            [['reCaptcha'], ReCaptchaValidator::class,
+                'secret' => '6LcBgZYUAAAAAD_BgjqcJRIfrRLZ3c8emZFTc0Dq', // unnecessary is reCaptcha component was set up
+                'uncheckedMessage' => Yii::t('app', 'ERROR_CHECK_RECAPTCHA')],
         ];
     }
 

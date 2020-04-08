@@ -23,8 +23,9 @@
         "2amigos/yii2-tinymce-widget": "~1.1",
         "yiisoft/yii2-httpclient": "*",
         "ezyang/htmlpurifier": "^4.10",
-      "ext-json": "*",
-        "himiklab/yii2-recaptcha-widget": "*"
+        "ext-json": "*",
+        "himiklab/yii2-recaptcha-widget": "*",
+        "telegram-bot/api": "^2.3"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
