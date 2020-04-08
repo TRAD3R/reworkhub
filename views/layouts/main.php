@@ -119,6 +119,9 @@ AppAsset::register($this);
                     </svg>
                 </a>
             </div>
+            <a href="//showstreams.tv/">
+                <img src="//www.free-kassa.ru/img/fk_btn/6.png" title="Бесплатный видеохостинг">
+            </a>
         </div>
     </footer>
 
