@@ -28,7 +28,7 @@ class PaymentController extends Controller
     public function actionResult()
     {
         $res = file_get_contents("php://input");
-        Yii::info(var_dump($res), 'payment');
+        Yii::info($res, 'payment');
         echo "Result";
     } // actionOk
 }
