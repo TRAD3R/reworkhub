@@ -7,6 +7,7 @@
  */
 
 use yii\helpers\ArrayHelper;
+use yii\log\FileTarget;
 
 $params = ArrayHelper::merge(
     require(__DIR__ . '/params.php'),
@@ -41,6 +42,7 @@ return [
                 '<_a:(about|error|add|preview|save|jobs|tariffs|payment-method|thank-you)>' => 'main/default/<_a>',
                 'summary/<_a>' => 'main/summary/<_a>',
                 '<_a:(login|logout|signup|email-confirm|request-password-reset|password-reset)>' => 'user/default/<_a>',
+                'payment/<a:(ok|fail|result)>' => 'main/payment/<a>',
 
                 '<_m:[\w\-]+>' => '<_m>/default/index',
                 '<_m:[\w\-]+>/<id:\d+>/<_a:[\w-]+>' => '<_m>/default/<_a>',
@@ -48,8 +50,6 @@ return [
                 '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>' => '<_m>/<_c>/view',
                 '<_m:[\w\-]+>/<_c:[\w\-]+>/<id:\d+>/<_a:[\w\-]+>' => '<_m>/<_c>/<_a>',
                 '<_m:[\w\-]+>/<_c:[\w\-]+>/<_a:[\w-]+>' => '<_m>/<_c>/<_a>',
-
-//                'add' => 'main/default/add'
             ],
         ],
         'mailer' => [
@@ -58,8 +58,24 @@ return [
         'cache' => [
             'class' => 'yii\caching\DummyCache',
         ],
-        'log' => [
-            'class' => 'yii\log\Dispatcher',
+        'log'         => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets'    => [
+                [
+                    'class' => FileTarget::class,
+                    'levels' => ['info'],
+                    'categories' => ['payment'],
+                    'logVars' => [],
+                    'logFile' => '@Main/logs/payment/' . date("Y-m-d", time()) . '.log'
+                ],
+                [
+                    'class' => FileTarget::class,
+                    'levels' => ['info'],
+                    'categories' => ['dev'],
+                    'logVars' => [],
+                    'logFile' => '@Main/logs/development.log'
+                ]
+            ],
         ],
         'i18n' => [
             'translations' => [
