@@ -16,19 +16,19 @@ class PaymentController extends Controller
     public function actionOk()
     {
         Yii::info("paymentOk", 'payment');
-        echo "OK";
+        return "OK";
     } // actionOk
 
     public function actionFail()
     {
         Yii::info("paymentFail", 'payment');
-        echo "Fail";
+        return "Fail";
     } // actionOk
 
     public function actionResult()
     {
         $res = file_get_contents("php://input");
         Yii::info($res, 'payment');
-        echo "Result";
+        return "Result";
     } // actionOk
 }

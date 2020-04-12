@@ -65,7 +65,7 @@ return [
                     'class' => FileTarget::class,
                     'levels' => ['info'],
                     'categories' => ['payment'],
-                    'logVars' => ['_GET', '_POST', '_SERVER'],
+                    'logVars' => ['_GET'],
                     'logFile' => '@Main/logs/payment/' . date("Y-m-d", time()) . '.log'
                 ],
                 [
