@@ -39,7 +39,8 @@ return [
                 'vacancy/<id>' => 'main/default/vacancy',
                 'search' => 'main/default/search',
                 'telegram/<a:[\w\-]+>' => 'telegram/default/<a>',
-                '<_a:(about|error|add|preview|save|jobs|tariffs|payment-method|thank-you)>' => 'main/default/<_a>',
+                'freekassa-pay/<id:\d+>' => 'main/default/freekassa-pay',
+                '<_a:(about|error|add|preview|save|jobs|tariffs|cashback|thank-you)>' => 'main/default/<_a>',
                 'summary/<_a>' => 'main/summary/<_a>',
                 '<_a:(login|logout|signup|email-confirm|request-password-reset|password-reset)>' => 'user/default/<_a>',
                 'payment/<a:(ok|fail|result)>' => 'main/payment/<a>',
@@ -66,14 +67,21 @@ return [
                     'levels' => ['info'],
                     'categories' => ['payment'],
                     'logVars' => ['_GET'],
-                    'logFile' => '@Main/logs/payment/' . date("Y-m-d", time()) . '.log'
+                    'logFile' => dirname(__DIR__) .'/modules/main/logs/payment/' . date("Y-m-d", time()) . '.log'
+                ],
+                [
+                    'class' => FileTarget::class,
+                    'levels' => ['error'],
+                    'categories' => ['payment'],
+                    'logVars' => ['_GET'],
+                    'logFile' => dirname(__DIR__) .'/modules/main/logs/payment/error' . date("Y-m-d", time()) . '.log'
                 ],
                 [
                     'class' => FileTarget::class,
                     'levels' => ['info'],
                     'categories' => ['dev'],
                     'logVars' => [],
-                    'logFile' => '@Main/logs/development.log'
+                    'logFile' => dirname(__DIR__) .'/modules/main/logs/development.log'
                 ]
             ],
         ],

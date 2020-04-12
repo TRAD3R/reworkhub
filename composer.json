@@ -25,7 +25,8 @@
         "ezyang/htmlpurifier": "^4.10",
         "ext-json": "*",
         "himiklab/yii2-recaptcha-widget": "*",
-        "telegram-bot/api": "^2.3"
+        "telegram-bot/api": "^2.3",
+        "ext-curl": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

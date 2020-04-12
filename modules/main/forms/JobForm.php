@@ -6,7 +6,7 @@
  * Time: 13:45
  */
 
-namespace app\modules\main\models;
+namespace app\modules\main\forms;
 
 
 use himiklab\yii2\recaptcha\ReCaptchaValidator;

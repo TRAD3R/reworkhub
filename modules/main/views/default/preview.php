@@ -6,7 +6,7 @@
  * Time: 10:45
  */
 
-/** @var $model \app\modules\main\models\JobForm */
+/** @var $model \app\modules\main\forms\JobForm */
 /** @var $employment string */
 /** @var $category string */
 
@@ -114,7 +114,7 @@ use yii\widgets\ActiveForm;
                       </span>
                       <?=Yii::t('app', 'BTN_BACK')?>
                     </a>
-                    <a href="<?= Url::to('/payment-method')?>" class="btn btn-accent btn-route">
+                    <a href="<?= Url::to('/save')?>" class="btn btn-accent btn-route">
                       Далее
                       <span class="icon">
                         <svg width='13' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6 1L12 7M12 7L6 13M12 7H0' stroke='inherit' stroke-width='2' stroke-linejoin='round'/></svg>
