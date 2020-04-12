@@ -32,6 +32,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $url
  * @property string $temp_url
  * @property int $status
+ * @property int $amount
  *
  * @property EmploymentTypes $employmentTypes
  * @property JobCategories $jobCategories
@@ -42,6 +43,7 @@ class Job extends \yii\db\ActiveRecord
     const STATUS_ACTIVE = 1;
     const STATUS_WAIT = 2;
     const STATUS_DEFFERED = 3;
+    const STATUS_PAID = 4;
 
     /**
      * {@inheritdoc}
@@ -86,6 +88,7 @@ class Job extends \yii\db\ActiveRecord
             self::STATUS_ACTIVE => 'Активен',
             self::STATUS_WAIT => 'Ожидает подтверждения',
             self::STATUS_DEFFERED => 'Ожидает публикации',
+            self::STATUS_PAID => 'Оплачен',
 
         ];
     }

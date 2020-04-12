@@ -2,16 +2,15 @@
 
 namespace app\modules\main\controllers;
 
+use app\modules\main\forms\CashbackForm;
+use app\modules\main\forms\JobForm;
 use app\modules\main\models\EmploymentTypes;
+use app\modules\main\models\Freekassa;
 use app\modules\main\models\Job;
 use app\modules\main\models\JobCategories;
-use app\modules\main\models\JobForm;
-use app\modules\telegram\models\Telegram;
-use function Sodium\add;
 use Yii;
 use yii\data\Pagination;
 use yii\helpers\Json;
-use yii\swiftmailer\Message;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\web\UploadedFile;
@@ -192,30 +191,54 @@ class DefaultController extends Controller
 
         if($job->save()) {
             Yii::$app->session->remove('model');
+            Yii::$app->session->set('job', $job->id);
 
-            if($job->contact_person_email){
-                $message = Yii::$app->mailer->compose('@app/modules/main/mails/mailConfirmOrder')
-                    ->setFrom(Yii::$app->params['supportEmail'])
-                    ->setTo($job->contact_person_email)
-                    ->setSubject('Новая вакансия');
-
-                if ($message->send()) {
-                    Yii::$app->getSession()->setFlash('success', 'Спасибо! На ваш Email было отправлено письмо с дальнешими инструкциями.');
-
-                } else {
-                    Yii::$app->getSession()->setFlash('error', 'Извините. У нас возникли технические проблемы. Попробуйте еще раз.');
-                }
-            }
-
-        $telegram = new Telegram();
-        $telegram->newJob($job->company_title);
-
-            return $this->goHome();
+            return $this->redirect('/cashback');
         }else {
             Yii::error($job->getErrors(), 'trd_error');
             return $this->redirect("/preview");
         }
     } // actionSave
+
+    public function actionCashback(){
+
+        $job = Job::findOne(Yii::$app->session->get('job'));
+
+        if(!$job) {
+            Yii::$app->session->setFlash('error', "Ошибка сохранения заявки. Обратитесь в служду поддержки");
+            return $this->redirect('/add');
+        }
+
+        $form = new CashbackForm();
+
+        if($form->load(Yii::$app->getRequest()->post()) && $form->save($job->id)) {
+            return $this->redirect('tariffs');
+        }
+
+        return $this->render('cashback', [
+            'model' => $form
+        ]);
+    } // actionPaymentMethod
+
+    public function actionFreekassaPay($id)
+    {
+        $job = Job::findOne(Yii::$app->session->get('job'));
+        $tariffs = Yii::$app->params['tariffs'];
+
+        if($job && isset($tariffs[$id])) {
+            $tariff = $tariffs[$id];
+            $job->amount = $tariff['price']['current'];
+
+            $freekassa = Yii::$app->params['freeKassa'];
+            $sign = md5($freekassa['merchantId'] . ":" . $tariff['price']['current'] . ":" . $freekassa['firstSecret'] . ':' . $job->id);
+            $url = Freekassa::PAYMENT_URL . '?m=' . $freekassa['merchantId'] . '&oa=' . $tariff['price']['current'] . '&o=' . $job->id . '&s=' . $sign;
+
+            return $this->redirect($url);
+        }
+
+        return $this->redirect('/cashback');
+
+    }
 
     public function actionSearch(){
         $phrase = trim(Yii::$app->request->get('phrase'));
@@ -260,11 +283,8 @@ class DefaultController extends Controller
     return $this->render('tariffs');
   } // actionTariffs
 
-  public function actionPaymentMethod(){
-    return $this->render('payment-method');
-  } // actionPaymentMethod
-
   public function actionThankYou(){
+
     return $this->render('thank-you');
   } // actionPaymentMethod
 }

@@ -17,7 +17,7 @@ use app\helpers\telegramAnswer\CallbackQuery;
 use app\helpers\telegramAnswer\Message;
 use app\helpers\telegramAnswer\Result;
 use app\modules\main\models\Job;
-use app\modules\main\models\JobForm;
+use app\modules\main\forms\JobForm;
 use Yii;
 use yii\helpers\Json;
 use yii\helpers\Url;
