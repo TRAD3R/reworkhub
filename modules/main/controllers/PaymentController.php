@@ -38,11 +38,15 @@ class PaymentController extends Controller
                 Yii::error('Payment is not valid', 'freekassa');
             }
 
-            if ($job->contact_person_email) {
-                $this->sendEmail($job);
+            $job->status = Job::STATUS_PAID;
+
+            if($job->save()) {
+                if ($job->contact_person_email) {
+                    $this->sendEmail($job);
+                }
+                $telegram = new Telegram();
+                $telegram->newJob($job->company_title);
             }
-            $telegram = new Telegram();
-            $telegram->newJob($job->company_title);
         }
 
         die("YES");

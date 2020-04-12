@@ -66,14 +66,14 @@ return [
                     'class' => FileTarget::class,
                     'levels' => ['info'],
                     'categories' => ['payment'],
-                    'logVars' => ['_GET'],
+                    'logVars' => [],
                     'logFile' => dirname(__DIR__) .'/modules/main/logs/payment/' . date("Y-m-d", time()) . '.log'
                 ],
                 [
                     'class' => FileTarget::class,
                     'levels' => ['error'],
                     'categories' => ['payment'],
-                    'logVars' => ['_GET'],
+                    'logVars' => [],
                     'logFile' => dirname(__DIR__) .'/modules/main/logs/payment/error' . date("Y-m-d", time()) . '.log'
                 ],
                 [
