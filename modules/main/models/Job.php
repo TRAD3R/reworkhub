@@ -162,7 +162,7 @@ class Job extends \yii\db\ActiveRecord
     public static function findNew()
     {
         return self::find()
-            ->where(['status' => self::STATUS_WAIT])
+            ->where(['status' => self::STATUS_PAID])
             ->orderBy('id ASC')
             ->one();
     }
