@@ -20,7 +20,7 @@ use yii\helpers\Url;
         <span class="price-old"></span>
         <span class="price-current">1399 руб.</span>
       </p>
-      <a href="#" class="btn visible-select-tariff">Выбрать</a>
+      <a href="<?= Url::to('/payment-method?price=1399')?>" class="btn visible-select-tariff">Выбрать</a>
     </div>
   </div>
   <div class="tariffs-item primary">
@@ -35,7 +35,7 @@ use yii\helpers\Url;
         <span class="price-old">1600 руб.</span>
         <span class="price-current">1399 руб.</span>
       </p>
-      <a href="#" class="btn visible-select-tariff">Выбрать</a>
+      <a href="<?= Url::to('/payment-method?price=1399')?>" class="btn visible-select-tariff">Выбрать</a>
     </div>
   </div>
   <div class="tariffs-item">
@@ -51,7 +51,8 @@ use yii\helpers\Url;
         <span class="price-current">1399 руб.</span>
       </p>
       <!--TODO: после нажатия на выбор тарифа - перекидывать на кассу -->
-      <a href="https://www.free-kassa.ru/merchant/cash.php?m=199940&oa=1399&o=1&s=125354909ac552122c9335d1e75500f7" class="btn visible-select-tariff">
+<!--      <a href="https://www.free-kassa.ru/merchant/cash.php?m=199940&oa=1399&o=1&s=125354909ac552122c9335d1e75500f7" class="btn visible-select-tariff">-->
+      <a href="<?= Url::to('/payment-method?price=1399')?>" class="btn visible-select-tariff">
         Выбрать
       </a>
     </div>
