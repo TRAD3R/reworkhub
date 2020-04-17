@@ -9,7 +9,7 @@
 namespace app\modules\main\controllers;
 
 
-use app\modules\main\models\ContactForm;
+use app\modules\main\forms\ContactForm;
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;

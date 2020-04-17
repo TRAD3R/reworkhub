@@ -17,7 +17,7 @@ use app\helpers\telegramAnswer\CallbackQuery;
 use app\helpers\telegramAnswer\Message;
 use app\helpers\telegramAnswer\Result;
 use app\modules\main\models\Job;
-use app\modules\main\models\JobForm;
+use app\modules\main\forms\JobForm;
 use Yii;
 use yii\helpers\Json;
 use yii\helpers\Url;
@@ -25,8 +25,6 @@ use yii\helpers\Url;
 class Telegram
 {
     private $bot;
-    private $admins = ['aleksandr8585', 'aleksandrrework', 'trad3r8', 'websalat']; // admin's array
-    private $adminChats = [349719901, 583732141, 699972493, 506873756]; // admin's chats array
 
     public function __construct()
     {
@@ -35,7 +33,7 @@ class Telegram
 
     public function getMessage(Result $teleResult){
         if($teleResult->message) {
-            if (in_array(strtolower($teleResult->message->chat->username), $this->admins)) {
+            if (in_array(strtolower($teleResult->message->chat->username), $this->bot->admins)) {
                 if (isset($teleResult->message)) {
                     $result = $this->answerIsMessage($teleResult->message);
                     if ($result->msg) {
@@ -47,7 +45,7 @@ class Telegram
                 $this->bot->sendMessage($teleResult->message->chat->id, $msg);
             }
         }elseif ($teleResult->callbackQuery) {
-            if (in_array(strtolower($teleResult->callbackQuery->message->chat->username), $this->admins)) {
+            if (in_array(strtolower($teleResult->callbackQuery->message->chat->username), $this->bot->admins)) {
                 if (isset($teleResult->callbackQuery)) {
                     $result = $this->answerIsQuery($teleResult->callbackQuery);
                     if ($result->msg) {
@@ -177,7 +175,7 @@ class Telegram
      */
     public function newJob($company)
     {
-        foreach ($this->adminChats as $chat){
+        foreach ($this->bot->adminChats as $chat){
             $msg = sprintf(Yii::t('app', 'MSG_NEW_JOB'), $company);
             Yii::$app->teleBot->sendMessage($chat, $msg);
         }
