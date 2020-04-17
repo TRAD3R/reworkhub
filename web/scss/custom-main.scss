@@ -274,8 +274,8 @@
   .owl-nav {
     button.owl-next, button.owl-prev {
       position: absolute;
-      top: 50%;
-      margin-top: -20px;
+      top: 0;
+      margin-top: 0;
       min-width: 45px;
       min-height: 45px;
       width: 45px;
@@ -375,6 +375,14 @@
     .icon {
       svg {
         stroke: $white;
+      }
+    }
+    &-outline {
+      background: #fff;
+      border: 1px solid $accent;
+      color: $accent;
+      svg {
+        stroke: $accent;
       }
     }
   }
@@ -685,4 +693,24 @@ input[type='number'] {
   justify-content: flex-end;
 }
 
+.header-hold {
+  flex-wrap: wrap;
+  > .btn {
+    min-width: 265px;
+  }
+
+  > * {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+.logo {
+  margin-right: 20px;
+  img {
+    min-width: 99px;
+  }
+}
 @import "custom-media"; //always at the end of file

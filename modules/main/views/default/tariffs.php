@@ -14,6 +14,7 @@ use yii\helpers\Url; ?>
 <!--      <form action="">-->
         <?php echo $this->render('tariffs-items'); ?>
 <!--      </form>-->
+
     </div>
   </div>
 </section>

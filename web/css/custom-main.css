@@ -232,8 +232,8 @@
 
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
   position: absolute;
-  top: 50%;
-  margin-top: -20px;
+  top: 0;
+  margin-top: 0;
   min-width: 45px;
   min-height: 45px;
   width: 45px;
@@ -296,6 +296,12 @@
       stroke: #303030; }
   .btn-accent .icon svg {
     stroke: #fff; }
+  .btn-accent-outline {
+    background: #fff;
+    border: 1px solid #26AE61;
+    color: #26AE61; }
+    .btn-accent-outline svg {
+      stroke: #26AE61; }
   .btn-secondary .icon svg {
     stroke: #303030; }
 
@@ -528,6 +534,21 @@ input[type='number'] {
 
 .content-right {
   justify-content: flex-end; }
+
+.header-hold {
+  flex-wrap: wrap; }
+  .header-hold > .btn {
+    min-width: 265px; }
+  .header-hold > * {
+    margin-bottom: 5px;
+    margin-top: 5px; }
+    .header-hold > *:first-child {
+      margin-right: 10px; }
+
+.logo {
+  margin-right: 20px; }
+  .logo img {
+    min-width: 99px; }
 
 @media only screen and (max-width: 768px) {
   .tariffs {

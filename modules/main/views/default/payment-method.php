@@ -37,28 +37,33 @@ use yii\helpers\Url;
         <div class="dr-panel paymets-methods-fields">
           <div class="form-group">
             <label for="id-name-receiver">Имя получателя:</label>
-            <input type="text" class="form-control" id="id-name-receiver" name="name-receiver" required>
+            <input type="text" class="form-control" id="id-name-receiver" name="name-receiver" >
           </div>
           <div class="form-group">
             <label for="id-email">E-mail:</label>
-            <input type="email" class="form-control" id="id-email" name="email" required>
+            <input type="email" class="form-control" id="id-email" name="email" >
           </div>
           <div class="form-group">
             <label for="id-number">Номер:</label>
-            <input type="number" class="form-control" id="id-number" name="number" min="0" required>
+            <input type="number" class="form-control" id="id-number" name="number" min="0" >
           </div>
         </div>
         <button type="submit" id="btn-to-payment" style="display: none;">отправить форму</button>
       </form>
-      <div class="vacancy-button content-right">
+      <div class="vacancy-button">
 
-        <!--TODO: после нажатия на кн. Выбор тарифа - срабатывает клик по скрытой кнопке submit в форме в :51 -->
-        <button class="btn btn-accent btn-route" onclick="toPayment()">
-          К выбору тарифа
+        <a href="https://www.free-kassa.ru/merchant/cash.php?m=199940&oa=<?=$_GET['price']; ?>&o=1&s=125354909ac552122c9335d1e75500f7" class="btn btn-secondary">
+          Пропустить
+        </a>
+
+
+        <a href="https://www.free-kassa.ru/merchant/cash.php?m=199940&oa=<?=$_GET['price']; ?>&o=1&s=125354909ac552122c9335d1e75500f7" class="btn btn-accent btn-route">
+          К оплате
           <span class="icon">
             <svg width='13' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M6 1L12 7M12 7L6 13M12 7H0' stroke='inherit' stroke-width='2' stroke-linejoin='round'/></svg>
           </span>
-        </button>
+        </a>
+
       </div>
     </div>
   </div>
