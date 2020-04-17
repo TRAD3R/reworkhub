@@ -20,9 +20,12 @@ class TelebotComponent extends Component
 {
     public $botToken;
     public $channelId;
+    public $admins;
+    public $adminChats;
     private $api = 'https://api.telegram.org/bot';
     private $client;
     private $url;
+
 
     public function __construct(array $config = [])
     {

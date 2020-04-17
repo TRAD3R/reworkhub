@@ -16,7 +16,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /** @var $this \yii\web\View */
-/** @var $model \app\modules\main\models\JobForm */
+/** @var $model \app\modules\main\forms\JobForm */
 /** @var $jobCategories array */
 /** @var $employmentTypes \app\modules\main\models\EmploymentTypes */
 
@@ -123,7 +123,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                                     ]
                                 ])
                                 ->label(Yii::t('app', 'JOB_DUTIES'), ['class' => 'title-input']) ?>
-                            
+
                             <?= $form->field($model, 'conditions')
                                 ->widget(CKEditor::class, [
                                     'preset' => 'custom', 'clientOptions' => [
