@@ -18,7 +18,7 @@ $tariffs = Yii::$app->params['tariffs'];
                     <span class="price-old"><?=($tariff['price']['old'] > 0) ? $tariff['price']['old'] . ' руб.' : '' ?></span>
                     <span class="price-current"><?=$tariff['price']['current']?> руб.</span>
                 </p>
-                <a href="<?=Url::to(['freekassa-pay', 'id' => $key])?>" class="btn visible-select-tariff">Выбрать</a>
+                <a href="<?= Url::to("/cashback/{$key}")?>" class="btn visible-select-tariff">Выбрать</a>
             </div>
         </div>
     <?php endforeach; ?>

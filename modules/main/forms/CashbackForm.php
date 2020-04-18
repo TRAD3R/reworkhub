@@ -26,7 +26,7 @@ class CashbackForm extends Model
     {
         return [
             [['name', 'email', 'number', 'wallet'], 'filter', 'filter' => 'trim'],
-            [['name', 'email', 'number', 'wallet'], 'required'],
+//            [['name', 'email', 'number', 'wallet'], 'required'],
             [['wallet'], 'integer'],
             [['email'], 'email']
         ];

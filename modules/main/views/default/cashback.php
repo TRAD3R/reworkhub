@@ -2,6 +2,7 @@
 
 use app\modules\main\forms\CashbackForm;
 use app\modules\main\models\Cashback;
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -19,7 +20,6 @@ use yii\widgets\ActiveForm;
                     'class' => 'payment-methods'
             ]
         ])?>
-      <form action="/" class="payment-methods">
         <div class="payment-methods-wrapper">
           <div class="payment-methods-item">
               <?= Html::activeRadio($model, 'wallet', [
@@ -77,8 +77,9 @@ use yii\widgets\ActiveForm;
               ?>
           </div>
         </div>
-        <div class="vacancy-button content-right">
-          <?=Html::submitButton('К выбору тарифа
+        <div class="vacancy-button">
+          <?=Html::submitButton('Пропустить', ['class' => 'btn btn-secondary'] )?>
+          <?=Html::submitButton('Оплатить
               <span class="icon">
                 <svg width=\'13\' height=\'14\' viewBox=\'0 0 13 14\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M6 1L12 7M12 7L6 13M12 7H0\' stroke=\'inherit\' stroke-width=\'2\' stroke-linejoin=\'round\'/></svg>
               </span>', ['class' => 'btn btn-accent btn-route'] )?>
