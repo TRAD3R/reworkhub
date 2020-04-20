@@ -232,8 +232,8 @@
 
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
   position: absolute;
-  top: 50%;
-  margin-top: -20px;
+  top: 0;
+  margin-top: 0;
   min-width: 45px;
   min-height: 45px;
   width: 45px;
@@ -296,6 +296,16 @@
       stroke: #303030; }
   .btn-accent .icon svg {
     stroke: #fff; }
+  .btn-accent-outline {
+    background: #fff;
+    border: 1px solid #26AE61;
+    color: #26AE61; }
+    .btn-accent-outline svg {
+      stroke: #26AE61; }
+    .btn-accent-outline:hover {
+      color: #26AE61; }
+      .btn-accent-outline:hover .icon svg {
+        stroke: #26AE61 !important; }
   .btn-secondary .icon svg {
     stroke: #303030; }
 
@@ -375,6 +385,7 @@ p > a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   margin: 0; }
   .price-old {
     position: relative;
@@ -426,18 +437,18 @@ p > a {
     align-items: center; }
     .payment-methods-item > label {
       cursor: pointer;
-      padding: 2em 2em 2em 4em; }
+      padding: 1.2em 2em 1.2em 4em;
+      border: 2px solid transparent;
+      opacity: .6; }
       .payment-methods-item > label:hover {
         background-color: #fdfdfd; }
-        .payment-methods-item > label:hover .payment-methods-title {
-          color: #26AE61; }
     .payment-methods-item > input[type="radio"] {
       visibility: hidden;
       opacity: 0;
       position: absolute;
       z-index: -1; }
     .payment-methods-item > input:checked ~ label {
-      color: #26AE61; }
+      opacity: 1; }
       .payment-methods-item > input:checked ~ label:after {
         transform: scale(1); }
     .payment-methods-item > label {
@@ -528,6 +539,82 @@ input[type='number'] {
 
 .content-right {
   justify-content: flex-end; }
+
+.header-hold {
+  flex-wrap: wrap; }
+  .header-hold > .btn {
+    min-width: 265px; }
+  .header-hold > * {
+    margin-bottom: 5px;
+    margin-top: 5px; }
+    .header-hold > *:first-child {
+      margin-right: 10px; }
+
+.logo {
+  margin-right: 20px; }
+  .logo img {
+    min-width: 99px; }
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer; }
+  .checkbox input[type="checkbox"] {
+    opacity: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    -ms-progress-appearance: unset;
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    position: absolute; }
+    .checkbox input[type="checkbox"]:checked ~ .checkbox-box {
+      background-image: -webkit-gradient(linear, left top, right top, from(#64D0A9), to(#6DC2B7));
+      background-image: -webkit-linear-gradient(left, #64D0A9 0%, #6DC2B7 100%);
+      background-image: -o-linear-gradient(left, #64D0A9 0%, #6DC2B7 100%);
+      background-image: linear-gradient(90deg, #64D0A9 0%, #6DC2B7 100%);
+      border-color: transparent; }
+      .checkbox input[type="checkbox"]:checked ~ .checkbox-box svg {
+        opacity: 1;
+        visibility: visible; }
+  .checkbox-box {
+    margin: 0 15px 0 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    background-color: transparent;
+    border: 2px solid #d1d1d1;
+    border-radius: 4px;
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease; }
+    .checkbox-box svg {
+      transition: all .2s ease;
+      -webkit-transition: all .2s ease;
+      -moz-transition: all .2s ease;
+      -o-transition: all .2s ease;
+      fill: #fff;
+      opacity: 0;
+      visibility: hidden; }
+
+.holder-form .checkbox {
+  margin-bottom: 30px; }
+
+a.c-accent:hover {
+  color: #26AE61; }
+
+.cacheback-value {
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 10px;
+  display: inline-block; }
 
 @media only screen and (max-width: 768px) {
   .tariffs {

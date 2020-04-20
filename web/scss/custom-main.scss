@@ -274,8 +274,8 @@
   .owl-nav {
     button.owl-next, button.owl-prev {
       position: absolute;
-      top: 50%;
-      margin-top: -20px;
+      top: 0;
+      margin-top: 0;
       min-width: 45px;
       min-height: 45px;
       width: 45px;
@@ -375,6 +375,22 @@
     .icon {
       svg {
         stroke: $white;
+      }
+    }
+    &-outline {
+      background: #fff;
+      border: 1px solid $accent;
+      color: $accent;
+      svg {
+        stroke: $accent;
+      }
+      &:hover {
+        color: $accent;
+        .icon {
+          svg {
+            stroke: $accent!important;
+          }
+        }
       }
     }
   }
@@ -486,6 +502,7 @@ p > a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   margin: 0;
   &-old {
     position: relative;
@@ -544,11 +561,12 @@ p > a {
 
     > label {
       cursor: pointer;
-      padding: 2em 2em 2em 4em;
+      padding: 1.2em 2em 1.2em 4em;
+      border: 2px solid transparent;
+      opacity: .6;
       &:hover {
         background-color: #fdfdfd;
         .payment-methods-title {
-          color: $accent;
         }
       }
     }
@@ -561,7 +579,8 @@ p > a {
       }
       &:checked {
         &~label {
-          color: $accent;
+          //border-color: $accent;
+          opacity: 1;
           &:after {
             transform: scale(1);
           }
@@ -683,6 +702,97 @@ input[type='number'] {
 
 .content-right {
   justify-content: flex-end;
+}
+
+.header-hold {
+  flex-wrap: wrap;
+  > .btn {
+    min-width: 265px;
+  }
+
+  > * {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+.logo {
+  margin-right: 20px;
+  img {
+    min-width: 99px;
+  }
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  input[type="checkbox"] {
+    opacity: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    -ms-progress-appearance: unset;
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    &:checked {
+      & ~ .checkbox-box {
+        background-image: -webkit-gradient(linear, left top, right top, from(#64D0A9), to(#6DC2B7));
+        background-image: -webkit-linear-gradient(left, #64D0A9 0%, #6DC2B7 100%);
+        background-image: -o-linear-gradient(left, #64D0A9 0%, #6DC2B7 100%);
+        background-image: linear-gradient(90deg, #64D0A9 0%, #6DC2B7 100%);
+        border-color: transparent;
+        svg {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+  &-box {
+    margin: 0 15px 0 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    background-color: transparent;
+    border: 2px solid $gray;
+    border-radius: 4px;
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    svg {
+      transition: all .2s ease;
+      -webkit-transition: all .2s ease;
+      -moz-transition: all .2s ease;
+      -o-transition: all .2s ease;
+      fill: #fff;
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.holder-form .checkbox {
+  margin-bottom: 30px;
+}
+
+a.c-accent:hover {
+  color: $accent;
+}
+.cacheback-value {
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 10px;
+  display: inline-block;
 }
 
 @import "custom-media"; //always at the end of file

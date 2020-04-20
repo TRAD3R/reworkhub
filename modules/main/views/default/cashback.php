@@ -2,6 +2,7 @@
 
 use app\modules\main\forms\CashbackForm;
 use app\modules\main\models\Cashback;
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -19,7 +20,6 @@ use yii\widgets\ActiveForm;
                     'class' => 'payment-methods'
             ]
         ])?>
-      <form action="/" class="payment-methods">
         <div class="payment-methods-wrapper">
           <div class="payment-methods-item">
               <?= Html::activeRadio($model, 'wallet', [
@@ -53,6 +53,22 @@ use yii\widgets\ActiveForm;
               </span>
             </label>
           </div>
+          <div class="payment-methods-item">
+            <?= Html::activeRadio($model, 'wallet', [
+                'label'    => false,
+                'id'       => 'id-card',
+                'value'    => Cashback::WALLET_YANDEX_MONEY,
+                'checked ' => true,
+            ]); ?>
+            <label for="id-card" class="dr-panel">
+              <span class="payment-methods-photo">
+                <img src="/images/credit-card.svg" alt="">
+              </span>
+              <span class="payment-methods-info">
+                <span class="payment-methods-title">Оплата картой</span>
+              </span>
+            </label>
+          </div>
         </div>
         <div class="dr-panel paymets-methods-fields">
           <div class="form-group">
@@ -77,8 +93,9 @@ use yii\widgets\ActiveForm;
               ?>
           </div>
         </div>
-        <div class="vacancy-button content-right">
-          <?=Html::submitButton('К выбору тарифа
+        <div class="vacancy-button">
+          <?=Html::submitButton('Пропустить', ['class' => 'btn btn-secondary'] )?>
+          <?=Html::submitButton('Оплатить
               <span class="icon">
                 <svg width=\'13\' height=\'14\' viewBox=\'0 0 13 14\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'M6 1L12 7M12 7L6 13M12 7H0\' stroke=\'inherit\' stroke-width=\'2\' stroke-linejoin=\'round\'/></svg>
               </span>', ['class' => 'btn btn-accent btn-route'] )?>

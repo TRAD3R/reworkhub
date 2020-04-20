@@ -193,14 +193,19 @@ class DefaultController extends Controller
             Yii::$app->session->remove('model');
             Yii::$app->session->set('job', $job->id);
 
-            return $this->redirect('/cashback');
+            return $this->redirect('/tariffs');
         }else {
             Yii::error($job->getErrors(), 'trd_error');
             return $this->redirect("/preview");
         }
     } // actionSave
 
-    public function actionCashback(){
+    public function actionCashback($id){
+        $tariffs = Yii::$app->params['tariffs'];
+
+        if (!$tariffs[$id]) {
+          $this->redirect("/tariffs");
+        }
 
         $job = Job::findOne(Yii::$app->session->get('job'));
 
@@ -209,36 +214,26 @@ class DefaultController extends Controller
             return $this->redirect('/add');
         }
 
+        if($job && isset($tariffs[$id])) {
+          $tariff = $tariffs[$id];
+          $job->amount = $tariff['price']['current'];
+
+          $job->save();
+        }
+
         $form = new CashbackForm();
 
         if($form->load(Yii::$app->getRequest()->post()) && $form->save($job->id)) {
-            return $this->redirect('tariffs');
+          $freekassa = Yii::$app->params['freeKassa'];
+          $sign = md5($freekassa['merchantId'] . ":" . $job->amount . ":" . $freekassa['firstSecret'] . ':' . $job->id);
+          $url = Freekassa::PAYMENT_URL . '?m=' . $freekassa['merchantId'] . '&oa=' . $job->amount . '&o=' . $job->id . '&s=' . $sign;
+            return $this->redirect($url);
         }
 
         return $this->render('cashback', [
             'model' => $form
         ]);
     } // actionPaymentMethod
-
-    public function actionFreekassaPay($id)
-    {
-        $job = Job::findOne(Yii::$app->session->get('job'));
-        $tariffs = Yii::$app->params['tariffs'];
-
-        if($job && isset($tariffs[$id])) {
-            $tariff = $tariffs[$id];
-            $job->amount = $tariff['price']['current'];
-
-            $freekassa = Yii::$app->params['freeKassa'];
-            $sign = md5($freekassa['merchantId'] . ":" . $tariff['price']['current'] . ":" . $freekassa['firstSecret'] . ':' . $job->id);
-            $url = Freekassa::PAYMENT_URL . '?m=' . $freekassa['merchantId'] . '&oa=' . $tariff['price']['current'] . '&o=' . $job->id . '&s=' . $sign;
-
-            return $this->redirect($url);
-        }
-
-        return $this->redirect('/cashback');
-
-    }
 
     public function actionSearch(){
         $phrase = trim(Yii::$app->request->get('phrase'));
@@ -286,5 +281,10 @@ class DefaultController extends Controller
   public function actionThankYou(){
 
     return $this->render('thank-you');
+  } // actionPaymentMethod
+
+  public function actionRules(){
+
+    return $this->render('rules');
   } // actionPaymentMethod
 }

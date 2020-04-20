@@ -53,6 +53,13 @@ AppAsset::register($this);
                     <img src="/images/logo.svg" alt="Reworkhub">
                 </a>
                 <div class="header-hold">
+                  <a href="<?= Url::to('/jobs') ?>" class="btn btn-accent-outline btn-route">
+                    <span>Все вакансии</span>
+                    <span class="icon">
+                    <svg width='13' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'><path
+                          d='M6 1L12 7M12 7L6 13M12 7H0' stroke='inherit' stroke-width='2' stroke-linejoin='round'/></svg>
+                  </span>
+                  </a>
                     <a href="<?= Url::to('/add')?>" class="btn"><?= Yii::t('app', 'BTN_POST_JOB')?></a>
                     <div id="telegram-top-menu" class="box-social">
                         <a href="https://t.me/ReWorkHUB" target="_blank">
