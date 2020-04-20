@@ -53,6 +53,22 @@ use yii\widgets\ActiveForm;
               </span>
             </label>
           </div>
+          <div class="payment-methods-item">
+            <?= Html::activeRadio($model, 'wallet', [
+                'label'    => false,
+                'id'       => 'id-card',
+                'value'    => Cashback::WALLET_YANDEX_MONEY,
+                'checked ' => true,
+            ]); ?>
+            <label for="id-card" class="dr-panel">
+              <span class="payment-methods-photo">
+                <img src="/images/credit-card.svg" alt="">
+              </span>
+              <span class="payment-methods-info">
+                <span class="payment-methods-title">Оплата картой</span>
+              </span>
+            </label>
+          </div>
         </div>
         <div class="dr-panel paymets-methods-fields">
           <div class="form-group">

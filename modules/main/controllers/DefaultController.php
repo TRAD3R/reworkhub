@@ -282,4 +282,9 @@ class DefaultController extends Controller
 
     return $this->render('thank-you');
   } // actionPaymentMethod
+
+  public function actionRules(){
+
+    return $this->render('rules');
+  } // actionPaymentMethod
 }
