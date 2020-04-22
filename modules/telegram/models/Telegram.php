@@ -16,7 +16,6 @@ use app\helpers\keyboards\ReplyKeyboardMarkup;
 use app\helpers\telegramAnswer\CallbackQuery;
 use app\helpers\telegramAnswer\Message;
 use app\helpers\telegramAnswer\Result;
-use app\modules\main\models\Cashback;
 use app\modules\main\models\Job;
 use Yii;
 use yii\helpers\Json;
@@ -126,7 +125,7 @@ class Telegram
                     }
                     break;
                 case 'defer':
-                    $this->setPublished($query);
+                    $this->setPublished($job->id, $query);
                     exit;
                 case 'accept':
                     $view = self::getChannelView($job);
@@ -193,14 +192,7 @@ class Telegram
         $newJob = Job::findNew();
         if($newJob){
             $result->options['reply_markup'] = $this->getNewJobKeyboard($newJob);
-            $msg = sprintf("%s (cashback: %s(%s) %s %s)",
-                $newJob->title,
-                Cashback::getWallets($newJob->cashback->wallet),
-                $newJob->cashback->number,
-                $newJob->cashback->name,
-                $newJob->cashback->email
-            );
-            $result->msg = $msg;
+            $result->msg = $newJob->title;
         }else{
             $result->msg = "Новых заявок нет.";
         }
@@ -232,10 +224,7 @@ class Telegram
         ];
     }
 
-    /**
-     * @param CallbackQuery $cbq
-     */
-    public function setPublished($cbq)
+    public function setPublished($jobId, CallbackQuery $cbq)
     {
         $this->bot->sendMessage($cbq->message->chat->id, "Введите дату публикации в формате  гггг-мм-дд чч:мм");
     }
