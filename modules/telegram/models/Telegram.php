@@ -16,6 +16,7 @@ use app\helpers\keyboards\ReplyKeyboardMarkup;
 use app\helpers\telegramAnswer\CallbackQuery;
 use app\helpers\telegramAnswer\Message;
 use app\helpers\telegramAnswer\Result;
+use app\modules\main\models\Cashback;
 use app\modules\main\models\Job;
 use Yii;
 use yii\helpers\Json;
@@ -192,7 +193,14 @@ class Telegram
         $newJob = Job::findNew();
         if($newJob){
             $result->options['reply_markup'] = $this->getNewJobKeyboard($newJob);
-            $result->msg = $newJob->title;
+            $msg = sprintf("%s (cashback: %s(%s) %s %s",
+                $newJob->title,
+                Cashback::getWallets($newJob->cashback->wallet),
+                $newJob->cashback->number,
+                $newJob->cashback->name,
+                $newJob->cashback->email
+            );
+            $result->msg = $msg;
         }else{
             $result->msg = "Новых заявок нет.";
         }
