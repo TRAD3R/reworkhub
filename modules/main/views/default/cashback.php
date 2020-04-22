@@ -41,7 +41,7 @@ use yii\widgets\ActiveForm;
                   'label'    => false,
                   'id'       => 'id-qiwi',
                   'value'    => Cashback::WALLET_QIWI,
-                  'checked ' => true,
+                  'checked ' => false,
               ]); ?>
             <label for="id-qiwi" class="dr-panel">
               <span class="payment-methods-photo">
@@ -56,8 +56,8 @@ use yii\widgets\ActiveForm;
             <?= Html::activeRadio($model, 'wallet', [
                 'label'    => false,
                 'id'       => 'id-card',
-                'value'    => Cashback::WALLET_YANDEX_MONEY,
-                'checked ' => true,
+                'value'    => Cashback::WALLET_CARD,
+                'checked ' => false,
             ]); ?>
             <label for="id-card" class="dr-panel">
               <span class="payment-methods-photo">
