@@ -2,8 +2,8 @@
 
 namespace app\modules\main\models;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%jobs}}".
@@ -18,10 +18,11 @@ use yii\behaviors\TimestampBehavior;
  * @property int $wallet
  * @property Job $job
  */
-class Cashback extends \yii\db\ActiveRecord
+class Cashback extends ActiveRecord
 {
     const WALLET_YANDEX_MONEY = 1;
     const WALLET_QIWI = 2;
+    const WALLET_CARD = 3;
 
     /**
      * {@inheritdoc}
@@ -42,7 +43,8 @@ class Cashback extends \yii\db\ActiveRecord
     {
         $wallets = [
             self::WALLET_YANDEX_MONEY => 'Яндекс Деньги',
-            self::WALLET_QIWI => 'QIWI'
+            self::WALLET_QIWI => 'QIWI',
+            self::WALLET_CARD => 'Банковская карта',
         ];
 
         return $wallets[$wallet] ?: '';
