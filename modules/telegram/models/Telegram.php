@@ -126,7 +126,7 @@ class Telegram
                     }
                     break;
                 case 'defer':
-                    $this->setPublished($job->id, $query);
+                    $this->setPublished($query);
                     exit;
                 case 'accept':
                     $view = self::getChannelView($job);
@@ -193,7 +193,7 @@ class Telegram
         $newJob = Job::findNew();
         if($newJob){
             $result->options['reply_markup'] = $this->getNewJobKeyboard($newJob);
-            $msg = sprintf("%s (cashback: %s(%s) %s %s",
+            $msg = sprintf("%s (cashback: %s(%s) %s %s)",
                 $newJob->title,
                 Cashback::getWallets($newJob->cashback->wallet),
                 $newJob->cashback->number,
@@ -232,7 +232,7 @@ class Telegram
         ];
     }
 
-    public function setPublished($jobId, CallbackQuery $cbq)
+    public function setPublished(CallbackQuery $cbq)
     {
         $this->bot->sendMessage($cbq->message->chat->id, "Введите дату публикации в формате  гггг-мм-дд чч:мм");
     }
