@@ -56,7 +56,7 @@ use yii\widgets\ActiveForm;
             <?= Html::activeRadio($model, 'wallet', [
                 'label'    => false,
                 'id'       => 'id-card',
-                'value'    => Cashback::WALLET_YANDEX_MONEY,
+                'value'    => Cashback::WALLET_CARD,
                 'checked ' => true,
             ]); ?>
             <label for="id-card" class="dr-panel">
