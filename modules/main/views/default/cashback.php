@@ -20,54 +20,29 @@ use yii\widgets\ActiveForm;
             ]
         ])?>
         <div class="payment-methods-wrapper">
-          <div class="payment-methods-item">
-              <?= Html::activeRadio($model, 'wallet', [
-                  'label'    => false,
-                  'id'       => 'id-yandexmoney',
-                  'value'    => Cashback::WALLET_YANDEX_MONEY,
-                  'checked ' => true,
-              ]); ?>
-            <label for="id-yandexmoney" class="dr-panel">
-              <span class="payment-methods-photo">
-                <img src="/images/yandex-money.svg" alt="">
-              </span>
-              <span class="payment-methods-info">
-                <span class="payment-methods-title">Яндекс Деньги</span>
-              </span>
-            </label>
-          </div>
-          <div class="payment-methods-item">
-              <?= Html::activeRadio($model, 'wallet', [
-                  'label'    => false,
-                  'id'       => 'id-qiwi',
-                  'value'    => Cashback::WALLET_QIWI,
-                  'checked ' => false,
-              ]); ?>
-            <label for="id-qiwi" class="dr-panel">
-              <span class="payment-methods-photo">
-                <img src="/images/qiwi_koshelek.svg" alt="">
-              </span>
-              <span class="payment-methods-info">
-                <span class="payment-methods-title">QIWI</span>
-              </span>
-            </label>
-          </div>
-          <div class="payment-methods-item">
-            <?= Html::activeRadio($model, 'wallet', [
-                'label'    => false,
-                'id'       => 'id-card',
-                'value'    => Cashback::WALLET_CARD,
-                'checked ' => false,
-            ]); ?>
-            <label for="id-card" class="dr-panel">
-              <span class="payment-methods-photo">
-                <img src="/images/credit-card.svg" alt="">
-              </span>
-              <span class="payment-methods-info">
-                <span class="payment-methods-title">Оплата картой</span>
-              </span>
-            </label>
-          </div>
+          <?= $form->field($model, 'wallet')
+              ->radioList(
+                [Cashback::WALLET_YANDEX_MONEY => 'Яндекс Деньги', Cashback::WALLET_QIWI => 'QIWI', Cashback::WALLET_CARD => 'Оплата картой'],
+                [
+                    'item' => function($index, $label, $name, $checked, $value) {
+                        $checked = $value == Cashback::WALLET_YANDEX_MONEY ? 'checked' : '';
+                        $wallet = Cashback::getWallets($value);
+                        $return = '<div class="payment-methods-item">';
+                        $return .= '<input type="radio" id="'.$wallet['id'].'" name="' . $name . '" value="' . $value . '" ' . $checked . '>';
+                        $return .= '<label for="'.$wallet['id'].'" class="dr-panel">';
+                        $return .= '<span class="payment-methods-photo">';
+                        $return .= '<img src="/images/'.$wallet['image'].'" alt="">';
+                        $return .= '</span>';
+                        $return .= '<span class="payment-methods-info">';
+                        $return .= '<span class="payment-methods-title">'.$wallet['title'].'</span>';
+                        $return .= '</span>';
+                        $return .= '</label></div>';
+
+                        return $return;
+                    }
+                ]
+              )->label(false);
+          ?>
         </div>
         <div class="dr-panel paymets-methods-fields">
           <div class="form-group">

@@ -42,9 +42,21 @@ class Cashback extends ActiveRecord
     public static function getWallets($wallet)
     {
         $wallets = [
-            self::WALLET_YANDEX_MONEY => 'Яндекс Деньги',
-            self::WALLET_QIWI => 'QIWI',
-            self::WALLET_CARD => 'Банковская карта',
+            self::WALLET_YANDEX_MONEY => [
+                'title' => 'Яндекс Деньги',
+                'id'    => 'yandexmoney',
+                'image' => 'yandex-money.svg'
+            ],
+            self::WALLET_QIWI => [
+                'title' => 'QIWI',
+                'id'    => 'qiwi',
+                'image' => 'qiwi_koshelek.svg'
+            ],
+            self::WALLET_CARD => [
+                'title' => 'Банковская карта',
+                'id'    => 'card',
+                'image' => 'credit-card.svg'
+            ],
         ];
 
         return $wallets[$wallet] ?: '';
