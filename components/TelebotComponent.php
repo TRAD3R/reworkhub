@@ -9,11 +9,8 @@
 namespace app\components;
 
 
-use app\helpers\telegramAnswer\Result;
-use app\helpers\telegramAnswer\Root;
 use Yii;
 use yii\base\Component;
-use yii\helpers\Json;
 use yii\httpclient\Client;
 
 class TelebotComponent extends Component
@@ -90,7 +87,7 @@ class TelebotComponent extends Component
         $request = $this->client->get($this->url. '/sendMessage', $params);
         $response = $this->client->send($request);
 
-        return $response->getData();
+        return $response->getContent();
     }
 
     public function editMessage($chatId, $msg, $options = null)

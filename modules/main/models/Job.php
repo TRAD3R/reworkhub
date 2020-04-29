@@ -4,6 +4,7 @@ namespace app\modules\main\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%jobs}}".
@@ -36,8 +37,9 @@ use yii\behaviors\TimestampBehavior;
  *
  * @property EmploymentTypes $employmentTypes
  * @property JobCategories $jobCategories
+ * @property Cashback $cashback
  */
-class Job extends \yii\db\ActiveRecord
+class Job extends ActiveRecord
 {
     const STATUS_BLOCKED = 0;
     const STATUS_ACTIVE = 1;
@@ -137,6 +139,11 @@ class Job extends \yii\db\ActiveRecord
     public function getJobCategories()
     {
         return $this->hasOne(JobCategories::class, ['id' => 'job_categories_id']);
+    }
+
+    public function getCashback()
+    {
+        return $this->hasOne(Cashback::class, ['job_id' => 'id']);
     }
 
     /**
