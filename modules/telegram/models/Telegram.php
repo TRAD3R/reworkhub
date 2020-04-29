@@ -195,7 +195,7 @@ class Telegram
             $result->options['reply_markup'] = $this->getNewJobKeyboard($newJob);
             $msg = sprintf("%s (cashback: %s(%s) %s %s)",
                 $newJob->title,
-                Cashback::getWallets($newJob->cashback->wallet),
+                Cashback::getWallets($newJob->cashback->wallet)['title'],
                 $newJob->cashback->number,
                 $newJob->cashback->name,
                 $newJob->cashback->email
