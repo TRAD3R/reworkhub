@@ -392,6 +392,14 @@
           }
         }
       }
+      &:focus {
+        color: $black;
+        .icon {
+          svg {
+            stroke: $black!important;
+          }
+        }
+      }
     }
   }
 
@@ -462,6 +470,24 @@ p > a {
     }
     &:hover {
       background: $accent;
+    }
+    &.social-links-item-min {
+      min-height: 35px;
+      min-width: 35px;
+      height: 35px;
+      width: 35px;
+      padding: 0;
+      box-shadow: none!important;
+      transition: all .2s ease-out;
+      display: flex;
+      .icon {
+        width: 55%;
+        height: auto;
+        margin: 0;
+      }
+      &:hover {
+        background: $accent;
+      }
     }
   }
 }
@@ -794,5 +820,4 @@ a.c-accent:hover {
   margin-top: 10px;
   display: inline-block;
 }
-
 @import "custom-media"; //always at the end of file

@@ -65,7 +65,7 @@ use yii\widgets\ActiveForm;
                 <img src="/images/credit-card.svg" alt="">
               </span>
               <span class="payment-methods-info">
-                <span class="payment-methods-title">Оплата картой</span>
+                <span class="payment-methods-title">Банковская карта</span>
               </span>
             </label>
           </div>
