@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
         <div class="payment-methods-wrapper">
           <?= $form->field($model, 'wallet')
               ->radioList(
-                [Cashback::WALLET_YANDEX_MONEY => 'Яндекс Деньги', Cashback::WALLET_QIWI => 'QIWI', Cashback::WALLET_CARD => 'Оплата картой'],
+                [Cashback::WALLET_YANDEX_MONEY => 'Яндекс Деньги', Cashback::WALLET_QIWI => 'QIWI', Cashback::WALLET_CARD => 'Банковская карта'],
                 [
                     'item' => function($index, $label, $name, $checked, $value) {
                         $checked = $value == Cashback::WALLET_YANDEX_MONEY ? 'checked' : '';
