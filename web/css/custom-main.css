@@ -129,6 +129,9 @@
   .section-features {
     padding: 5em 0; }
 
+.payment-method-description {
+  margin-bottom: 40px; }
+
 .tariffs {
   width: 100%;
   display: flex;
@@ -314,7 +317,7 @@
     stroke: #303030; }
 
 .c-accent {
-  color: #26AE61; }
+  color: #26AE61 !important; }
 
 p > a {
   color: #26AE61; }
@@ -630,10 +633,25 @@ a.c-accent:hover {
   color: #26AE61; }
 
 .cacheback-value {
-  font-size: 16px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  line-height: 22px;
+  font-family: 'Montserrat',sans-serif; }
+
+.dr-text {
+  font-size: 14px;
+  line-height: 22px;
   font-weight: normal;
-  margin-top: 10px;
-  display: inline-block; }
+  font-family: 'Montserrat',sans-serif;
+  color: #000; }
+  .dr-text__bold {
+    font-weight: bold; }
+  .dr-text__gray {
+    color: #d1d1d1; }
+  .dr-text__darkgray {
+    color: #8d8d8d; }
 
 @media only screen and (max-width: 768px) {
   .tariffs {

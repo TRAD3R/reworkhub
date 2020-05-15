@@ -120,6 +120,7 @@
   }
 
   &-select-tariffs {
+
     .visible-select-tariff {
       display: flex!important;
     }
@@ -137,6 +138,10 @@
   &-features {
     padding: 5em 0;
   }
+}
+
+.payment-method-description {
+  margin-bottom: 40px;
 }
 
 .tariffs {
@@ -414,7 +419,7 @@
 
 .c {
   &-accent {
-    color: $accent;
+    color: $accent!important;
   }
 }
 
@@ -815,9 +820,28 @@ a.c-accent:hover {
   color: $accent;
 }
 .cacheback-value {
-  font-size: 16px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  line-height: 22px;
+  font-family: 'Montserrat',sans-serif;
+}
+
+.dr-text {
+  font-size: 14px;
+  line-height: 22px;
   font-weight: normal;
-  margin-top: 10px;
-  display: inline-block;
+  font-family: 'Montserrat',sans-serif;
+  color: $black;
+  &__bold {
+    font-weight: bold;
+  }
+  &__gray {
+    color: $gray;
+  }
+  &__darkgray {
+    color: $dark-gray;
+  }
 }
 @import "custom-media"; //always at the end of file

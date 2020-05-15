@@ -16,12 +16,10 @@ $tariffs = Yii::$app->params['tariffs'];
             <div class="tariffs-item-cta">
                 <p class="price">
                     <span class="price-old"><?=($tariff['price']['old'] > 0) ? $tariff['price']['old'] . ' руб.' : '' ?></span>
-                    <span class="price-current"><?=$tariff['price']['current']?> руб.
-                      <br>
-                      <span class="cacheback-value visible-select-tariff">кэшбек <?=$tariff['cacheBack']?>%</span>
-                    </span>
+                    <span class="price-current"><?=$tariff['price']['current']?> руб.</span>
                 </p>
-                <a href="<?= Url::to("/cashback/{$key}")?>" class="btn visible-select-tariff">Выбрать</a>
+              <span class="cacheback-value visible-select-tariff"><?=$tariff['cacheBack']?></span>
+              <a href="<?= Url::to("/cashback/{$key}")?>" class="btn visible-select-tariff">Выбрать</a>
             </div>
         </div>
     <?php endforeach; ?>
