@@ -9,14 +9,15 @@ use yii\helpers\Url;
     <div class="container">
       <div class="section-content">
         <div class="promo-composition">
-          <h1 class="dr-h1">Найдите сотрудника на удалёнку за 1 день в самой большой базе удалёнщиков России</h1>
-          <p class="dr-subtitle">База удаленных сотрудников из 250 000 соискателей. Охват каждой вакансии от 50 000 живых человек. Сотни откликов!</p>
+          <h1 class="dr-h1">Найдите идеального кандидата в самом быстроразвивающимся комьюнити удалёнщиков в СНГ</h1>
+          <p class="dr-subtitle">Вашу вакансию увидят тысячи активных соискателей. Вы получите десятки заявок от кандидатов и быстро закроете открытую позицию.
+          </p>
           <a href="<?= Url::to('/add')?>" class="btn" type="button">Разместить вакансию</a>
         </div>
       </div>
     </div>
   </section>
-  <section class="section section-features">
+  <section style="display: none;" class="section section-features">
     <div class="container">
       <div class="section-content">
         <div class="features">
@@ -90,7 +91,7 @@ use yii\helpers\Url;
       </div>
     </div>
   </section>
-  <section class="section section-reviews">
+  <section style="display: none;" class="section section-reviews">
     <div class="container">
       <div class="section-content">
         <p class="dr-h2 section-title">
@@ -109,12 +110,13 @@ use yii\helpers\Url;
       <div class="section-content">
         <div class="feedback">
           <p class="dr-h1 section-title">
-            Остались вопросы по поиску удалённых сотрудников?<br><span class="c-accent">Спрашивайте.</span>
+            Остались вопросы? <span class="c-accent">Напишите нам</span> в чат в правом нижнем углу страницы
           </p>
-          <p class="dr-subtitle text-center">Свяжитесь с нами в <a href="https://t.me/ReWorkHUB" target="_blank">Telegram</a>, <a href="https://twitter.com/ReWorkhub1" target="_blank">Twitter</a> или напишите на <a href="mailto:support@reworkhub.com" target="_blank">support@reworkhub.com</a></p>
+          <p class="dr-subtitle text-center">Либо напишите нам в <a href="https://ttttt.me/udalenka_robot" target="_blank">Telegram</a> или на почту
+            <a href="mailto:info@udalyonka.com" target="_blank">info@udalyonka.com</a></p>
           <div class="social-links">
             <div class="social-links-wrapper">
-              <a href="https://t.me/ReWorkHUB" class="social-links-item sl-telegram" target="_blank">
+              <a href="https://t.me/joinchat/AAAAAFQzh6UEUQVWgHSMFw" class="social-links-item sl-telegram" target="_blank">
               <span class="icon">
                 <svg width="21" height="17" viewBox="0 0 21 17" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.6646 0.110375L0.934606 6.94737C-0.275394 7.43337 -0.268393 8.10837 0.712607 8.40937L5.26461 9.82937L15.7966 3.18437C16.2946 2.88137 16.7496 3.04437 16.3756 3.37637L7.84261 11.0774H7.84061L7.84261 11.0784L7.52861 15.7704C7.98861 15.7704 8.19161 15.5594 8.44961 15.3104L10.6606 13.1604L15.2596 16.5574C16.1076 17.0244 16.7166 16.7844 16.9276 15.7724L19.9466 1.54437C20.2556 0.305375 19.4736 -0.255625 18.6646 0.110375V0.110375Z" fill="inherit"/>

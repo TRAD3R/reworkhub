@@ -193,9 +193,10 @@ class Telegram
         $newJob = Job::findNew();
         if($newJob){
             $result->options['reply_markup'] = $this->getNewJobKeyboard($newJob);
+            $wallet = $this->getWallet($newJob->cashback->wallet);
             $msg = sprintf("%s (cashback: %s(%s) %s %s)",
                 $newJob->title,
-                Cashback::getWallets($newJob->cashback->wallet)['title'],
+                $wallet,
                 $newJob->cashback->number,
                 $newJob->cashback->name,
                 $newJob->cashback->email
@@ -328,5 +329,20 @@ class Telegram
         }
 
         return $salary;
+    }
+
+    /**
+     * Возвращает название кошелька
+     * @param int|null $wallet
+     */
+    private function getWallet($wallet)
+    {
+        if($wallet) {
+            $title = Cashback::getWallets($wallet)['title'];
+        }else{
+            $title = 'Кешбек не выбран';
+        }
+
+        return $title;
     }
 }
