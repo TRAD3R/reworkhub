@@ -41,7 +41,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         <div class="box-input">
                             <?= $form->field($model, 'title')
                                 ->input('text', ['id' => 'position-name', 'placeholder' => 'Frontend Developer'])
-                                ->label(Yii::t('app', 'JOB_TITLE'), ['class' => 'title-input']) ?>
+                                ->label(Yii::t('app', 'JOB_TITLE'), ['class' => 'title-input required']) ?>
                         </div>
                         <div class="box-input">
                             <?= $form->field($model, 'jobCategories')
@@ -51,7 +51,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                                         , 'data-jcf' => '{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'
                                         ]
                                 )
-                                ->label(Yii::t('app', 'JOB_CATEGORY'), ['class' => 'title-input'])?>
+                                ->label(Yii::t('app', 'JOB_CATEGORY'), ['class' => 'title-input required'])?>
                         </div>
                     </div>
                     <div class="title-form">
@@ -61,7 +61,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                         <div class="box-input">
                             <?= $form->field($model, 'companyTitle')
                                 ->input('text', ['placeholder' => Yii::t('app', 'PH_PRINT_COMPANY_TITLE')])
-                                ->label(Yii::t('app', 'JOB_COMPANY_TITLE'), ['class' => 'title-input']) ?>
+                                ->label(Yii::t('app', 'JOB_COMPANY_TITLE'), ['class' => 'title-input required']) ?>
                         </div>
                         <div class="box-input">
                             <?= $form->field($model, 'companyAbout')
@@ -107,7 +107,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                                         ]
                                     ]
                                 ])
-                                ->label(Yii::t('app', 'JOB_REQUIREMENTS'), ['class' => 'title-input']) ?>
+                                ->label(Yii::t('app', 'JOB_REQUIREMENTS'), ['class' => 'title-input required']) ?>
 
                             <?= $form->field($model, 'duties')
                                 ->widget(CKEditor::class, [
@@ -123,7 +123,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                                         'data' => "Hello",
                                     ]
                                 ])
-                                ->label(Yii::t('app', 'JOB_DUTIES'), ['class' => 'title-input']) ?>
+                                ->label(Yii::t('app', 'JOB_DUTIES'), ['class' => 'title-input required']) ?>
 
                             <?= $form->field($model, 'conditions')
                                 ->widget(CKEditor::class, [
@@ -137,16 +137,16 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                                         ]
                                     ]
                                 ])
-                                ->label(Yii::t('app', 'JOB_CONDITIONS'), ['class' => 'title-input']) ?>
+                                ->label(Yii::t('app', 'JOB_CONDITIONS'), ['class' => 'title-input required']) ?>
                         </div>
                         <div class="box-input">
                             <?= $form->field($model, 'employmentType')
                                 ->dropDownList(ArrayHelper::map(EmploymentTypes::find()->orderBy('type')->all(), 'id', 'type')
                                     , ['id' => 'busy', 'class' => 'custom color', 'data-jcf' => '{"wrapNative": false, "wrapNativeOnMobile": false, "fakeDropInBody": false, "useCustomScroll": false}'])
-                                ->label(Yii::t('app', 'JOB_EMPLOYMENT_TYPE'), ['class' => 'title-input'])?>
+                                ->label(Yii::t('app', 'JOB_EMPLOYMENT_TYPE'), ['class' => 'title-input required'])?>
                         </div>
                         <div class="box-input">
-                            <span class="title-input"><?=Yii::t('app', 'JOB_SALARY_LEVEL')?></span>
+                            <label class="title-input required"><?=Yii::t('app', 'JOB_SALARY_LEVEL')?></label>
                             <div class="hold-inputs">
                                 <div class="box-input three-elem">
                                     <?= Html::activeInput('number', $model, 'minSalary',
@@ -183,12 +183,12 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                             <div class="box-input">
                                 <?= $form->field($model, 'contactPersonName')
                                     ->input('text')
-                                    ->label(Yii::t('app', 'JOB_CONTACT_PERSON_NAME'), ['class' => 'title-input']) ?>
+                                    ->label(Yii::t('app', 'JOB_CONTACT_PERSON_NAME'), ['class' => 'title-input required']) ?>
                             </div>
                             <div class="box-input">
                                 <?= $form->field($model, 'contactPersonEmail')
                                     ->input('email', ['placeholder' => 'example@mail.ru'])
-                                    ->label(Yii::t('app', 'JOB_CONTACT_PERSON_EMAIL'), ['class' => 'title-input']) ?>
+                                    ->label(Yii::t('app', 'JOB_CONTACT_PERSON_EMAIL'), ['class' => 'title-input required']) ?>
                             </div>
                             <div class="box-input-full">
                                 <?= $form->field($model, 'contactPersonOther')
@@ -205,7 +205,7 @@ foreach (Yii::$app->session->getAllFlashes() as $key => $message) {
                               <path d="M11.7832 1.67096L10.7303 0.61808C10.586 0.473602 10.4104 0.401337 10.204 0.401337C9.99744 0.401337 9.82186 0.473602 9.67749 0.61808L4.59871 5.70454L2.32257 3.42064C2.17803 3.27611 2.00256 3.20392 1.79618 3.20392C1.58966 3.20392 1.41419 3.27611 1.26965 3.42064L0.21677 4.47355C0.0722387 4.61805 0 4.79358 0 5.00007C0 5.2064 0.0722387 5.38209 0.21677 5.52657L3.0193 8.32904L4.07227 9.38193C4.21672 9.52651 4.39224 9.5987 4.59871 9.5987C4.80509 9.5987 4.98062 9.52632 5.12515 9.38193L6.17809 8.32904L11.7832 2.72393C11.9276 2.5794 12 2.4039 12 2.19741C12.0001 1.99102 11.9276 1.8155 11.7832 1.67096Z" fill="inherit"></path>
                           </svg>
                         </span>
-                        <span class="checkbox-text">Я соглашаюсь с правилами <a class="c-accent" href="<?= Url::to('/rules')?>" target="_blank">udalyonka</a></span>
+                        <span class="checkbox-text required">Я соглашаюсь с правилами <a class="c-accent" href="<?= Url::to('/rules')?>" target="_blank">udalyonka</a></span>
                       </label>
                     </div>
                     <?php echo $form->field($model, 'reCaptcha')->widget(

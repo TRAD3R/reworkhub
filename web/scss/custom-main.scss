@@ -844,4 +844,35 @@ a.c-accent:hover {
     color: $dark-gray;
   }
 }
+
+label, .checkbox-text {
+  position: relative;
+  &.required {
+    &:after {
+      content: ' *';
+      color: $red;
+    }
+  }
+}
+
+.alert {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  margin: 10px auto;
+  padding: 15px 20px;
+  border: 1px solid $gray;
+  background: $light-gray;
+  color: $text;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  &.alert-0 {
+    color: $red;
+    border-color: $red;
+    background: transparentize($red, 0.85);
+  }
+}
+
+
 @import "custom-media"; //always at the end of file

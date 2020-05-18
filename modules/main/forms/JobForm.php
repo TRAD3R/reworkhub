@@ -42,8 +42,8 @@ class JobForm extends Model
     public function rules()
     {
         return [
-            [['companyTitle', 'title', 'description', 'contactPersonEmail', 'contactPersonOther', 'contactPersonName', 'companyAbout', 'minSalary','maxSalary'], 'filter', 'filter' => 'trim'],
-            [['jobCategories', 'title', 'employmentType', 'requirements', 'contactPersonEmail', 'currency'], 'required'],
+            [['companyTitle', 'title', 'description', 'contactPersonEmail', 'contactPersonOther', 'contactPersonName', 'companyAbout'], 'filter', 'filter' => 'trim'],
+            [['companyTitle', 'jobCategories', 'title', 'employmentType', 'requirements', 'contactPersonName', 'contactPersonEmail', 'currency', 'duties', 'conditions', 'minSalary', 'maxSalary'], 'required'],
             [['contactPersonEmail'], 'email'],
             [['duties', 'conditions'], 'safe'],
             [['companyLogo'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, ico, bmp, svg', 'message' => Yii::t('app', 'ERROR_CHECK_IMAGE_FORMAT')],
