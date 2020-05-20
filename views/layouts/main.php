@@ -140,7 +140,7 @@ AppAsset::register($this);
                 </a>
             </div>
             <a href="https://www.free-kassa.ru/">
-                <img src="//www.free-kassa.ru/img/fk_btn/6.png" title="Прием платежей">
+                <img src="/images/freekassa.png" title="Прием платежей">
             </a>
         </div>
 
