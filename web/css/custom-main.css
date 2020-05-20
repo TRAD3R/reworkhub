@@ -96,6 +96,7 @@
         line-height: 24px;
         margin: 0 0 40px 0; }
     .section-promo .dr-h1 {
+      width: 100%;
       color: #fff;
       margin: 0 0 25px 0; }
     .section-promo .dr-subtitle {
@@ -686,13 +687,13 @@ label, .checkbox-text {
         transform: none; }
 
   .dr-h1 {
-    font-size: 36px;
-    line-height: 44px;
+    font-size: 29px;
+    line-height: 37px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold; }
 
   .dr-h2 {
-    font-size: 32px;
+    font-size: 26px;
     line-height: 39px;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold; }
