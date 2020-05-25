@@ -875,5 +875,24 @@ label, .checkbox-text {
   }
 }
 
+.section-content-text {
+  * {
+    font-size: 15px;
+    line-height: 22px;
+  }
+  ul, ol {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    > li {
+      padding-left: 20px;
+      margin: 0 0 15px 0;
+    }
+  }
+}
+.block-jobs .hold-contacts a svg {
+  width: 16px;
+  height: auto;
+}
+
 
 @import "custom-media"; //always at the end of file
