@@ -677,6 +677,20 @@ label, .checkbox-text {
     border-color: #ff4359;
     background: rgba(255, 67, 89, 0.15); }
 
+.section-content-text * {
+  font-size: 15px;
+  line-height: 22px; }
+.section-content-text ul, .section-content-text ol {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+  .section-content-text ul > li, .section-content-text ol > li {
+    padding-left: 20px;
+    margin: 0 0 15px 0; }
+
+.block-jobs .hold-contacts a svg {
+  width: 16px;
+  height: auto; }
+
 @media only screen and (max-width: 768px) {
   .tariffs {
     flex-direction: column; }

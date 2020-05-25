@@ -21,7 +21,7 @@ $this->title = "$job->company_title | " . Yii::$app->name;
 <div class="block-jobs">
     <div class="container">
         <div class="hold-job">
-        	<a href="/" class="btn-backwards">
+        	<a href="javascript:history.back();" class="btn-backwards">
         		<svg viewBox="0 0 8 12" xmlns="http://www.w3.org/2000/svg">
 					<path d="M0.871797 6.42828L6.26814 11.8228C6.50493 12.059 6.88857 12.059 7.12595 11.8228C7.36274 11.5866 7.36274 11.203 7.12595 10.9668L2.15764 6.0003L7.12535 1.03378C7.36214 0.797595 7.36214 0.413961 7.12535 0.177173C6.88856 -0.0590169 6.50433 -0.0590169 6.26754 0.177173L0.871199 5.57167C0.638049 5.80542 0.638049 6.19508 0.871797 6.42828Z"/>
 				</svg>
@@ -113,6 +113,23 @@ $this->title = "$job->company_title | " . Yii::$app->name;
                                 </a>
                             </div>
                         <?php endif; ?>
+                      <?php if(!empty($job->contact_person_email)):?>
+                        <div class="box-link">
+                          <a href="mailto:<?=$job->contact_person_email?>">
+                            <svg version="1.0" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                 viewBox="0 0 1104 1080" style="enable-background:new 0 0 1104 1080;" xml:space="preserve">
+<style type="text/css">
+  .st0{fill:#00B473;fill-opacity:0.7;}
+</style>
+                              <path class="st0" d="M556.1-0.2c-298.2,0-540,241.8-540,540s241.8,540,540,540c298.2,0,540-241.8,540-540S854.3-0.2,556.1-0.2z
+	 M252,299.8h616c22,0,39.4,16.4,42.7,37.4L560,568.3l-350.7-231C212.6,316.2,230,299.8,252,299.8z M208,389l237.3,156.4L208,695.5
+	V389z M868,783.8H252c-21.9,0-39.2-16.2-42.6-37.1l276.2-174.7l62.3,41c3.7,2.4,7.9,3.6,12.1,3.6s8.4-1.2,12.1-3.6l62.3-41
+	l276.2,174.7C907.2,767.6,889.9,783.8,868,783.8z M912,695.5l-237.3-150L912,389V695.5z"/>
+</svg>
+                            <?=$job->contact_person_email?>
+                          </a>
+                        </div>
+                      <?php endif; ?>
                     </div>
                 <?php endif; ?>
             </div>
